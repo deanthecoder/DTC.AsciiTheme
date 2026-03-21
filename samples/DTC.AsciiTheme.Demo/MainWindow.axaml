@@ -39,6 +39,19 @@
                         <Button Content="_Disabled"
                                 IsEnabled="False" />
                     </WrapPanel>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="ToggleButton" />
+                        <WrapPanel Orientation="Horizontal"
+                                   ItemWidth="112"
+                                   ItemHeight="40">
+                            <ToggleButton Content="_Off" />
+                            <ToggleButton Content="_On"
+                                          IsChecked="True" />
+                            <ToggleButton Content="_Disabled"
+                                          IsEnabled="False" />
+                        </WrapPanel>
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
 

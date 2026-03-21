@@ -157,6 +157,35 @@
             </Style>
         </ControlTheme>
 
+        <ControlTheme x:Key="{x:Type ToggleButton}"
+                      TargetType="ToggleButton"
+                      BasedOn="{StaticResource {x:Type Button}}">
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{DynamicResource AsciiPressedBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:checked /template/ Border#Chrome">
+                <Setter Property="Margin" Value="4,4,4,4" />
+            </Style>
+
+            <Style Selector="^:checked /template/ Border#FocusBorder">
+                <Setter Property="Margin" Value="6,6,6,6" />
+            </Style>
+
+            <Style Selector="^:checked /template/ Border#RightShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:checked /template/ Border#BottomShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:checked /template/ Border#CornerShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+        </ControlTheme>
+
         <ControlTheme x:Key="{x:Type TabItem}"
                       TargetType="TabItem">
             <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
@@ -343,6 +372,10 @@
 
     <Style Selector="Button">
         <Setter Property="Theme" Value="{StaticResource {x:Type Button}}" />
+    </Style>
+
+    <Style Selector="ToggleButton">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ToggleButton}}" />
     </Style>
 
     <Style Selector="TabControl">
