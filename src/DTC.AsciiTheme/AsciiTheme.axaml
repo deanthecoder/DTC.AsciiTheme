@@ -1,0 +1,248 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DTC.AsciiTheme.AsciiTheme">
+
+    <Styles.Resources>
+        <FontFamily x:Key="AsciiFontFamily">avares://DTC.AsciiTheme/Assets/Fonts/VGA#PxPlus IBM VGA8</FontFamily>
+        <x:Double x:Key="AsciiCellWidth">8</x:Double>
+        <x:Double x:Key="AsciiCellHeight">16</x:Double>
+
+        <SolidColorBrush x:Key="AsciiBackgroundBrush">#0000AA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiForegroundBrush">#FFFFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiFrameBrush">#55FFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiButtonFaceBrush">#55FFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiButtonForegroundBrush">#0000AA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiHighlightBrush">#FFFF55</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiHoverBackgroundBrush">#FFFFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiHoverForegroundBrush">#0000AA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiPressedBackgroundBrush">#55FFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiPressedForegroundBrush">#000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#000080</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiDisabledForegroundBrush">#A0A0A0</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiShadowBrush">#80000000</SolidColorBrush>
+
+        <Thickness x:Key="AsciiControlBorderThickness">1</Thickness>
+        <Thickness x:Key="AsciiButtonPadding">8,8</Thickness>
+        <Thickness x:Key="AsciiTabPadding">8,8,8,6</Thickness>
+        <x:Double x:Key="AsciiButtonShadowDepth">8</x:Double>
+        <ControlTheme x:Key="{x:Type Button}"
+                      TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AsciiButtonFaceBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiButtonForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiBackgroundBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="{DynamicResource AsciiButtonPadding}" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="MinWidth" Value="104" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <Border Name="RightShadow"
+                                Width="{DynamicResource AsciiButtonShadowDepth}"
+                                HorizontalAlignment="Right"
+                                Margin="0,8,0,8"
+                                Background="{DynamicResource AsciiShadowBrush}"
+                                IsHitTestVisible="False" />
+
+                        <Border Name="BottomShadow"
+                                Height="{DynamicResource AsciiButtonShadowDepth}"
+                                VerticalAlignment="Bottom"
+                                Margin="8,0,8,0"
+                                Background="{DynamicResource AsciiShadowBrush}"
+                                IsHitTestVisible="False" />
+
+                        <Border Name="CornerShadow"
+                                Width="{DynamicResource AsciiButtonShadowDepth}"
+                                Height="{DynamicResource AsciiButtonShadowDepth}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Background="{DynamicResource AsciiShadowBrush}"
+                                IsHitTestVisible="False" />
+
+                        <Border Name="Chrome"
+                                Margin="0,0,8,8"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextBlock.LineHeight="{DynamicResource AsciiCellHeight}"
+                                              TextBlock.TextAlignment="Center"
+                                              TextBlock.TextWrapping="NoWrap"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+
+                        <Border Name="FocusBorder"
+                                Margin="2,2,10,10"
+                                BorderBrush="{DynamicResource AsciiHighlightBrush}"
+                                BorderThickness="1"
+                                IsVisible="False"
+                                IsHitTestVisible="False" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource AsciiPressedBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#Chrome">
+                <Setter Property="Margin" Value="4,4,4,4" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#FocusBorder">
+                <Setter Property="Margin" Value="6,6,6,6" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#RightShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#BottomShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#CornerShadow">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:focus /template/ Border#FocusBorder">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ Border#RightShadow">
+                <Setter Property="Background" Value="#40000000" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ Border#BottomShadow">
+                <Setter Property="Background" Value="#40000000" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ Border#CornerShadow">
+                <Setter Property="Background" Value="#40000000" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type TabItem}"
+                      TargetType="TabItem">
+            <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource AsciiControlBorderThickness}" />
+            <Setter Property="Padding" Value="{DynamicResource AsciiTabPadding}" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="MinWidth" Value="96" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel Margin="0,0,8,0">
+                        <Border Name="Chrome"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Name="PART_HeaderPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextBlock.LineHeight="{DynamicResource AsciiCellHeight}"
+                                              TextBlock.TextAlignment="Center"
+                                              TextBlock.TextWrapping="NoWrap"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+
+                        <Border Name="FocusBorder"
+                                Margin="2,2,10,2"
+                                BorderBrush="{DynamicResource AsciiHighlightBrush}"
+                                BorderThickness="1"
+                                IsVisible="False"
+                                IsHitTestVisible="False" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:selected">
+                <Setter Property="Background" Value="{DynamicResource AsciiHighlightBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+            </Style>
+
+            <Style Selector="^:focus /template/ Border#FocusBorder">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
+    </Styles.Resources>
+
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="Theme" Value="{StaticResource {x:Type Button}}" />
+    </Style>
+
+    <Style Selector="TabControl">
+        <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+    </Style>
+
+    <Style Selector="TabItem">
+        <Setter Property="Theme" Value="{StaticResource {x:Type TabItem}}" />
+    </Style>
+
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="LineHeight" Value="{DynamicResource AsciiCellHeight}" />
+    </Style>
+
+    <Style Selector="Border.ascii-frame">
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+</Styles>
