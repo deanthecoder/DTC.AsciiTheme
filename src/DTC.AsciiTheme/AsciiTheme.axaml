@@ -31,6 +31,24 @@
         <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#30000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiDisabledForegroundBrush">#A0A0A0</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiShadowBrush">#80000000</SolidColorBrush>
+        <DrawingBrush x:Key="AsciiProgressTrackBrush"
+                      AlignmentX="Left"
+                      AlignmentY="Top"
+                      DestinationRect="0,0,2,2"
+                      Stretch="None"
+                      SourceRect="0,0,2,2"
+                      TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="Transparent"
+                                     Geometry="M 0,0 H 2 V 2 H 0 Z" />
+                    <GeometryDrawing Brush="#4055FFFF"
+                                     Geometry="M 0,0 H 1 V 1 H 0 Z" />
+                    <GeometryDrawing Brush="#2055FFFF"
+                                     Geometry="M 1,1 H 2 V 2 H 1 Z" />
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
 
         <Thickness x:Key="AsciiControlBorderThickness">1</Thickness>
         <Thickness x:Key="AsciiButtonPadding">8,8</Thickness>
@@ -437,6 +455,62 @@
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
         </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type ProgressBar}"
+                      TargetType="ProgressBar">
+            <Setter Property="Background" Value="{DynamicResource AsciiProgressTrackBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiButtonForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MinWidth" Value="160" />
+            <Setter Property="MinHeight" Value="18" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid ClipToBounds="True">
+                            <Border Name="PART_Indicator"
+                                    HorizontalAlignment="Left"
+                                    Background="{DynamicResource AsciiButtonFaceBrush}" />
+
+                            <Border Name="ProgressTextHost"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Padding="0"
+                                    Background="Transparent"
+                                    IsVisible="{TemplateBinding ShowProgressText}">
+                                <TextBlock Name="ProgressText"
+                                           Foreground="{DynamicResource AsciiForegroundBrush}"
+                                           Text="{Binding Percentage, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:vertical /template/ Border#PART_Indicator">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+            </Style>
+
+            <Style Selector="^:vertical">
+                <Setter Property="MinWidth" Value="8" />
+                <Setter Property="MinHeight" Value="64" />
+            </Style>
+
+            <Style Selector="^:vertical /template/ Border#ProgressTextHost">
+                <Setter Property="RenderTransformOrigin" Value="50%,50%" />
+                <Setter Property="RenderTransform">
+                    <RotateTransform Angle="90" />
+                </Setter>
+            </Style>
+
+            <Style Selector="^:indeterminate /template/ Border#PART_Indicator">
+                <Setter Property="Width" Value="{Binding TemplateSettings.ContainerWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Style>
+
+        </ControlTheme>
     </Styles.Resources>
 
     <Style Selector="Window">
@@ -799,6 +873,10 @@
 
     <Style Selector="ListBoxItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type ListBoxItem}}" />
+    </Style>
+
+    <Style Selector="ProgressBar">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ProgressBar}}" />
     </Style>
 
     <Style Selector="ListBoxItem:selected TextBlock">

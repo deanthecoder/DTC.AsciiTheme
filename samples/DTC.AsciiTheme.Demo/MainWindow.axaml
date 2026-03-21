@@ -150,6 +150,40 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+
+            <TabItem Header="_Progress">
+                <UniformGrid Columns="2">
+                    <theme:AsciiGroupBox Header="Transfer Progress">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="A first pass at a retro progress bar using a cyan fill with VGA shade glyphs." TextWrapping="Wrap" />
+                            <ProgressBar Value="25"
+                                         Maximum="100" />
+                            <ProgressBar Value="50"
+                                         Maximum="100"
+                                         ShowProgressText="True" />
+                            <ProgressBar Value="80"
+                                         Maximum="100" />
+                        </StackPanel>
+                    </theme:AsciiGroupBox>
+
+                    <theme:AsciiGroupBox Margin="16,0,0,0"
+                                         Header="Vertical">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Spacing="12">
+                            <ProgressBar Width="24"
+                                         Orientation="Vertical"
+                                         Value="35"
+                                         Maximum="100"
+                                         ShowProgressText="True" />
+                            <ProgressBar Width="24"
+                                         Orientation="Vertical"
+                                         Value="70"
+                                         Maximum="100" />
+                        </StackPanel>
+                    </theme:AsciiGroupBox>
+                </UniformGrid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
