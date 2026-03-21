@@ -65,6 +65,10 @@
                                  Watermark="Enter file name"
                                  Text="CONFIG.SYS" />
                         <TextBox Width="320"
+                                 Watermark="Enter password"
+                                 PasswordChar="*"
+                                 Text="hunter2" />
+                        <TextBox Width="320"
                                  IsEnabled="False"
                                  Text="READONLY.TXT" />
                     </StackPanel>
