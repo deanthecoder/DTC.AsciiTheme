@@ -67,6 +67,18 @@
                                   IsChecked="{x:Null}"
                                   IsEnabled="False" />
                     </StackPanel>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="RadioButton" />
+                        <RadioButton GroupName="DemoOptions"
+                                     Content="Item 1"
+                                     IsChecked="True" />
+                        <RadioButton GroupName="DemoOptions"
+                                     Content="Item 2" />
+                        <RadioButton GroupName="DemoOptions"
+                                     Content="Item 3"
+                                     IsEnabled="False" />
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
 

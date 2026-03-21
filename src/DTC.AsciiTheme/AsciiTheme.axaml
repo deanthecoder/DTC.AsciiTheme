@@ -286,6 +286,51 @@
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
         </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type RadioButton}"
+                      TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8">
+                            <TextBlock Name="IndicatorText"
+                                       VerticalAlignment="Center"
+                                       Text="( )" />
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              RecognizesAccessKey="True" />
+                        </StackPanel>
+
+                        <Border Name="FocusBorder"
+                                Margin="-2"
+                                BorderBrush="{DynamicResource AsciiHighlightBrush}"
+                                BorderThickness="1"
+                                IsVisible="False"
+                                IsHitTestVisible="False" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:checked /template/ TextBlock#IndicatorText">
+                <Setter Property="Text" Value="(•)" />
+            </Style>
+
+            <Style Selector="^:focus /template/ Border#FocusBorder">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
     </Styles.Resources>
 
     <Style Selector="Window">
@@ -387,6 +432,10 @@
 
     <Style Selector="CheckBox">
         <Setter Property="Theme" Value="{StaticResource {x:Type CheckBox}}" />
+    </Style>
+
+    <Style Selector="RadioButton">
+        <Setter Property="Theme" Value="{StaticResource {x:Type RadioButton}}" />
     </Style>
 
     <Style Selector="TextBlock">
