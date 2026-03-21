@@ -155,7 +155,7 @@
                 <UniformGrid Columns="2">
                     <theme:AsciiGroupBox Header="Transfer Progress">
                         <StackPanel Spacing="12">
-                            <TextBlock Text="A first pass at a retro progress bar using a cyan fill with VGA shade glyphs." TextWrapping="Wrap" />
+                            <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect." TextWrapping="Wrap" />
                             <ProgressBar Value="25"
                                          Maximum="100" />
                             <ProgressBar Value="50"
@@ -183,6 +183,16 @@
                         </StackPanel>
                     </theme:AsciiGroupBox>
                 </UniformGrid>
+            </TabItem>
+
+            <TabItem Header="_ScrollViewer">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                              VerticalScrollBarVisibility="Visible">
+                    <Image Source="avares://DTC.AsciiTheme.Demo/Assets/Images/blue-and-gold-macaw-dithered.png"
+                           Stretch="None"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top" />
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>

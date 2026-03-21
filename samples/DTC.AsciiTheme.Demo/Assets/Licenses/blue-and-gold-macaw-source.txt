@@ -1,0 +1,16 @@
+Source image:
+https://commons.wikimedia.org/wiki/File:Blue_and_gold_macaw_with_corella.jpg
+
+Original file:
+https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20and%20gold%20macaw%20with%20corella.jpg
+
+Author:
+Drcbrothephotographer
+
+License:
+CC0 1.0 Universal (public domain dedication)
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Notes:
+The demo image "blue-and-gold-macaw-dithered.png" is a locally generated
+16-colour dithered derivative of the source image above.
