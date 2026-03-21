@@ -12,18 +12,28 @@
         <SolidColorBrush x:Key="AsciiFrameBrush">#55FFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiButtonFaceBrush">#55FFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiButtonForegroundBrush">#0000AA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiShadeSoftBrush">#30000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiShadeBrush">#50000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiShadeStrongBrush">#80000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiPaneBackgroundBrush">#30000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiInputBackgroundBrush">#50000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiInputForegroundBrush">#FFFFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiInputSelectionBrush">#55FFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiInputSelectionForegroundBrush">#000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiInputWatermarkBrush">#A0A0A0</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiHighlightBrush">#FFFF55</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiHoverBackgroundBrush">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiHoverForegroundBrush">#0000AA</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPressedBackgroundBrush">#55FFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPressedForegroundBrush">#000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#000080</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#30000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiDisabledForegroundBrush">#A0A0A0</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiShadowBrush">#80000000</SolidColorBrush>
 
         <Thickness x:Key="AsciiControlBorderThickness">1</Thickness>
         <Thickness x:Key="AsciiButtonPadding">8,8</Thickness>
         <Thickness x:Key="AsciiTabPadding">8,8,8,8</Thickness>
+        <Thickness x:Key="AsciiTextBoxPadding">8</Thickness>
         <Thickness x:Key="AsciiPanePadding">16</Thickness>
         <x:Double x:Key="AsciiButtonShadowDepth">8</x:Double>
         <ControlTheme x:Key="{x:Type Button}"
@@ -227,6 +237,55 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
         </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type CheckBox}"
+                      TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8">
+                            <TextBlock Name="IndicatorText"
+                                       VerticalAlignment="Center"
+                                       Text="[ ]" />
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              RecognizesAccessKey="True" />
+                        </StackPanel>
+
+                        <Border Name="FocusBorder"
+                                Margin="-2"
+                                BorderBrush="{DynamicResource AsciiHighlightBrush}"
+                                BorderThickness="1"
+                                IsVisible="False"
+                                IsHitTestVisible="False" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:checked /template/ TextBlock#IndicatorText">
+                <Setter Property="Text" Value="[x]" />
+            </Style>
+
+            <Style Selector="^:indeterminate /template/ TextBlock#IndicatorText">
+                <Setter Property="Text" Value="[-]" />
+            </Style>
+
+            <Style Selector="^:focus /template/ Border#FocusBorder">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
     </Styles.Resources>
 
     <Style Selector="Window">
@@ -249,6 +308,7 @@
         <Setter Property="ContentTemplate">
             <DataTemplate>
                 <Border Margin="0,-1,0,0"
+                        Background="{DynamicResource AsciiPaneBackgroundBrush}"
                         Padding="{DynamicResource AsciiPanePadding}"
                         BorderBrush="{DynamicResource AsciiFrameBrush}"
                         BorderThickness="1">
@@ -275,6 +335,58 @@
 
     <Style Selector="TabItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type TabItem}}" />
+    </Style>
+
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="1" />
+        <Setter Property="Padding" Value="{DynamicResource AsciiTextBoxPadding}" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource AsciiInputSelectionBrush}" />
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="MinHeight" Value="34" />
+    </Style>
+
+    <Style Selector="TextBox /template/ Border">
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="TextBox /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="TextBox:disabled">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+    </Style>
+
+    <Style Selector="TextBox:disabled /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="TextBox /template/ TextBlock#watermark">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputWatermarkBrush}" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+    </Style>
+
+    <Style Selector="CheckBox">
+        <Setter Property="Theme" Value="{StaticResource {x:Type CheckBox}}" />
     </Style>
 
     <Style Selector="TextBlock">

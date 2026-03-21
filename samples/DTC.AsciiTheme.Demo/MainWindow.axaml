@@ -43,10 +43,30 @@
             </TabItem>
 
             <TabItem Header="_Inputs">
-                <StackPanel Spacing="8">
+                <StackPanel Spacing="16">
                     <TextBlock Text="[ INPUT CONTROLS ]" />
-                    <TextBlock Text="TextBox, CheckBox, and RadioButton previews belong here next." />
-                    <TextBlock Text="This tab gives us a clean place to keep adding controls without losing the overall showcase structure." />
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="TextBox" />
+                        <TextBox Width="320"
+                                 Watermark="Enter file name"
+                                 Text="CONFIG.SYS" />
+                        <TextBox Width="320"
+                                 IsEnabled="False"
+                                 Text="READONLY.TXT" />
+                    </StackPanel>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="CheckBox" />
+                        <CheckBox Content="Item 1"
+                                  IsChecked="True" />
+                        <CheckBox Content="Item 2"
+                                  IsChecked="False" />
+                        <CheckBox Content="Item 3"
+                                  IsThreeState="True"
+                                  IsChecked="{x:Null}"
+                                  IsEnabled="False" />
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
 
