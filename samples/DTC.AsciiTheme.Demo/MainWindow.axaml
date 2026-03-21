@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:theme="clr-namespace:DTC.AsciiTheme.Controls;assembly=DTC.AsciiTheme"
         mc:Ignorable="d"
         d:DesignWidth="960"
         d:DesignHeight="640"
@@ -78,7 +79,7 @@
                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
                                      ScrollViewer.VerticalScrollBarVisibility="Visible"
                                      TextWrapping="NoWrap"
-                                     Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\\CONFIG\\SYSTEM\\NETWORK\\ADAPTERS\\RETRO\\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
+                                     Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
                         </StackPanel>
                     </UniformGrid>
 
@@ -108,6 +109,46 @@
                         </StackPanel>
                     </UniformGrid>
                 </StackPanel>
+            </TabItem>
+
+            <TabItem Header="_Lists">
+                <Grid ColumnDefinitions="2*,*">
+                    <theme:AsciiGroupBox Header="Files">
+                        <ListBox SelectedIndex="2">
+                            <ListBoxItem Content="AUTOEXEC.BAT" />
+                            <ListBoxItem Content="COMMAND.COM" />
+                            <ListBoxItem Content="CONFIG.SYS" />
+                            <ListBoxItem Content="DOS\EDIT.EXE" />
+                            <ListBoxItem Content="DOS\FDISK.EXE" />
+                            <ListBoxItem Content="GAMES\NETHACK\SAVE.DAT" />
+                            <ListBoxItem Content="NETWORK\TCPIP\PROTOCOL.INI" />
+                            <ListBoxItem Content="TOOLS\QMODEM\QMODEM.INI" />
+                            <ListBoxItem Content="UTILS\PKZIP\PKZIP.CFG" />
+                            <ListBoxItem Content="WINDOWS\WIN.INI" />
+                            <ListBoxItem Content="WINDOWS\SYSTEM.INI" />
+                        </ListBox>
+                    </theme:AsciiGroupBox>
+
+                    <StackPanel Grid.Column="1"
+                                Margin="16,0,0,0"
+                                Spacing="16">
+                        <theme:AsciiGroupBox Header="Selection">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="ListBox now uses the shared ASCII scrollbar and row styling." TextWrapping="Wrap" />
+                                <TextBlock Text="Selected rows use the bright inverse highlight treatment." TextWrapping="Wrap" />
+                                <TextBlock Text="The frame/header treatment here is a custom AsciiGroupBox based on HeaderedContentControl." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+
+                        <theme:AsciiGroupBox Header="Status">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="Directory: C:\" />
+                                <TextBlock Text="Items: 11" />
+                                <TextBlock Text="Filter: *.*" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+                    </StackPanel>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

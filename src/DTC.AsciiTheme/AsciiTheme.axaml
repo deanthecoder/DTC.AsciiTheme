@@ -1,5 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:DTC.AsciiTheme.Controls"
         x:Class="DTC.AsciiTheme.AsciiTheme">
 
     <Styles.Resources>
@@ -16,6 +17,7 @@
         <SolidColorBrush x:Key="AsciiShadeBrush">#50000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiShadeStrongBrush">#80000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPaneBackgroundBrush">#30000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiPaneSurfaceBrush">#00008A</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiInputBackgroundBrush">#50000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiInputForegroundBrush">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiInputSelectionBrush">#55FFFF</SolidColorBrush>
@@ -35,6 +37,7 @@
         <Thickness x:Key="AsciiTabPadding">8,8,8,8</Thickness>
         <Thickness x:Key="AsciiTextBoxPadding">8</Thickness>
         <Thickness x:Key="AsciiPanePadding">16</Thickness>
+        <Thickness x:Key="AsciiGroupBoxPadding">16,20,16,16</Thickness>
         <x:Double x:Key="AsciiButtonShadowDepth">8</x:Double>
         <x:Double x:Key="AsciiScrollBarThickness">16</x:Double>
         <ControlTheme x:Key="{x:Type Button}"
@@ -355,6 +358,79 @@
 
             <Style Selector="^:focus /template/ Border#FocusBorder">
                 <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type controls:AsciiGroupBox}"
+                      TargetType="controls:AsciiGroupBox">
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource AsciiPaneSurfaceBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="Padding" Value="{DynamicResource AsciiGroupBoxPadding}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Name="Frame"
+                                Grid.RowSpan="2"
+                                Margin="0,8,0,0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                        <Border Margin="16,0,0,0"
+                                HorizontalAlignment="Left"
+                                Background="{TemplateBinding Background}">
+                            <Border Padding="8,0"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1,0,1,0">
+                                <ContentPresenter Content="{TemplateBinding Header}"
+                                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                  RecognizesAccessKey="True"
+                                                  TextBlock.LineHeight="{DynamicResource AsciiCellHeight}" />
+                            </Border>
+                        </Border>
+
+                        <ContentPresenter Grid.Row="1"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type ListBoxItem}"
+                      TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <Border Name="Chrome"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Border>
+
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:selected">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputSelectionBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
             </Style>
 
             <Style Selector="^:disabled">
@@ -705,6 +781,28 @@
 
     <Style Selector="RadioButton">
         <Setter Property="Theme" Value="{StaticResource {x:Type RadioButton}}" />
+    </Style>
+
+    <Style Selector="controls|AsciiGroupBox">
+        <Setter Property="Theme" Value="{StaticResource {x:Type controls:AsciiGroupBox}}" />
+    </Style>
+
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+    </Style>
+
+    <Style Selector="ListBoxItem">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ListBoxItem}}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:selected TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
     </Style>
 
     <Style Selector="TextBlock">
