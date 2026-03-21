@@ -23,7 +23,8 @@
 
         <Thickness x:Key="AsciiControlBorderThickness">1</Thickness>
         <Thickness x:Key="AsciiButtonPadding">8,8</Thickness>
-        <Thickness x:Key="AsciiTabPadding">8,8,8,6</Thickness>
+        <Thickness x:Key="AsciiTabPadding">8,8,8,8</Thickness>
+        <Thickness x:Key="AsciiPanePadding">16</Thickness>
         <x:Double x:Key="AsciiButtonShadowDepth">8</x:Double>
         <ControlTheme x:Key="{x:Type Button}"
                       TargetType="Button">
@@ -155,13 +156,17 @@
             <Setter Property="Padding" Value="{DynamicResource AsciiTabPadding}" />
             <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
             <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="ClipToBounds" Value="False" />
             <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Margin" Value="0,0,-1,-2" />
             <Setter Property="MinWidth" Value="96" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Panel Margin="0,0,8,0">
+                    <Panel Name="Root"
+                           Margin="0">
                         <Border Name="Chrome"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -180,8 +185,14 @@
                                               RecognizesAccessKey="True" />
                         </Border>
 
+                        <Border Name="LastRightEdge"
+                                Width="1"
+                                HorizontalAlignment="Right"
+                                Background="{TemplateBinding BorderBrush}"
+                                IsHitTestVisible="False" />
+
                         <Border Name="FocusBorder"
-                                Margin="2,2,10,2"
+                                Margin="2,2,2,2"
                                 BorderBrush="{DynamicResource AsciiHighlightBrush}"
                                 BorderThickness="1"
                                 IsVisible="False"
@@ -199,7 +210,11 @@
             <Style Selector="^:selected">
                 <Setter Property="Background" Value="{DynamicResource AsciiHighlightBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+            </Style>
+
+            <Style Selector="^:selected /template/ Border#Chrome">
+                <Setter Property="BorderThickness" Value="1,1,1,0" />
             </Style>
 
             <Style Selector="^:focus /template/ Border#FocusBorder">
@@ -229,7 +244,34 @@
     <Style Selector="TabControl">
         <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="ContentTemplate">
+            <DataTemplate>
+                <Border Margin="0,-1,0,0"
+                        Padding="{DynamicResource AsciiPanePadding}"
+                        BorderBrush="{DynamicResource AsciiFrameBrush}"
+                        BorderThickness="1">
+                    <ContentPresenter Content="{Binding}" />
+                </Border>
+            </DataTemplate>
+        </Setter>
     </Style>
+
+    <Style Selector="TabControl > TabStrip">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ClipToBounds" Value="False" />
+    </Style>
+
+    <Style Selector="TabControl > TabStrip > TabItem:last-child">
+        <Setter Property="Margin" Value="0,0,0,-2" />
+    </Style>
+
+    <Style Selector="TabControl > TabStrip > TabItem:last-child:selected">
+        <Setter Property="Margin" Value="0,0,0,-2" />
+    </Style>
+
 
     <Style Selector="TabItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type TabItem}}" />

@@ -27,48 +27,36 @@
         <TabControl Grid.Row="2"
                     Margin="0,8,0,0">
             <TabItem Header="_Buttons">
-                <Border Margin="0,8,0,0"
-                        Padding="16"
-                        Classes="ascii-frame">
-                    <StackPanel Spacing="16">
-                        <TextBlock Text="[ BUTTON ]" />
-                        <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring." />
-                        <WrapPanel Orientation="Horizontal"
-                                   ItemWidth="112"
-                                   ItemHeight="40">
-                            <Button Content="_Normal" />
-                            <Button x:Name="FocusedButton"
-                                    Content="_Focused" />
-                            <Button Content="_Disabled"
-                                    IsEnabled="False" />
-                        </WrapPanel>
-                    </StackPanel>
-                </Border>
+                <StackPanel Spacing="16">
+                    <TextBlock Text="[ BUTTON ]" />
+                    <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring." />
+                    <WrapPanel Orientation="Horizontal"
+                               ItemWidth="112"
+                               ItemHeight="40">
+                        <Button Content="_Normal" />
+                        <Button x:Name="FocusedButton"
+                                Content="_Focused" />
+                        <Button Content="_Disabled"
+                                IsEnabled="False" />
+                    </WrapPanel>
+                </StackPanel>
             </TabItem>
 
             <TabItem Header="_Inputs">
-                <Border Margin="0,8,0,0"
-                        Padding="16"
-                        Classes="ascii-frame">
-                    <StackPanel Spacing="8">
-                        <TextBlock Text="[ INPUT CONTROLS ]" />
-                        <TextBlock Text="TextBox, CheckBox, and RadioButton previews belong here next." />
-                        <TextBlock Text="This tab gives us a clean place to keep adding controls without losing the overall showcase structure." />
-                    </StackPanel>
-                </Border>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="[ INPUT CONTROLS ]" />
+                    <TextBlock Text="TextBox, CheckBox, and RadioButton previews belong here next." />
+                    <TextBlock Text="This tab gives us a clean place to keep adding controls without losing the overall showcase structure." />
+                </StackPanel>
             </TabItem>
 
             <TabItem Header="_Notes">
-                <Border Margin="0,8,0,0"
-                        Padding="16"
-                        Classes="ascii-frame">
-                    <StackPanel Spacing="8">
-                        <TextBlock Text="[ NOTES ]" />
-                        <TextBlock Text="The demo is now organised like a retro setup utility." />
-                        <TextBlock Text="Next controls should follow the same 8x16 grid, palette, and focus language." />
-                        <TextBlock Text="Suggested next steps: TextBox, CheckBox, RadioButton." />
-                    </StackPanel>
-                </Border>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="[ NOTES ]" />
+                    <TextBlock Text="The demo is now organised like a retro setup utility." />
+                    <TextBlock Text="Next controls should follow the same 8x16 grid, palette, and focus language." />
+                    <TextBlock Text="Suggested next steps: TextBox, CheckBox, RadioButton." />
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>
