@@ -1,348 +1,219 @@
 # Agents.md — Guidance for AI-assisted Development
 
-_An overview of the current repository and its related goals, intended to guide AI-assisted development._
+_A short guide to the current repository goals and working conventions._
 
-## Summary for Agents
+## Summary
 
-This repository contains an **Avalonia theme / control styling project** that aims to make modern desktop UI look like a classic old-school ASCII / text-mode interface.
+This repository contains an **Avalonia theme / control styling project** that makes modern desktop UI feel like a classic old-school ASCII / text-mode application.
 
-The target feel is inspired by vintage DOS applications, BBS tools, setup screens, Norton-style interfaces, ANSI text UIs, and similar retro software.  
-This is **not** intended to be a terminal emulator, nor a fake screenshot renderer. It should be a real Avalonia UI theme that can be applied to normal Avalonia controls.
+The target feel is inspired by DOS utilities, BBS tools, setup screens, Norton-style interfaces, and ANSI-era desktop software.
 
-The preferred implementation approach is to **re-theme and re-template Avalonia’s built-in controls first**, only introducing custom controls where absolutely necessary.
+This project is **not** a terminal emulator and **not** a character-grid renderer. It is a real Avalonia theme that should be usable with normal Avalonia controls.
 
----
+The preferred implementation approach is:
 
-## Getting Started for Agents
+- re-theme and re-template Avalonia’s built-in controls first,
+- keep the result practical and reusable,
+- only introduce custom controls where Avalonia does not provide a suitable built-in option.
 
-When beginning work on this repository:
+## Current state
 
-1. Ensure the solution builds successfully.
-2. If no demo app exists, create a minimal Avalonia application to preview the theme.
-3. Apply the theme globally in the demo app.
-4. Start by implementing a styled `Button` control to establish the visual direction.
-5. Use hardcoded values initially if needed to validate appearance quickly.
-6. Iterate toward reusable styles and resources after visual validation.
+The repository already contains:
 
-Do not attempt to fully implement all controls at once.  
-Focus on one control at a time and ensure it looks correct before expanding.
+- a reusable theme library: `DTC.AsciiTheme`,
+- a demo app that previews the controls,
+- a README with generated screenshots,
+- an NUnit screenshot test project that captures demo tabs into `img/`.
 
----
-
-## Definition of Done (Initial Version)
-
-The first usable version of this project should include:
-
-- A working Avalonia theme package (`DTC.AsciiTheme`).
-- A demo application showcasing the theme.
-- Styled versions of:
-  - Button
-  - TextBox
-  - CheckBox
-  - RadioButton
-- A consistent retro ASCII visual style across these controls.
-- The ability to apply the theme to an Avalonia app with minimal setup.
-
-Visual accuracy and consistency are more important than completeness.
-
----
-
-## Agent Instructions (Overview)
-
-- Read this file before making architectural decisions.
-- Preserve the retro ASCII / text-mode design goal in all UI choices.
-- Prefer **restyling existing Avalonia controls** over inventing replacements.
-- Keep the design practical and reusable: this should be a usable Avalonia theme, not just a visual experiment.
-- Avoid unnecessary complexity in the first versions.
-- Match existing coding style and naming conventions used in the repository.
-- If generic reusable code emerges, consider whether it belongs in a shared library rather than staying local to this repo.
-- Favour incremental delivery: get a convincing v1 working for core controls before expanding scope.
-- Unit test logic where sensible. Visual/theme work may also benefit from a demo app or preview surface.
-- Do not introduce heavy dependencies without clear value.
-
----
-
-## Project Goals
-
-The project should provide a reusable Avalonia theme that gives applications a convincing retro ASCII UI appearance.
-
-### Core visual goals
-
-- Monospaced retro-style font.
-- Text-mode inspired layout and spacing.
-- Box-drawing style borders.
-- Flat fills.
-- Sharp contrast.
-- No modern rounded corners or soft gradients.
-- Clear focus states.
-- Selection states that resemble inverse video or old UI highlighting.
-- Controls that feel like they belong in a DOS-era interface.
-
-### Non-goals
-
-Unless explicitly requested, this project is **not** trying to:
-
-- emulate an entire terminal environment.
-- render the UI into a character grid.
-- replace Avalonia with a custom scene renderer.
-- perfectly clone any specific third-party project.
-- mimic CRT distortion, scanlines, or shader-heavy effects by default.
-- build a complete window manager.
-
----
-
-## Implementation Strategy
-
-### Preferred approach
-
-Start by styling and templating standard Avalonia controls.
-
-Examples:
+There is already meaningful work in place for controls such as:
 
 - `Button`
 - `ToggleButton`
+- `TextBox`
 - `CheckBox`
 - `RadioButton`
-- `TextBox`
 - `ComboBox`
 - `ListBox`
+- `TreeView`
+- `ProgressBar`
 - `ScrollBar`
 - `Menu`
 - `TabControl`
-- `GroupBox`
-- `TreeView`
-- `DataGrid` later, if included
+- `Expander`
+- `Slider`
+- `ToolTip`
+- `Separator`
+- `Label`
+- `TextBlock`
 
-Use Avalonia theming primitives wherever possible:
+Custom controls currently exist only where useful:
+
+- `AsciiGroupBox`
+- `AsciiStatusBar`
+
+## Core design goals
+
+- Monospaced retro-style font.
+- Disciplined spacing, ideally aligned to the VGA-ish `8x16` feel.
+- Sharp contrast and flat fills.
+- Text-mode inspired borders and separators.
+- Minimal palette.
+- Selection and focus states that feel like inverse-video or old utility software.
+- Controls that feel like they belong in one coherent DOS-era desktop application.
+
+## Non-goals
+
+Unless explicitly requested, this project is **not** trying to:
+
+- emulate a full terminal,
+- render the entire UI onto a character grid,
+- clone a specific third-party toolkit pixel-for-pixel,
+- add CRT effects, scanlines, or heavy shader treatments,
+- replace Avalonia with custom drawing for everything.
+
+## Working approach
+
+When working in this repository:
+
+1. Build the solution first.
+2. Prefer improving one control or one small control family at a time.
+3. Validate visually in the demo app.
+4. Keep metrics, spacing, and colors reusable rather than scattering magic values.
+5. Preserve the retro direction even when implementing modern Avalonia behavior.
+
+Prefer these Avalonia primitives:
 
 - `ControlTheme`
 - control templates
 - styles
-- theme resources
-- brushes
-- shared sizing resources
-- reusable glyph/border helpers where appropriate
+- shared resources
+- reusable brushes, thicknesses, and metrics
 
-### Custom controls
+Create a custom control only when:
 
-Create custom controls only when one of the following is true:
+- Avalonia does not provide the control at all,
+- templating the built-in control becomes too fragile,
+- or the desired behavior is meaningfully different.
 
-- Avalonia templating cannot achieve the required look cleanly.
-- The retro styling would otherwise become fragile or overly hacky.
-- The behaviour is meaningfully different from the standard control.
+## Important implementation notes
 
-Any custom control should have a clear justification.
+### Fluent baseline
 
----
+Right now `AsciiTheme` is an override layer, not a totally standalone base theme.
 
-## Design Principles
+Apps should currently load:
 
-### 1. Real controls first
+- `FluentTheme`
+- then `AsciiTheme`
 
-This should remain a real Avalonia UI toolkit/theme.  
-Bindings, focus, keyboard navigation, templating, input behaviour, and layout should continue to work normally.
+Do not assume `AsciiTheme` can replace Fluent by itself unless that has been deliberately refactored.
 
-### 2. Retro feel over literal emulation
+### Font
 
-Aim for a convincing retro experience without making the codebase brittle.  
-The result should feel authentic, even if some implementation details are modern.
-
-### 3. Font matters
-
-The chosen font is a major part of the visual identity.
-
----
-
-## Font Guidance
-
-The theme depends heavily on a suitable monospaced font.
+The font is a core part of the identity.
 
 Requirements:
 
-- Must support box-drawing characters.
-- Must render cleanly at small sizes.
-- Should resemble classic IBM/DOS-era fonts.
+- supports box-drawing characters,
+- looks right at small sizes,
+- feels IBM/DOS-like,
+- is included and referenced correctly in Avalonia resources.
 
-Prefer reusing an existing font from the author's other projects (e.g. G33kShell) if available.
+Prefer reusing the font approach already established in this repository and in related projects like `G33kShell`.
 
-Agents should ensure the font is:
+### Palette
 
-- included in the project,
-- properly referenced in Avalonia,
-- and applied globally via theme resources.
+Keep the palette limited and reusable.
 
----
+Prefer:
 
-### 4. Keep layout disciplined
+- a small number of primary theme colors,
+- shade overlays using transparent black or transparent white,
+- fewer per-control color knobs.
 
-The UI will look best when spacing, sizes, borders, and glyph placement are consistent.  
-Avoid arbitrary padding and modern default spacing values that weaken the retro look.
+The long-term direction should be a **simpler color mechanism**, where changing a small set of base colors still produces a good-looking theme everywhere.
 
-### 5. Minimal palette
+## Next priorities
 
-Prefer a limited and deliberate palette.
+When looking for the next useful work, consider these areas first.
 
-Examples may include:
+### 1. Missing common controls
 
-- dark background + bright foreground
-- classic blue / cyan / white combinations
-- amber / green monochrome variants later
-- high-contrast focus and selection states
-
----
-
-## Suggested Project Structure
-
-- `src/`
-  - theme library (`DTC.AsciiTheme`)
-  - optional helper controls
-  - shared resources
-- `samples/` or `demo/`
-  - showcase app demonstrating all styled controls
-- `tests/`
-  - unit tests for logic, helpers, and any custom control behaviour
-- `assets/`
-  - fonts
-  - optional screenshots / preview media
-
----
-
-## Likely Components
-
-### Theme resources
-
-Shared resources for:
-
-- font family
-- font size
-- spacing
-- border thickness
-- brushes
-- colour palette
-- focus visuals
-- selection visuals
-
-### Border and glyph helpers
-
-Potential helpers for:
-
-- box-drawing glyph usage
-- directional arrows
-- checkbox / radio indicator glyphs
-- text-mode separators
-- decorative title bars or frames
-
-### Demo application
-
-A sample app is strongly recommended.
-
-It should demonstrate:
-
-- all supported controls
-- enabled / disabled / focused / hovered / selected states
-- alternative palettes if supported
-
----
-
-## Recommended Milestones
-
-### Milestone 1 — Core look and feel
-
-- font
-- palette
-- basic spacing
-- borders
-- focus visuals
-
-Then implement:
-
-- `Button`
-- `TextBox`
-- `CheckBox`
-- `RadioButton`
-
-### Milestone 2 — Common app controls
-
-- `ListBox`
-- `ComboBox`
-- `ScrollBar`
-- `Menu`
-- `GroupBox`
-
-### Milestone 3 — More complex containers
-
-- `TabControl`
-- `TreeView`
-- optional `Expander`
-
-### Milestone 4 — Advanced controls
+Check whether any practical retro-app controls are still missing or under-developed, for example:
 
 - `DataGrid`
-- dialog styling
-- optional variants/themes
+- richer list or shell-style item views
+- numeric entry helpers
+- date/time style controls only if genuinely needed
 
----
+### 2. Dialog story
 
-## Coding Preferences
+Think about file and message interactions:
 
-- use `var` where type is obvious.
-- avoid single-line `if` statements.
-- use `string.Empty` instead of `""`.
-- sentence-style `//` comments with full stops.
-- prefer `FileInfo` / `DirectoryInfo` over raw strings where sensible.
-- keep methods small and focused.
+- file open dialog,
+- file save dialog,
+- message boxes,
+- confirm / warning / error dialogs.
 
----
+Be clear about whether these should be:
 
-## Testing Guidance
+- styled custom in-app dialogs,
+- wrappers/helpers around Avalonia dialogs,
+- or separate sample components.
+
+Native OS dialogs are acceptable when necessary, but if a retro in-app experience is desired, that likely means themed custom windows/components rather than trying to restyle platform-native dialogs.
+
+### 3. Palette simplification
+
+Reduce the number of special-case colors over time.
+
+Prefer a theme model built from:
+
+- base background,
+- base foreground,
+- accent color,
+- highlight color,
+- shade overlays.
+
+### 4. Documentation and screenshots
+
+Keep the README and screenshot test up to date when the demo changes materially.
+
+The screenshot test should remain a practical tool for regenerating `img/`, even if it includes small workarounds for preview/headless quirks.
+
+## Testing guidance
 
 Good candidates for tests:
 
-- glyph helper logic
-- resource lookup helpers
-- theme registration logic
-- custom control behaviour
+- screenshot generation,
+- glyph helper logic,
+- simple custom control behavior,
+- any reusable logic added outside raw XAML styling.
 
-Visual validation via demo app is important.
+Visual validation in the demo app remains important.
 
----
+## Coding preferences
 
-## Relationship to Other Projects
+- use `var` where type is obvious,
+- avoid single-line `if` statements,
+- use `string.Empty` instead of `""`,
+- use sentence-style `//` comments with full stops,
+- prefer `FileInfo` / `DirectoryInfo` over raw strings where sensible,
+- keep methods small and focused.
 
-Relevant references:
+## Related references
 
-- **G33kShell** (font + visual inspiration)
-- **DTC.Core** (shared utilities where applicable)
+Relevant nearby projects:
 
-Reuse existing code where appropriate.
+- **G33kShell** for font and visual inspiration.
+- **DTC.Core** for broader code style and conventions.
+- **ReviewG33k** for README and test-project shape.
 
----
+## Common mistakes to avoid
 
-## Common Mistakes to Avoid
-
-- Do not replace Avalonia controls with custom rendering prematurely.
-- Do not attempt pixel-perfect DOS emulation at the cost of maintainability.
-- Do not introduce unnecessary dependencies.
-- Do not style all controls at once.
-- Do not rely on rounded corners or gradients.
-- Avoid inconsistent spacing or mixed visual styles.
-
----
-
-## Suggested First Task
-
-Create a styled `Button` control that:
-
-- Uses a monospaced font.
-- Has a box-style border.
-- Uses high-contrast colours.
-- Clearly shows hover and focus states.
-- Avoids rounded corners and gradients.
-
-This control establishes the visual baseline.
-
----
-
-## Current Intent
-
-The immediate goal is to create an Avalonia theme (`DTC.AsciiTheme`) that looks convincingly like a classic ASCII UI, while behaving like a proper modern Avalonia theme.
+- Do not replace standard Avalonia controls with custom rendering too early.
+- Do not try to style every control at once.
+- Do not add unnecessary dependencies.
+- Do not drift into modern rounded, soft, or gradient-heavy visuals unless explicitly requested.
+- Do not introduce inconsistent spacing or ad-hoc metrics.
+- Do not overfit to Rider preview quirks if the real app and demo behavior are otherwise correct, unless those previews are important to the task.

@@ -12,6 +12,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
+using DTC.AsciiTheme;
 
 namespace DTC.AsciiTheme.Demo;
 
@@ -56,5 +57,43 @@ public partial class MainWindow : Window
     {
         var normalized = (Math.Sin(phase) + 1.0) / 2.0;
         return minimum + ((maximum - minimum) * normalized);
+    }
+
+    private async void HandleShowOkMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var result = await AsciiMessageBox.ShowAsync(
+            this,
+            "Information",
+            "The current operation completed successfully.",
+            AsciiMessageBoxButtons.Ok);
+
+        UpdateMessageBoxResult(result);
+    }
+
+    private async void HandleShowOkCancelMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var result = await AsciiMessageBox.ShowAsync(
+            this,
+            "Overwrite File",
+            "Overwrite CONFIG.SYS with the new settings from SETUP?",
+            AsciiMessageBoxButtons.OkCancel);
+
+        UpdateMessageBoxResult(result);
+    }
+
+    private async void HandleShowYesNoMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var result = await AsciiMessageBox.ShowAsync(
+            this,
+            "Delete File",
+            "Delete AUTOEXEC.BAT from drive C:?",
+            AsciiMessageBoxButtons.YesNo);
+
+        UpdateMessageBoxResult(result);
+    }
+    
+    private static void UpdateMessageBoxResult(AsciiMessageBoxResult result)
+    {
+        MessageBoxResultTextBlock.Text = $"Last result: {result}";
     }
 }

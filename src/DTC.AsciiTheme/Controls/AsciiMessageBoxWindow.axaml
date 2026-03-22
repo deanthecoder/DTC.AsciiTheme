@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:DTC.AsciiTheme.Controls"
+        x:Class="DTC.AsciiTheme.Controls.AsciiMessageBoxWindow"
+        Width="480"
+        MinWidth="360"
+        MaxWidth="640"
+        CanResize="False"
+        ShowInTaskbar="False"
+        SystemDecorations="None"
+        Background="{DynamicResource AsciiBackgroundBrush}"
+        Foreground="{DynamicResource AsciiDialogForegroundBrush}"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner">
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
+        <Panel Background="{DynamicResource AsciiDialogBackgroundBrush}">
+            <controls:AsciiGroupBox x:Name="MessageBoxGroupBox"
+                                    Background="{DynamicResource AsciiDialogBackgroundBrush}"
+                                    BorderBrush="{DynamicResource AsciiFrameBrush}"
+                                    Margin="8,4,8,8"
+                                    Header="Title">
+                <StackPanel Spacing="24">
+                    <TextBlock x:Name="MessageTextBlock"
+                               Width="360"
+                               HorizontalAlignment="Center"
+                               Foreground="{DynamicResource AsciiDialogForegroundBrush}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+
+                    <StackPanel x:Name="ButtonPanel"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,-8,-8"
+                                Spacing="8" />
+                </StackPanel>
+            </controls:AsciiGroupBox>
+        </Panel>
+        
+        <Border Grid.Row="0" Grid.Column="1" x:Name="RightShadow"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="0,16,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1" Grid.Column="0" x:Name="BottomShadow"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="8,0,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1" Grid.Column="1" x:Name="CornerShadow"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+    </Grid>
+</Window>

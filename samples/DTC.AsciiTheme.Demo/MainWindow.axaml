@@ -342,26 +342,45 @@
                     </theme:AsciiGroupBox>
 
                     <Grid ColumnDefinitions="2*,*">
-                        <theme:AsciiGroupBox Header="Expander">
-                            <StackPanel Spacing="8">
-                                <Expander Header="Drive A:"
-                                          IsExpanded="True">
-                                    <StackPanel Spacing="4">
-                                        <TextBlock Text="System files" />
-                                        <TextBlock Text="Boot configuration" />
-                                        <TextBlock Text="Installation logs" />
-                                    </StackPanel>
-                                </Expander>
-                                <Expander Header="Drive B:">
-                                    <StackPanel Spacing="4">
-                                        <TextBlock Text="Games" />
-                                        <TextBlock Text="Saved sessions" />
-                                        <TextBlock Text="Downloads" />
-                                    </StackPanel>
-                                </Expander>
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
+                        <StackPanel Spacing="16">
+                            <theme:AsciiGroupBox Header="MessageBox">
+                                <StackPanel Spacing="8">
+                                    <TextBlock x:Name="MessageBoxResultTextBlock"
+                                               Text="Last result: none" />
+                                    <WrapPanel Orientation="Horizontal"
+                                               ItemWidth="136"
+                                               ItemHeight="40">
+                                        <Button Content="Show _OK"
+                                                Click="HandleShowOkMessageBoxClick" />
+                                        <Button Content="Show _OK/Cancel"
+                                                Click="HandleShowOkCancelMessageBoxClick" />
+                                        <Button Content="Show _Yes/No"
+                                                Click="HandleShowYesNoMessageBoxClick" />
+                                    </WrapPanel>
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
 
+                            <theme:AsciiGroupBox Header="Expander">
+                                <StackPanel Spacing="8">
+                                    <Expander Header="Drive A:"
+                                              IsExpanded="True">
+                                        <StackPanel Spacing="4">
+                                            <TextBlock Text="System files" />
+                                            <TextBlock Text="Boot configuration" />
+                                            <TextBlock Text="Installation logs" />
+                                        </StackPanel>
+                                    </Expander>
+                                    <Expander Header="Drive B:">
+                                        <StackPanel Spacing="4">
+                                            <TextBlock Text="Games" />
+                                            <TextBlock Text="Saved sessions" />
+                                            <TextBlock Text="Downloads" />
+                                        </StackPanel>
+                                    </Expander>
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+                        </StackPanel>
+                        
                         <StackPanel Grid.Column="1"
                                     Margin="16,0,0,0"
                                     Spacing="16">

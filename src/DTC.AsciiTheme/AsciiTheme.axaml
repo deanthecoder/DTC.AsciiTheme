@@ -29,6 +29,8 @@
         <SolidColorBrush x:Key="AsciiHighlightBrush">#FFFF55</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiHoverBackgroundBrush">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiHoverForegroundBrush">#0000AA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiDialogBackgroundBrush">#AAAAAA</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiDialogForegroundBrush">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPressedBackgroundBrush">#55FFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPressedForegroundBrush">#000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#30000000</SolidColorBrush>
