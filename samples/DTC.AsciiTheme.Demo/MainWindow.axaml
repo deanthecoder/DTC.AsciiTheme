@@ -294,6 +294,87 @@
                 </UniformGrid>
             </TabItem>
 
+            <TabItem Header="_More">
+                <StackPanel Spacing="16">
+                    <theme:AsciiGroupBox Header="Menu">
+                        <Menu>
+                            <MenuItem Header="_File">
+                                <MenuItem Header="_Open"
+                                          InputGesture="Ctrl+O" />
+                                <MenuItem Header="_Save"
+                                          InputGesture="Ctrl+S" />
+                                <MenuItem Header="Open _Recent">
+                                    <MenuItem Header="CONFIG.SYS" />
+                                    <MenuItem Header="AUTOEXEC.BAT" />
+                                    <MenuItem Header="SETUP\DEFAULTS.INI" />
+                                </MenuItem>
+                                <Separator />
+                                <MenuItem Header="E_xit"
+                                          InputGesture="Alt+F4" />
+                            </MenuItem>
+                            <MenuItem Header="_Edit">
+                                <MenuItem Header="_Copy"
+                                          InputGesture="Ctrl+C" />
+                                <MenuItem Header="_Paste"
+                                          InputGesture="Ctrl+V" />
+                                <MenuItem Header="_Delete"
+                                          InputGesture="Delete" />
+                            </MenuItem>
+                            <MenuItem Header="_View">
+                                <MenuItem Header="_Status Bar" />
+                                <MenuItem Header="_Colors" />
+                            </MenuItem>
+                            <MenuItem Header="_Help">
+                                <MenuItem Header="_About" />
+                            </MenuItem>
+                        </Menu>
+                    </theme:AsciiGroupBox>
+
+                    <Grid ColumnDefinitions="2*,*">
+                        <theme:AsciiGroupBox Header="Expander">
+                            <StackPanel Spacing="8">
+                                <Expander Header="Drive A:"
+                                          IsExpanded="True">
+                                    <StackPanel Spacing="4">
+                                        <TextBlock Text="System files" />
+                                        <TextBlock Text="Boot configuration" />
+                                        <TextBlock Text="Installation logs" />
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="Drive B:">
+                                    <StackPanel Spacing="4">
+                                        <TextBlock Text="Games" />
+                                        <TextBlock Text="Saved sessions" />
+                                        <TextBlock Text="Downloads" />
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="16,0,0,0"
+                                    Spacing="16">
+                            <theme:AsciiGroupBox Header="Slider">
+                                <StackPanel Spacing="12">
+                                    <Slider Minimum="0"
+                                            Maximum="10"
+                                            Value="4" />
+                                    <Slider Width="24"
+                                            Height="120"
+                                            Orientation="Vertical"
+                                            Value="70" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+
+                            <theme:AsciiGroupBox Header="ToolTip">
+                                <Button Content="Hover me"
+                                        ToolTip.Tip="This tooltip uses the shared retro panel styling." />
+                            </theme:AsciiGroupBox>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+
             <TabItem Header="_ScrollViewer">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible"
                               VerticalScrollBarVisibility="Visible">
