@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets/Fonts/VGA/PxPlus_IBM_VGA8.ttf" />
+        <AvaloniaResource Include="Palettes/*.axaml" />
     </ItemGroup>
 
 </Project>

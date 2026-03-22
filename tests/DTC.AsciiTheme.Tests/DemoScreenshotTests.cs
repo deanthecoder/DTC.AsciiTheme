@@ -50,11 +50,14 @@ public sealed class DemoScreenshotTests
 
                 var tabControl = window.FindControl<TabControl>("DemoTabControl");
                 Assert.That(tabControl, Is.Not.Null, "Expected the demo window to expose DemoTabControl.");
+                var paletteComboBox = window.FindControl<ComboBox>("PaletteComboBox");
+                Assert.That(paletteComboBox, Is.Not.Null, "Expected the demo window to expose PaletteComboBox.");
 
                 var tabItems = tabControl!.GetLogicalDescendants()
                                          .OfType<TabItem>()
                                          .ToList();
                 Assert.That(tabItems.Count, Is.GreaterThan(0), "Expected the demo tab control to contain tab items.");
+                var textTab = tabItems.Single(item => NormalizeHeader(item.Header) == "text");
 
                 foreach (var tabItem in tabItems)
                 {
@@ -70,6 +73,24 @@ public sealed class DemoScreenshotTests
                     await WaitForRenderAsync();
                     SaveScreenshot(window, tabItem);
                 }
+
+                var paletteFileNames = new[]
+                {
+                    "text-blue.png",
+                    "text-mono.png",
+                    "text-green.png",
+                    "text-plasma.png",
+                };
+
+                for (var paletteIndex = 0; paletteIndex < paletteFileNames.Length; paletteIndex++)
+                {
+                    paletteComboBox!.SelectedIndex = paletteIndex;
+                    tabControl.SelectedItem = textTab;
+                    textTab.Focus();
+                    await WaitForRenderAsync();
+                    await WaitForRenderAsync();
+                    SaveScreenshot(window, paletteFileNames[paletteIndex]);
+                }
             }
             finally
             {
@@ -82,10 +103,15 @@ public sealed class DemoScreenshotTests
 
     private static void SaveScreenshot(Window window, TabItem tabItem)
     {
-        using var frame = window.CaptureRenderedFrame();
-        Assert.That(frame, Is.Not.Null, $"Expected a rendered frame for tab '{tabItem.Header}'.");
-
         var fileName = $"{NormalizeHeader(tabItem.Header)}.png";
+        SaveScreenshot(window, fileName);
+    }
+
+    private static void SaveScreenshot(Window window, string fileName)
+    {
+        using var frame = window.CaptureRenderedFrame();
+        Assert.That(frame, Is.Not.Null, $"Expected a rendered frame for screenshot '{fileName}'.");
+
         var file = new FileInfo(Path.Combine(ImageDirectory.FullName, fileName));
         using (var stream = file.Open(FileMode.Create, FileAccess.Write, FileShare.None))
         {

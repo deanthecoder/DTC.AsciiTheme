@@ -7,5 +7,6 @@
     <Application.Styles>
         <fluent:FluentTheme />
         <ascii:AsciiTheme />
+        <StyleInclude Source="avares://DTC.AsciiTheme/Palettes/Blue.axaml" />
     </Application.Styles>
 </Application>

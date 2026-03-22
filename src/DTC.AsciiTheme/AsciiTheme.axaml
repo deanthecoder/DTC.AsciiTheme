@@ -26,6 +26,7 @@
         <Color x:Key="AsciiShadeSoftColor">#30000000</Color>
         <Color x:Key="AsciiShadeColor">#50000000</Color>
         <Color x:Key="AsciiShadeStrongColor">#80000000</Color>
+        <Color x:Key="AsciiLightShadeColor">#20FFFFFF</Color>
         <Color x:Key="AsciiDisabledShadowColor">#40000000</Color>
         <Color x:Key="AsciiProgressPatternStrongColor">#4055FFFF</Color>
         <Color x:Key="AsciiProgressPatternSoftColor">#2055FFFF</Color>
@@ -39,10 +40,12 @@
         <SolidColorBrush x:Key="AsciiShadeSoftBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
         <SolidColorBrush x:Key="AsciiShadeBrush" Color="{DynamicResource AsciiShadeColor}" />
         <SolidColorBrush x:Key="AsciiShadeStrongBrush" Color="{DynamicResource AsciiShadeStrongColor}" />
+        <SolidColorBrush x:Key="AsciiLightShadeBrush" Color="{DynamicResource AsciiLightShadeColor}" />
         <SolidColorBrush x:Key="AsciiStatusBarBackgroundBrush" Color="{DynamicResource AsciiAccentColor}" />
         <SolidColorBrush x:Key="AsciiPaneBackgroundBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
         <SolidColorBrush x:Key="AsciiPaneSurfaceBrush" Color="{DynamicResource AsciiSurfaceColor}" />
         <SolidColorBrush x:Key="AsciiInputBackgroundBrush" Color="{DynamicResource AsciiShadeColor}" />
+        <SolidColorBrush x:Key="AsciiInputHoverBackgroundBrush" Color="{DynamicResource AsciiLightShadeColor}" />
         <SolidColorBrush x:Key="AsciiInputForegroundBrush" Color="{DynamicResource AsciiTextColor}" />
         <SolidColorBrush x:Key="AsciiInputSelectionBrush" Color="{DynamicResource AsciiAccentColor}" />
         <SolidColorBrush x:Key="AsciiInputSelectionForegroundBrush" Color="{DynamicResource AsciiInverseTextColor}" />
@@ -1626,8 +1629,26 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
+    <Style Selector="TextBox:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+    </Style>
+
+    <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
     <Style Selector="TextBox /template/ ScrollViewer">
         <Setter Property="AllowAutoHide" Value="False" />
+    </Style>
+
+    <Style Selector="TextBox:focus">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
     </Style>
 
     <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">

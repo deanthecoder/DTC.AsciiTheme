@@ -12,6 +12,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
+using Avalonia;
 using DTC.AsciiTheme;
 
 namespace DTC.AsciiTheme.Demo;
@@ -96,6 +97,36 @@ public partial class MainWindow : Window
     private void UpdateMessageBoxResult(AsciiMessageBoxResult result)
     {
         MessageBoxResultTextBlock.Text = $"Last result: {result}";
+    }
+
+    private void HandlePaletteSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (Application.Current is null)
+        {
+            return;
+        }
+
+        if (sender is not ComboBox comboBox)
+        {
+            return;
+        }
+
+        if (comboBox.SelectedItem is not ComboBoxItem comboBoxItem)
+        {
+            return;
+        }
+
+        if (comboBoxItem.Tag is not string paletteName)
+        {
+            return;
+        }
+
+        if (!Enum.TryParse<AsciiPalette>(paletteName, ignoreCase: true, out var palette))
+        {
+            return;
+        }
+
+        AsciiPaletteManager.Apply(Application.Current, palette);
     }
 
     private static IReadOnlyList<DemoFileRow> CreateFileRows()

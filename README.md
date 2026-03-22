@@ -103,6 +103,45 @@ Reference `DTC.AsciiTheme` from your Avalonia app, then load the theme in `App.a
 
 That matches the demo app and gives you the normal Avalonia Fluent baseline plus the retro overrides from this theme package.
 
+## Optional palette overlays
+The base theme ships with a blue DOS-style palette by default, and also includes optional palette overlays you can load after `AsciiTheme`:
+
+- `avares://DTC.AsciiTheme/Palettes/Blue.axaml`
+- `avares://DTC.AsciiTheme/Palettes/Mono.axaml`
+- `avares://DTC.AsciiTheme/Palettes/Green.axaml`
+- `avares://DTC.AsciiTheme/Palettes/Plasma.axaml`
+
+Example:
+
+```xml
+<Application.Styles>
+    <fluent:FluentTheme />
+    <ascii:AsciiTheme />
+    <StyleInclude Source="avares://DTC.AsciiTheme/Palettes/Green.axaml" />
+</Application.Styles>
+```
+
+If you want to switch palettes at runtime from code, use `AsciiPaletteManager.Apply(...)`.
+
+## Palette gallery
+The screenshots below all use the same `Text` tab content so the palette differences are easy to compare:
+
+### Blue
+
+![Blue palette screenshot](img/text-blue.png)
+
+### Mono
+
+![Mono palette screenshot](img/text-mono.png)
+
+### Green
+
+![Green palette screenshot](img/text-green.png)
+
+### Plasma
+
+![Plasma palette screenshot](img/text-plasma.png)
+
 ## Project layout
 - `src/DTC.AsciiTheme/` contains the reusable theme library.
 - `samples/DTC.AsciiTheme.Demo/` contains the showcase app used for interactive visual checks.

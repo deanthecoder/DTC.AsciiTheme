@@ -14,6 +14,30 @@
         Title="DTC.AsciiTheme Demo">
     <Grid RowDefinitions="Auto,*,Auto"
           Margin="16,8">
+        <Grid ColumnDefinitions="*,Auto,Auto"
+              VerticalAlignment="Center">
+            <TextBlock Text="DTC.AsciiTheme Demo"
+                       VerticalAlignment="Center" />
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,8,0"
+                       VerticalAlignment="Center"
+                       Text="Palette:" />
+            <ComboBox x:Name="PaletteComboBox"
+                      Grid.Column="2"
+                      Width="144"
+                      SelectedIndex="0"
+                      SelectionChanged="HandlePaletteSelectionChanged">
+                <ComboBoxItem Content="Blue"
+                              Tag="Blue" />
+                <ComboBoxItem Content="Mono"
+                              Tag="Mono" />
+                <ComboBoxItem Content="Green"
+                              Tag="Green" />
+                <ComboBoxItem Content="Plasma"
+                              Tag="Plasma" />
+            </ComboBox>
+        </Grid>
+
         <TabControl x:Name="DemoTabControl"
                     Grid.Row="1"
                     Margin="0,8,0,0">
