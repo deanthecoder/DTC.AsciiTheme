@@ -12,20 +12,9 @@
         MinWidth="720"
         MinHeight="520"
         Title="DTC.AsciiTheme Demo">
-    <Grid RowDefinitions="Auto,Auto,*"
-          Margin="24">
-        <StackPanel Spacing="8">
-            <TextBlock FontSize="16"
-                       Text="DTC.ASCIITHEME :: RETRO CONTROL PREVIEW" />
-            <TextBlock Text="A first pass at an Avalonia theme inspired by DOS utilities, BBS tools, and text-mode setup screens." />
-            <Separator />
-        </StackPanel>
-
-        <TextBlock Grid.Row="1"
-                   Margin="0,16,0,0"
-                   Text="[ TABS ]" />
-
-        <TabControl Grid.Row="2"
+    <Grid RowDefinitions="Auto,*,Auto"
+          Margin="16,8">
+        <TabControl Grid.Row="1"
                     Margin="0,8,0,0">
             <TabItem Header="_Buttons">
                 <StackPanel Spacing="16">
@@ -315,5 +304,10 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
+
+        <theme:AsciiStatusBar Grid.Row="2"
+                              Margin="0,8,0,0"
+                              LeftText="RETRO CONTROL PREVIEW"
+                              RightText="DTC.AsciiTheme Demo" />
     </Grid>
 </Window>

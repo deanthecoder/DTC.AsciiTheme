@@ -16,6 +16,7 @@
         <SolidColorBrush x:Key="AsciiShadeSoftBrush">#30000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiShadeBrush">#50000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiShadeStrongBrush">#80000000</SolidColorBrush>
+        <SolidColorBrush x:Key="AsciiStatusBarBackgroundBrush">#55FFFF</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPaneBackgroundBrush">#30000000</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiPaneSurfaceBrush">#00008A</SolidColorBrush>
         <SolidColorBrush x:Key="AsciiInputBackgroundBrush">#50000000</SolidColorBrush>
@@ -501,6 +502,42 @@
             <Style Selector="^:disabled">
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type controls:AsciiStatusBar}"
+                      TargetType="controls:AsciiStatusBar">
+            <Setter Property="Background" Value="{DynamicResource AsciiStatusBarBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="{TemplateBinding Padding}"
+                              ColumnDefinitions="*,Auto,Auto">
+                            <TextBlock Text="{TemplateBinding LeftText}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center" />
+
+                            <Border Grid.Column="1"
+                                    Width="1"
+                                    Margin="8,0"
+                                    Background="{TemplateBinding Foreground}" />
+
+                            <TextBlock Grid.Column="2"
+                                       Text="{TemplateBinding RightText}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </ControlTheme>
 
         <ControlTheme x:Key="{x:Type controls:AsciiGroupBox}"
@@ -1088,6 +1125,10 @@
 
     <Style Selector="ComboBoxItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type ComboBoxItem}}" />
+    </Style>
+
+    <Style Selector="controls|AsciiStatusBar">
+        <Setter Property="Theme" Value="{StaticResource {x:Type controls:AsciiStatusBar}}" />
     </Style>
 
     <Style Selector="controls|AsciiGroupBox">
