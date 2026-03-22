@@ -17,17 +17,17 @@ namespace DTC.AsciiTheme.Demo;
 
 public partial class MainWindow : Window
 {
-    private readonly DispatcherTimer animationTimer;
-    private double animationPhase;
+    private readonly DispatcherTimer m_animationTimer;
+    private double m_animationPhase;
 
     public MainWindow()
     {
         InitializeComponent();
-        animationTimer = new DispatcherTimer
+        m_animationTimer = new DispatcherTimer
         {
             Interval = TimeSpan.FromMilliseconds(80),
         };
-        animationTimer.Tick += HandleAnimationTick;
+        m_animationTimer.Tick += HandleAnimationTick;
         Opened += HandleOpened;
         Closed += HandleClosed;
     }
@@ -35,21 +35,21 @@ public partial class MainWindow : Window
     private void HandleOpened(object sender, EventArgs e)
     {
         FocusedButton.Focus(NavigationMethod.Tab);
-        animationTimer.Start();
+        m_animationTimer.Start();
     }
 
     private void HandleClosed(object sender, EventArgs e)
     {
-        animationTimer.Stop();
+        m_animationTimer.Stop();
     }
 
     private void HandleAnimationTick(object sender, EventArgs e)
     {
-        animationPhase += 0.08;
+        m_animationPhase += 0.08;
 
-        AnimatedProgressBar.Value = CalculateWaveValue(animationPhase, 18.0, 82.0);
-        AnimatedTextProgressBar.Value = CalculateWaveValue(animationPhase + 1.2, 12.0, 96.0);
-        AnimatedVerticalProgressBar.Value = CalculateWaveValue(animationPhase + 2.1, 10.0, 90.0);
+        AnimatedProgressBar.Value = CalculateWaveValue(m_animationPhase, 18.0, 82.0);
+        AnimatedTextProgressBar.Value = CalculateWaveValue(m_animationPhase + 1.2, 12.0, 96.0);
+        AnimatedVerticalProgressBar.Value = CalculateWaveValue(m_animationPhase + 2.1, 10.0, 90.0);
     }
 
     private static double CalculateWaveValue(double phase, double minimum, double maximum)

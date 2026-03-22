@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTC.AsciiTheme", "src\DTC.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTC.AsciiTheme.Demo", "samples\DTC.AsciiTheme.Demo\DTC.AsciiTheme.Demo.csproj", "{709A04E5-C017-4840-A91E-2EC07241C0D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTC.AsciiTheme.Tests", "tests\DTC.AsciiTheme.Tests\DTC.AsciiTheme.Tests.csproj", "{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,18 @@ Global
 		{709A04E5-C017-4840-A91E-2EC07241C0D7}.Release|x64.Build.0 = Release|Any CPU
 		{709A04E5-C017-4840-A91E-2EC07241C0D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{709A04E5-C017-4840-A91E-2EC07241C0D7}.Release|x86.Build.0 = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|x64.Build.0 = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3F0629E-CDD6-4423-8CB5-1F608867BBB7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

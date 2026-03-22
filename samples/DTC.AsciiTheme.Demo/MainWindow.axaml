@@ -14,7 +14,8 @@
         Title="DTC.AsciiTheme Demo">
     <Grid RowDefinitions="Auto,*,Auto"
           Margin="16,8">
-        <TabControl Grid.Row="1"
+        <TabControl x:Name="DemoTabControl"
+                    Grid.Row="1"
                     Margin="0,8,0,0">
             <TabItem Header="_Buttons">
                 <StackPanel Spacing="16">
@@ -294,6 +295,16 @@
                 </UniformGrid>
             </TabItem>
 
+            <TabItem Header="_ScrollViewer">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                              VerticalScrollBarVisibility="Visible">
+                    <Image Source="avares://DTC.AsciiTheme.Demo/Assets/Images/blue-and-gold-macaw-dithered.png"
+                           Stretch="None"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+
             <TabItem Header="_More">
                 <StackPanel Spacing="16">
                     <theme:AsciiGroupBox Header="Menu">
@@ -373,16 +384,6 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-            </TabItem>
-
-            <TabItem Header="_ScrollViewer">
-                <ScrollViewer HorizontalScrollBarVisibility="Visible"
-                              VerticalScrollBarVisibility="Visible">
-                    <Image Source="avares://DTC.AsciiTheme.Demo/Assets/Images/blue-and-gold-macaw-dithered.png"
-                           Stretch="None"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top" />
-                </ScrollViewer>
             </TabItem>
         </TabControl>
 
