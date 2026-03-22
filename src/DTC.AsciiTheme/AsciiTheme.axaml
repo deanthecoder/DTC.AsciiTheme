@@ -4,6 +4,8 @@
         xmlns:controls="using:DTC.AsciiTheme.Controls"
         x:Class="DTC.AsciiTheme.AsciiTheme">
 
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+
     <Styles.Resources>
         <conv:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
         <FontFamily x:Key="AsciiFontFamily">avares://DTC.AsciiTheme/Assets/Fonts/VGA#PxPlus IBM VGA8</FontFamily>
@@ -85,6 +87,69 @@
         <Thickness x:Key="AsciiGroupBoxPadding">16,16,16,16</Thickness>
         <x:Double x:Key="AsciiButtonShadowDepth">8</x:Double>
         <x:Double x:Key="AsciiScrollBarThickness">16</x:Double>
+        <ControlTheme x:Key="AsciiDataGridColumnHeaderTheme"
+                      TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,1,1" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border x:Name="HeaderBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Name="PART_ColumnHeaderRoot"
+                              ColumnDefinitions="*,Auto">
+                            <ContentPresenter Grid.Column="0"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalContentAlignment="Stretch"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                              TextBlock.LineHeight="{DynamicResource AsciiCellHeight}" />
+                            <TextBlock Name="SortGlyph"
+                                       Grid.Column="1"
+                                       MinWidth="16"
+                                       Margin="0,4,8,4"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Text=""
+                                       IsHitTestVisible="False" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:pointerover /template/ Grid#PART_ColumnHeaderRoot">
+                <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+            </Style>
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Grid#PART_ColumnHeaderRoot">
+                <Setter Property="Background" Value="{DynamicResource AsciiHighlightBrush}" />
+            </Style>
+
+            <Style Selector="^:pressed">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:sortascending /template/ TextBlock#SortGlyph">
+                <Setter Property="Text" Value="▲" />
+            </Style>
+
+            <Style Selector="^:sortdescending /template/ TextBlock#SortGlyph">
+                <Setter Property="Text" Value="▼" />
+            </Style>
+        </ControlTheme>
         <ControlTheme x:Key="{x:Type Button}"
                       TargetType="Button">
             <Setter Property="Background" Value="{DynamicResource AsciiButtonFaceBrush}" />
@@ -1663,6 +1728,95 @@
 
     <Style Selector="TreeViewItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type TreeViewItem}}" />
+    </Style>
+
+    <Style Selector="DataGrid">
+        <Setter Property="Background" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="GridLinesVisibility" Value="All" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="RowBackground" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+        <Setter Property="ScrollViewer.AllowAutoHide" Value="False" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+        <Setter Property="CanUserResizeColumns" Value="False" />
+        <Setter Property="CanUserReorderColumns" Value="False" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Theme" Value="{StaticResource AsciiDataGridColumnHeaderTheme}" />
+        <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:pointerover TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGridCell">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="Padding" Value="8,2" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+    </Style>
+
+    <Style Selector="DataGridRow:pointerover DataGridCell">
+        <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGridRow:pointerover DataGridCell TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGridRow:selected DataGridCell">
+        <Setter Property="Background" Value="{DynamicResource AsciiInputSelectionBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGridRow:selected DataGridCell TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGrid /template/ ScrollViewer">
+        <Setter Property="AllowAutoHide" Value="False" />
+    </Style>
+
+    <Style Selector="DataGrid /template/ DataGridColumnHeadersPresenter#PART_ColumnHeadersPresenter">
+        <Setter Property="Margin" Value="0,0,16,0" />
+    </Style>
+
+    <Style Selector="DataGrid /template/ DataGridRowsPresenter#PART_RowsPresenter">
+        <Setter Property="Margin" Value="0,0,16,16" />
+    </Style>
+
+    <Style Selector="DataGrid /template/ Rectangle#PART_BottomRightCorner">
+        <Setter Property="Fill" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+    </Style>
+
+    <Style Selector="DataGrid /template/ DataGridColumnHeader#PART_TopRightCornerHeader">
+        <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiFrameBrush}" />
     </Style>
 
     <Style Selector="ListBoxItem:selected TextBlock">

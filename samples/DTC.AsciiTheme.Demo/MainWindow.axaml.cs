@@ -24,6 +24,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        FileDataGrid.ItemsSource = CreateFileRows();
         m_animationTimer = new DispatcherTimer
         {
             Interval = TimeSpan.FromMilliseconds(80),
@@ -96,4 +97,21 @@ public partial class MainWindow : Window
     {
         MessageBoxResultTextBlock.Text = $"Last result: {result}";
     }
+
+    private static IReadOnlyList<DemoFileRow> CreateFileRows()
+    {
+        return
+        [
+            new("AUTOEXEC.BAT", "Batch", "1 KB", "1994-03-12 07:15"),
+            new("COMMAND.COM", "System", "54 KB", "1994-03-12 07:15"),
+            new("CONFIG.SYS", "Config", "2 KB", "1994-03-12 07:16"),
+            new("EDIT.EXE", "Program", "69 KB", "1993-11-08 18:42"),
+            new("FDISK.EXE", "Program", "30 KB", "1993-11-08 18:42"),
+            new("NETWORK.INI", "Settings", "4 KB", "1995-01-21 09:03"),
+            new("PKZIP.EXE", "Program", "42 KB", "1992-08-19 20:10"),
+            new("README.TXT", "Text", "7 KB", "1995-01-21 09:10"),
+        ];
+    }
 }
+
+public sealed record DemoFileRow(string Name, string Type, string Size, string Modified);

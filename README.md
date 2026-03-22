@@ -3,7 +3,7 @@
 # DTC.AsciiTheme
 DTC.AsciiTheme is a reusable Avalonia theme library for building apps that feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers, while still using real Avalonia controls underneath. The goal is not terminal emulation, but a practical control theme that keeps modern bindings, layout, focus, and input behavior intact.
 
-![Buttons tab screenshot](img/buttons.png)
+![Data tab screenshot](img/data.png)
 
 ## Demo tabs
 ### Buttons
@@ -26,6 +26,11 @@ Demonstrates `ListBox` together with the custom `AsciiGroupBox` framing and sele
 
 ![Lists tab screenshot](img/lists.png)
 
+### Data
+Demonstrates a first-pass `DataGrid` with ASCII-styled headers, sort arrows, row selection, grid lines, and shared scrollbar treatment.
+
+![Data tab screenshot](img/data.png)
+
 ### Tree
 Demonstrates `TreeView`, ASCII expand/collapse arrows, selection, and nested hierarchy rendering.
 
@@ -40,19 +45,21 @@ Demonstrates horizontal and vertical `ProgressBar`, including animated bars and 
 
 Demonstrates shared `ScrollViewer`/`ScrollBar` styling with a dithered retro image preview.
 
+![ScrollViewer tab screenshot](img/scrollviewer.png)
+
 ### More
-Demonstrates `Menu`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatusBar`.
+Demonstrates `Menu`, `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatusBar`.
 
 ![More tab screenshot](img/more.png)
 
-![ScrollViewer tab screenshot](img/scrollviewer.png)
-
 ## What it currently styles
+- `AsciiMessageBox`
 - `AsciiGroupBox`
 - `AsciiStatusBar`
 - `Button`
 - `CheckBox`
 - `ComboBox`
+- `DataGrid`
 - `Expander`
 - `Label`
 - `ListBox`
@@ -60,6 +67,7 @@ Demonstrates `Menu`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatu
 - `ProgressBar`
 - `RadioButton`
 - `ScrollBar`
+- `ScrollViewer`
 - `Separator`
 - `Slider`
 - `TabControl`
