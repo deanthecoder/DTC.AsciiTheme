@@ -383,6 +383,126 @@
             </Style>
         </ControlTheme>
 
+        <ControlTheme x:Key="{x:Type ComboBox}"
+                      TargetType="ComboBox">
+            <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="CornerRadius" Value="1" />
+            <Setter Property="MinWidth" Value="160" />
+            <Setter Property="MinHeight" Value="34" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid ColumnDefinitions="*,16">
+                        <Border Name="Chrome"
+                                Grid.ColumnSpan="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid ColumnDefinitions="*,16"
+                                  ClipToBounds="True">
+                                <ContentControl Name="SelectionPresenter"
+                                                Grid.Column="0"
+                                                Margin="8,4,8,4"
+                                                Content="{TemplateBinding SelectionBoxItem}"
+                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                                <Border Grid.Column="1"
+                                        Background="{DynamicResource AsciiPaneBackgroundBrush}" />
+
+                                <TextBlock Name="DropDownGlyph"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Text="▼"
+                                           Foreground="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </Border>
+
+                        <Popup Name="PART_Popup"
+                               IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+                               MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                               MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                               PlacementTarget="Chrome"
+                               IsLightDismissEnabled="True"
+                               InheritsTransform="True">
+                            <Border Name="PopupBorder"
+                                    Background="{DynamicResource AsciiPaneSurfaceBrush}"
+                                    BorderBrush="{DynamicResource AsciiFrameBrush}"
+                                    BorderThickness="1"
+                                    ClipToBounds="True">
+                                <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                    <ItemsPresenter Name="PART_ItemsPresenter" />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:focus /template/ Border#Chrome">
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+            </Style>
+
+            <Style Selector="^:dropdownopen /template/ Border#Chrome">
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+            </Style>
+
+            <Style Selector="^:dropdownopen /template/ TextBlock#DropDownGlyph">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHighlightBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type ComboBoxItem}"
+                      TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:selected">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputSelectionBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:selected /template/ ContentPresenter">
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
+
         <ControlTheme x:Key="{x:Type controls:AsciiGroupBox}"
                       TargetType="controls:AsciiGroupBox">
             <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
@@ -962,6 +1082,14 @@
         <Setter Property="Theme" Value="{StaticResource {x:Type RadioButton}}" />
     </Style>
 
+    <Style Selector="ComboBox">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ComboBox}}" />
+    </Style>
+
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Theme" Value="{StaticResource {x:Type ComboBoxItem}}" />
+    </Style>
+
     <Style Selector="controls|AsciiGroupBox">
         <Setter Property="Theme" Value="{StaticResource {x:Type controls:AsciiGroupBox}}" />
     </Style>
@@ -1001,6 +1129,10 @@
     </Style>
 
     <Style Selector="ListBoxItem:selected TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+    </Style>
+
+    <Style Selector="ComboBoxItem:selected TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
     </Style>
 

@@ -105,6 +105,25 @@
                             </StackPanel>
 
                             <StackPanel Spacing="8">
+                                <TextBlock Text="ComboBox" />
+                                <ComboBox Width="240"
+                                          SelectedIndex="1">
+                                    <x:String>C:\FILES</x:String>
+                                    <x:String>C:\GAMES</x:String>
+                                    <x:String>C:\TOOLS</x:String>
+                                    <x:String>C:\WINDOWS</x:String>
+                                    <x:String>C:\WORK</x:String>
+                                </ComboBox>
+                                <ComboBox Width="240"
+                                          SelectedIndex="0"
+                                          IsEnabled="False">
+                                    <x:String>DISABLED</x:String>
+                                    <x:String>MANUAL</x:String>
+                                    <x:String>CUSTOM</x:String>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Spacing="8">
                                 <TextBlock Text="RadioButton" />
                                 <RadioButton GroupName="DemoOptions"
                                              Content="Item 1"
