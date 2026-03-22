@@ -502,7 +502,7 @@
             <Style Selector="^:vertical /template/ Border#ProgressTextHost">
                 <Setter Property="RenderTransformOrigin" Value="50%,50%" />
                 <Setter Property="RenderTransform">
-                    <RotateTransform Angle="90" />
+                    <RotateTransform Angle="270" />
                 </Setter>
             </Style>
 

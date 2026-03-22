@@ -197,10 +197,12 @@
                 <UniformGrid Columns="2">
                     <theme:AsciiGroupBox Header="Transfer Progress">
                         <StackPanel Spacing="12">
-                            <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect." TextWrapping="Wrap" />
-                            <ProgressBar Value="25"
+                            <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect. The demo bars below animate so we can judge the texture and text in motion." TextWrapping="Wrap" />
+                            <ProgressBar x:Name="AnimatedProgressBar"
+                                         Value="25"
                                          Maximum="100" />
-                            <ProgressBar Value="50"
+                            <ProgressBar x:Name="AnimatedTextProgressBar"
+                                         Value="50"
                                          Maximum="100"
                                          ShowProgressText="True" />
                             <ProgressBar Value="80"
@@ -213,7 +215,8 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Spacing="12">
-                            <ProgressBar Width="24"
+                            <ProgressBar x:Name="AnimatedVerticalProgressBar"
+                                         Width="24"
                                          Orientation="Vertical"
                                          Value="35"
                                          Maximum="100"

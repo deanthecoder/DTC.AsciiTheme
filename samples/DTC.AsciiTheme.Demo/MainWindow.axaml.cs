@@ -11,19 +11,50 @@
 
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Threading;
 
 namespace DTC.AsciiTheme.Demo;
 
 public partial class MainWindow : Window
 {
+    private readonly DispatcherTimer animationTimer;
+    private double animationPhase;
+
     public MainWindow()
     {
         InitializeComponent();
+        animationTimer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromMilliseconds(80),
+        };
+        animationTimer.Tick += HandleAnimationTick;
         Opened += HandleOpened;
+        Closed += HandleClosed;
     }
 
     private void HandleOpened(object sender, EventArgs e)
     {
         FocusedButton.Focus(NavigationMethod.Tab);
+        animationTimer.Start();
+    }
+
+    private void HandleClosed(object sender, EventArgs e)
+    {
+        animationTimer.Stop();
+    }
+
+    private void HandleAnimationTick(object sender, EventArgs e)
+    {
+        animationPhase += 0.08;
+
+        AnimatedProgressBar.Value = CalculateWaveValue(animationPhase, 18.0, 82.0);
+        AnimatedTextProgressBar.Value = CalculateWaveValue(animationPhase + 1.2, 12.0, 96.0);
+        AnimatedVerticalProgressBar.Value = CalculateWaveValue(animationPhase + 2.1, 10.0, 90.0);
+    }
+
+    private static double CalculateWaveValue(double phase, double minimum, double maximum)
+    {
+        var normalized = (Math.Sin(phase) + 1.0) / 2.0;
+        return minimum + ((maximum - minimum) * normalized);
     }
 }
