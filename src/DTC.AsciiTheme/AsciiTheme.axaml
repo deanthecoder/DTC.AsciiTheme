@@ -985,6 +985,16 @@
         <Setter Property="LineHeight" Value="{DynamicResource AsciiCellHeight}" />
     </Style>
 
+    <Style Selector="Label">
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style Selector="Label TextBlock">
+        <Setter Property="LineHeight" Value="{DynamicResource AsciiCellHeight}" />
+    </Style>
+
     <Style Selector="Border.ascii-frame">
         <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
         <Setter Property="BorderThickness" Value="1" />

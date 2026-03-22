@@ -111,6 +111,47 @@
                 </StackPanel>
             </TabItem>
 
+            <TabItem Header="_Text">
+                <Grid ColumnDefinitions="2*,*">
+                    <theme:AsciiGroupBox Header="TextBlock">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="Simple static text using the shared VGA font and line-height rules." TextWrapping="Wrap" />
+                            <TextBlock Text="STATUS: READY" />
+                            <TextBlock Text="A wrapped paragraph should still feel disciplined and grid-aware, even when it spans multiple lines in a modern Avalonia layout surface." TextWrapping="Wrap" />
+                            <TextBlock FontSize="24"
+                                       LineHeight="24"
+                                       Text="HEADING SAMPLE" />
+                        </StackPanel>
+                    </theme:AsciiGroupBox>
+
+                    <StackPanel Grid.Column="1"
+                                Margin="16,0,0,0"
+                                Spacing="16">
+                        <theme:AsciiGroupBox Header="Label">
+                            <StackPanel Spacing="8">
+                                <Label Content="_File name"
+                                       Target="{Binding #LabelDemoTextBox}" />
+                                <TextBox x:Name="LabelDemoTextBox"
+                                         Width="220"
+                                         Text="README.TXT" />
+                                <Label Content="_Description"
+                                       Target="{Binding #LabelDemoDescriptionTextBox}" />
+                                <TextBox x:Name="LabelDemoDescriptionTextBox"
+                                         Width="220"
+                                         Text="Retro text-mode theme preview" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+
+                        <theme:AsciiGroupBox Header="Notes">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="Labels are useful for form-like layouts and access-key targeting." TextWrapping="Wrap" />
+                                <TextBlock Text="TextBlock remains the lightweight choice for static content and headings." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
             <TabItem Header="_Lists">
                 <Grid ColumnDefinitions="2*,*">
                     <theme:AsciiGroupBox Header="Files">
