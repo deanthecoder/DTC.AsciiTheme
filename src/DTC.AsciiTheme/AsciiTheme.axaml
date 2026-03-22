@@ -512,6 +512,27 @@
 
         </ControlTheme>
 
+        <ControlTheme x:Key="{x:Type Separator}"
+                      TargetType="Separator">
+            <Setter Property="Background" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiFrameBrush}" />
+            <Setter Property="Height" Value="1" />
+            <Setter Property="Margin" Value="0,8" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Foreground}" />
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^.vertical">
+                <Setter Property="Width" Value="1" />
+                <Setter Property="Height" Value="NaN" />
+                <Setter Property="Margin" Value="8,0" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+        </ControlTheme>
+
         <ControlTheme x:Key="AsciiTreeExpanderTheme"
                       TargetType="ToggleButton">
             <Setter Property="Background" Value="Transparent" />
@@ -961,6 +982,10 @@
 
     <Style Selector="ProgressBar">
         <Setter Property="Theme" Value="{StaticResource {x:Type ProgressBar}}" />
+    </Style>
+
+    <Style Selector="Separator">
+        <Setter Property="Theme" Value="{StaticResource {x:Type Separator}}" />
     </Style>
 
     <Style Selector="TreeView">

@@ -18,7 +18,7 @@
             <TextBlock FontSize="16"
                        Text="DTC.ASCIITHEME :: RETRO CONTROL PREVIEW" />
             <TextBlock Text="A first pass at an Avalonia theme inspired by DOS utilities, BBS tools, and text-mode setup screens." />
-            <TextBlock Text="================================================================================" />
+            <Separator />
         </StackPanel>
 
         <TextBlock Grid.Row="1"
@@ -57,57 +57,66 @@
 
             <TabItem Header="_Inputs">
                 <StackPanel Spacing="16">
-                    <UniformGrid Margin="8" Columns="2">
-                        <StackPanel Spacing="8">
-                            <TextBlock Text="TextBox" />
-                            <TextBox Width="320"
-                                     Watermark="Enter file name"
-                                     Text="CONFIG.SYS" />
-                            <TextBox Width="320"
-                                     Watermark="Enter password"
-                                     PasswordChar="*"
-                                     Text="hunter2" />
-                            <TextBox Width="320"
-                                     IsEnabled="False"
-                                     Text="READONLY.TXT" />
-                        </StackPanel>
-                        <StackPanel Spacing="8">
-                            <TextBlock Text="Multi-line TextBox" />
-                            <TextBox MinWidth="200"
-                                     Height="120"
-                                     AcceptsReturn="True"
-                                     ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                     ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                     TextWrapping="NoWrap"
-                                     Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
-                        </StackPanel>
-                    </UniformGrid>
+                    <Grid Margin="8"
+                          ColumnDefinitions="*,Auto,*">
+                        <StackPanel Spacing="16">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="TextBox" />
+                                <TextBox Width="320"
+                                         Watermark="Enter file name"
+                                         Text="CONFIG.SYS" />
+                                <TextBox Width="320"
+                                         Watermark="Enter password"
+                                         PasswordChar="*"
+                                         Text="hunter2" />
+                                <TextBox Width="320"
+                                         IsEnabled="False"
+                                         Text="READONLY.TXT" />
+                            </StackPanel>
 
-                    <UniformGrid Columns="2" Margin="8" HorizontalAlignment="Left">
-                        <StackPanel Spacing="8" MinWidth="200">
-                            <TextBlock Text="CheckBox" />
-                            <CheckBox Content="Item 1"
-                                      IsChecked="True" />
-                            <CheckBox Content="Item 2"
-                                      IsChecked="False" />
-                            <CheckBox Content="Item 3"
-                                      IsThreeState="True"
-                                      IsChecked="{x:Null}"
-                                      IsEnabled="False" />
+                            <StackPanel Spacing="8"
+                                        MinWidth="200">
+                                <TextBlock Text="CheckBox" />
+                                <CheckBox Content="Item 1"
+                                          IsChecked="True" />
+                                <CheckBox Content="Item 2"
+                                          IsChecked="False" />
+                                <CheckBox Content="Item 3"
+                                          IsThreeState="True"
+                                          IsChecked="{x:Null}"
+                                          IsEnabled="False" />
+                            </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Spacing="8">
-                            <TextBlock Text="RadioButton" />
-                            <RadioButton GroupName="DemoOptions"
-                                         Content="Item 1"
-                                         IsChecked="True" />
-                            <RadioButton GroupName="DemoOptions"
-                                         Content="Item 2" />
-                            <RadioButton GroupName="DemoOptions"
-                                         Content="Item 3"
-                                         IsEnabled="False" />
+                        <Separator Grid.Column="1"
+                                   Classes="vertical"
+                                   VerticalAlignment="Stretch" />
+                        <StackPanel Grid.Column="2"
+                                    Spacing="16">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="Multi-line TextBox" />
+                                <TextBox MinWidth="200"
+                                         Height="120"
+                                         AcceptsReturn="True"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                         TextWrapping="NoWrap"
+                                         Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
+                            </StackPanel>
+
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="RadioButton" />
+                                <RadioButton GroupName="DemoOptions"
+                                             Content="Item 1"
+                                             IsChecked="True" />
+                                <RadioButton GroupName="DemoOptions"
+                                             Content="Item 2" />
+                                <RadioButton GroupName="DemoOptions"
+                                             Content="Item 3"
+                                             IsEnabled="False" />
+                            </StackPanel>
                         </StackPanel>
-                    </UniformGrid>
+                    </Grid>
                 </StackPanel>
             </TabItem>
 
@@ -117,6 +126,7 @@
                         <StackPanel Spacing="12">
                             <TextBlock Text="Simple static text using the shared VGA font and line-height rules." TextWrapping="Wrap" />
                             <TextBlock Text="STATUS: READY" />
+                            <Separator />
                             <TextBlock Text="A wrapped paragraph should still feel disciplined and grid-aware, even when it spans multiple lines in a modern Avalonia layout surface." TextWrapping="Wrap" />
                             <TextBlock FontSize="24"
                                        LineHeight="24"
@@ -146,6 +156,11 @@
                             <StackPanel Spacing="8">
                                 <TextBlock Text="Labels are useful for form-like layouts and access-key targeting." TextWrapping="Wrap" />
                                 <TextBlock Text="TextBlock remains the lightweight choice for static content and headings." TextWrapping="Wrap" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="LEFT" VerticalAlignment="Center" />
+                                    <Separator Classes="vertical" />
+                                    <TextBlock Text="RIGHT" VerticalAlignment="Center" />
+                                </StackPanel>
                             </StackPanel>
                         </theme:AsciiGroupBox>
                     </StackPanel>
