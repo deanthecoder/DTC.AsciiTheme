@@ -10,32 +10,54 @@
         <x:Double x:Key="AsciiCellWidth">8</x:Double>
         <x:Double x:Key="AsciiCellHeight">16</x:Double>
 
-        <SolidColorBrush x:Key="AsciiBackgroundBrush">#0000AA</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiForegroundBrush">#FFFFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiFrameBrush">#55FFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiButtonFaceBrush">#55FFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiButtonForegroundBrush">#0000AA</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiShadeSoftBrush">#30000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiShadeBrush">#50000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiShadeStrongBrush">#80000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiStatusBarBackgroundBrush">#55FFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiPaneBackgroundBrush">#30000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiPaneSurfaceBrush">#00008A</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiInputBackgroundBrush">#50000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiInputForegroundBrush">#FFFFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiInputSelectionBrush">#55FFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiInputSelectionForegroundBrush">#000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiInputWatermarkBrush">#A0A0A0</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiHighlightBrush">#FFFF55</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiHoverBackgroundBrush">#FFFFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiHoverForegroundBrush">#0000AA</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiDialogBackgroundBrush">#AAAAAA</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiDialogForegroundBrush">#FFFFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiPressedBackgroundBrush">#55FFFF</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiPressedForegroundBrush">#000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush">#30000000</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiDisabledForegroundBrush">#A0A0A0</SolidColorBrush>
-        <SolidColorBrush x:Key="AsciiShadowBrush">#80000000</SolidColorBrush>
+        <!-- Core palette. -->
+        <Color x:Key="AsciiBaseColor">#0000AA</Color>
+        <Color x:Key="AsciiSurfaceColor">#00008A</Color>
+        <Color x:Key="AsciiTextColor">#FFFFFF</Color>
+        <Color x:Key="AsciiAccentColor">#55FFFF</Color>
+        <Color x:Key="AsciiHighlightColor">#FFFF55</Color>
+        <Color x:Key="AsciiDialogColor">#AAAAAA</Color>
+        <Color x:Key="AsciiMutedColor">#A0A0A0</Color>
+        <Color x:Key="AsciiInverseTextColor">#000000</Color>
+
+        <!-- Shared overlays and texture colors. -->
+        <Color x:Key="AsciiShadeSoftColor">#30000000</Color>
+        <Color x:Key="AsciiShadeColor">#50000000</Color>
+        <Color x:Key="AsciiShadeStrongColor">#80000000</Color>
+        <Color x:Key="AsciiDisabledShadowColor">#40000000</Color>
+        <Color x:Key="AsciiProgressPatternStrongColor">#4055FFFF</Color>
+        <Color x:Key="AsciiProgressPatternSoftColor">#2055FFFF</Color>
+
+        <!-- Public brush resources used throughout the theme. -->
+        <SolidColorBrush x:Key="AsciiBackgroundBrush" Color="{DynamicResource AsciiBaseColor}" />
+        <SolidColorBrush x:Key="AsciiForegroundBrush" Color="{DynamicResource AsciiTextColor}" />
+        <SolidColorBrush x:Key="AsciiFrameBrush" Color="{DynamicResource AsciiAccentColor}" />
+        <SolidColorBrush x:Key="AsciiButtonFaceBrush" Color="{DynamicResource AsciiAccentColor}" />
+        <SolidColorBrush x:Key="AsciiButtonForegroundBrush" Color="{DynamicResource AsciiBaseColor}" />
+        <SolidColorBrush x:Key="AsciiShadeSoftBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
+        <SolidColorBrush x:Key="AsciiShadeBrush" Color="{DynamicResource AsciiShadeColor}" />
+        <SolidColorBrush x:Key="AsciiShadeStrongBrush" Color="{DynamicResource AsciiShadeStrongColor}" />
+        <SolidColorBrush x:Key="AsciiStatusBarBackgroundBrush" Color="{DynamicResource AsciiAccentColor}" />
+        <SolidColorBrush x:Key="AsciiPaneBackgroundBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
+        <SolidColorBrush x:Key="AsciiPaneSurfaceBrush" Color="{DynamicResource AsciiSurfaceColor}" />
+        <SolidColorBrush x:Key="AsciiInputBackgroundBrush" Color="{DynamicResource AsciiShadeColor}" />
+        <SolidColorBrush x:Key="AsciiInputForegroundBrush" Color="{DynamicResource AsciiTextColor}" />
+        <SolidColorBrush x:Key="AsciiInputSelectionBrush" Color="{DynamicResource AsciiAccentColor}" />
+        <SolidColorBrush x:Key="AsciiInputSelectionForegroundBrush" Color="{DynamicResource AsciiInverseTextColor}" />
+        <SolidColorBrush x:Key="AsciiInputWatermarkBrush" Color="{DynamicResource AsciiMutedColor}" />
+        <SolidColorBrush x:Key="AsciiHighlightBrush" Color="{DynamicResource AsciiHighlightColor}" />
+        <SolidColorBrush x:Key="AsciiHoverBackgroundBrush" Color="{DynamicResource AsciiTextColor}" />
+        <SolidColorBrush x:Key="AsciiHoverForegroundBrush" Color="{DynamicResource AsciiBaseColor}" />
+        <SolidColorBrush x:Key="AsciiDialogBackgroundBrush" Color="{DynamicResource AsciiDialogColor}" />
+        <SolidColorBrush x:Key="AsciiDialogForegroundBrush" Color="{DynamicResource AsciiTextColor}" />
+        <SolidColorBrush x:Key="AsciiPressedBackgroundBrush" Color="{DynamicResource AsciiAccentColor}" />
+        <SolidColorBrush x:Key="AsciiPressedForegroundBrush" Color="{DynamicResource AsciiInverseTextColor}" />
+        <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
+        <SolidColorBrush x:Key="AsciiDisabledForegroundBrush" Color="{DynamicResource AsciiMutedColor}" />
+        <SolidColorBrush x:Key="AsciiShadowBrush" Color="{DynamicResource AsciiShadeStrongColor}" />
+        <SolidColorBrush x:Key="AsciiDisabledShadowBrush" Color="{DynamicResource AsciiDisabledShadowColor}" />
+        <SolidColorBrush x:Key="AsciiProgressPatternStrongBrush" Color="{DynamicResource AsciiProgressPatternStrongColor}" />
+        <SolidColorBrush x:Key="AsciiProgressPatternSoftBrush" Color="{DynamicResource AsciiProgressPatternSoftColor}" />
         <DrawingBrush x:Key="AsciiProgressTrackBrush"
                       AlignmentX="Left"
                       AlignmentY="Top"
@@ -47,9 +69,9 @@
                 <DrawingGroup>
                     <GeometryDrawing Brush="Transparent"
                                      Geometry="M 0,0 H 2 V 2 H 0 Z" />
-                    <GeometryDrawing Brush="#4055FFFF"
+                    <GeometryDrawing Brush="{DynamicResource AsciiProgressPatternStrongBrush}"
                                      Geometry="M 0,0 H 1 V 1 H 0 Z" />
-                    <GeometryDrawing Brush="#2055FFFF"
+                    <GeometryDrawing Brush="{DynamicResource AsciiProgressPatternSoftBrush}"
                                      Geometry="M 1,1 H 2 V 2 H 1 Z" />
                 </DrawingGroup>
             </DrawingBrush.Drawing>
@@ -172,15 +194,15 @@
             </Style>
 
             <Style Selector="^:disabled /template/ Border#RightShadow">
-                <Setter Property="Background" Value="#40000000" />
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledShadowBrush}" />
             </Style>
 
             <Style Selector="^:disabled /template/ Border#BottomShadow">
-                <Setter Property="Background" Value="#40000000" />
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledShadowBrush}" />
             </Style>
 
             <Style Selector="^:disabled /template/ Border#CornerShadow">
-                <Setter Property="Background" Value="#40000000" />
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledShadowBrush}" />
             </Style>
         </ControlTheme>
 

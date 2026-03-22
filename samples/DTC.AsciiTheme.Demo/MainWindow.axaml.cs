@@ -91,8 +91,8 @@ public partial class MainWindow : Window
 
         UpdateMessageBoxResult(result);
     }
-    
-    private static void UpdateMessageBoxResult(AsciiMessageBoxResult result)
+
+    private void UpdateMessageBoxResult(AsciiMessageBoxResult result)
     {
         MessageBoxResultTextBlock.Text = $"Last result: {result}";
     }
