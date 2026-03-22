@@ -241,6 +241,7 @@
                                               VerticalAlignment="Stretch"
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
                                               TextBlock.LineHeight="{DynamicResource AsciiCellHeight}"
                                               TextBlock.TextAlignment="Center"
                                               TextBlock.TextWrapping="NoWrap"
@@ -966,6 +967,7 @@
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border Background="{TemplateBinding Background}"
+                            Margin="8,-4,8,-4"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid Margin="{TemplateBinding Padding}"
