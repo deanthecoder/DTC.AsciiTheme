@@ -151,6 +151,48 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="_Tree">
+                <Grid ColumnDefinitions="2*,*">
+                    <theme:AsciiGroupBox Header="TreeView">
+                        <TreeView>
+                            <TreeViewItem Header="C:\">
+                                <TreeViewItem Header="AUTOEXEC.BAT" />
+                                <TreeViewItem Header="CONFIG.SYS" />
+                                <TreeViewItem Header="DOS">
+                                    <TreeViewItem Header="EDIT.EXE" />
+                                    <TreeViewItem Header="FDISK.EXE" />
+                                    <TreeViewItem Header="QBASIC.EXE" />
+                                </TreeViewItem>
+                                <TreeViewItem Header="GAMES">
+                                    <TreeViewItem Header="DOOM">
+                                        <TreeViewItem Header="DOOM.EXE" />
+                                        <TreeViewItem Header="DOOM.WAD" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="NETHACK">
+                                        <TreeViewItem Header="SAVE.DAT" />
+                                    </TreeViewItem>
+                                </TreeViewItem>
+                                <TreeViewItem Header="WINDOWS">
+                                    <TreeViewItem Header="SYSTEM.INI" />
+                                    <TreeViewItem Header="WIN.INI" />
+                                </TreeViewItem>
+                            </TreeViewItem>
+                        </TreeView>
+                    </theme:AsciiGroupBox>
+
+                    <StackPanel Grid.Column="1"
+                                Margin="16,0,0,0"
+                                Spacing="16">
+                        <theme:AsciiGroupBox Header="Notes">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="A first TreeView preview to exercise nested items, expanders, and scroll behaviour." TextWrapping="Wrap" />
+                                <TextBlock Text="This gives us a place to refine hierarchy styling next, the same way the Lists tab helped shape ListBox." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
             <TabItem Header="_Progress">
                 <UniformGrid Columns="2">
                     <theme:AsciiGroupBox Header="Transfer Progress">

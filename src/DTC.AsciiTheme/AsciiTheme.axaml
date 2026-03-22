@@ -511,6 +511,90 @@
             </Style>
 
         </ControlTheme>
+
+        <ControlTheme x:Key="AsciiTreeExpanderTheme"
+                      TargetType="ToggleButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinWidth" Value="16" />
+            <Setter Property="MinHeight" Value="16" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:checked">
+                <Setter Property="Content" Value="▼" />
+            </Style>
+
+            <Style Selector="^:not(:checked)">
+                <Setter Property="Content" Value="►" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type TreeViewItem}"
+                      TargetType="TreeViewItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <StackPanel Spacing="0">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <ToggleButton Name="Expander"
+                                          Grid.Column="0"
+                                          Theme="{StaticResource AsciiTreeExpanderTheme}"
+                                          IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
+                            <Border Name="PART_Header"
+                                    Grid.Column="1"
+                                    Background="{TemplateBinding Background}">
+                                <TextBlock Name="PART_HeaderPresenter"
+                                           Margin="8,4"
+                                           VerticalAlignment="Center"
+                                           Text="{TemplateBinding Header}" />
+                            </Border>
+                        </Grid>
+
+                        <ItemsPresenter Name="PART_ItemsPresenter"
+                                        Margin="24,0,0,0"
+                                        IsVisible="{TemplateBinding IsExpanded}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:empty /template/ ToggleButton#Expander">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="Focusable" Value="False" />
+            </Style>
+
+            <Style Selector="^:selected /template/ Border#PART_Header">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputSelectionBrush}" />
+            </Style>
+
+            <Style Selector="^:selected /template/ TextBlock#PART_HeaderPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+        </ControlTheme>
     </Styles.Resources>
 
     <Style Selector="Window">
@@ -877,6 +961,18 @@
 
     <Style Selector="ProgressBar">
         <Setter Property="Theme" Value="{StaticResource {x:Type ProgressBar}}" />
+    </Style>
+
+    <Style Selector="TreeView">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+    </Style>
+
+    <Style Selector="TreeViewItem">
+        <Setter Property="Theme" Value="{StaticResource {x:Type TreeViewItem}}" />
     </Style>
 
     <Style Selector="ListBoxItem:selected TextBlock">
