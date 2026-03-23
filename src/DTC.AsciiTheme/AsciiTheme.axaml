@@ -328,7 +328,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter Name="PART_HeaderPresenter"
-                                              Margin="16,8"
+                                              Margin="16,6"
                                               HorizontalAlignment="Stretch"
                                               VerticalAlignment="Stretch"
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -606,7 +606,7 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="Padding" Value="12,4" />
             <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
             <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
             <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -646,7 +646,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Foreground="{TemplateBinding Foreground}"
-                                           Text="{Binding InputGesture, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource KeyGestureConverter}}" />
+                                           Text="{Binding HotKey, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource KeyGestureConverter}}" />
 
                                 <TextBlock Name="PART_ChevronGlyph"
                                            Grid.Column="3"
@@ -782,7 +782,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Foreground="{TemplateBinding Foreground}"
-                                           Text="{Binding InputGesture, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource KeyGestureConverter}}" />
+                                           Text="{Binding HotKey, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource KeyGestureConverter}}" />
 
                                 <TextBlock Name="PART_ChevronGlyph"
                                            Grid.Column="3"
@@ -1699,6 +1699,8 @@
 
     <Style Selector="Menu > MenuItem">
         <Setter Property="Theme" Value="{StaticResource AsciiTopLevelMenuItemTheme}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="12,0" />
     </Style>
 
     <Style Selector="ContextMenu">
@@ -1853,10 +1855,12 @@
     </Style>
 
     <Style Selector="Menu">
-        <Setter Property="Background" Value="{DynamicResource AsciiBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource AsciiButtonFaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiButtonForegroundBrush}" />
         <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,0,0,4" />
         <Setter Property="Padding" Value="0" />
     </Style>
 

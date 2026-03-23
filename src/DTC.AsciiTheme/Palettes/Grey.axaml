@@ -1,0 +1,15 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <Color x:Key="AsciiBaseColor">#C0C0C0</Color>
+        <Color x:Key="AsciiSurfaceColor">#B0B0B0</Color>
+        <Color x:Key="AsciiTextColor">#000000</Color>
+        <Color x:Key="AsciiAccentColor">#000000</Color>
+        <Color x:Key="AsciiHighlightColor">#000000</Color>
+        <Color x:Key="AsciiDialogColor">#A8A8A8</Color>
+        <Color x:Key="AsciiMutedColor">#404040</Color>
+        <Color x:Key="AsciiInverseTextColor">#FFFFFF</Color>
+        <Color x:Key="AsciiProgressPatternStrongColor">#40000000</Color>
+        <Color x:Key="AsciiProgressPatternSoftColor">#20000000</Color>
+    </Styles.Resources>
+</Styles>

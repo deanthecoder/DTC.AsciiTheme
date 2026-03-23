@@ -80,6 +80,7 @@ public sealed class DemoScreenshotTests
                     "text-mono.png",
                     "text-green.png",
                     "text-plasma.png",
+                    "text-grey.png",
                 };
 
                 for (var paletteIndex = 0; paletteIndex < paletteFileNames.Length; paletteIndex++)

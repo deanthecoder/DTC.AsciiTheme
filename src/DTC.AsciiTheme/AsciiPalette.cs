@@ -17,4 +17,5 @@ public enum AsciiPalette
     Mono,
     Green,
     Plasma,
+    Grey,
 }

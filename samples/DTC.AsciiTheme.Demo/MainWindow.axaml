@@ -12,12 +12,50 @@
         MinWidth="720"
         MinHeight="520"
         Title="DTC.AsciiTheme Demo">
-    <Grid RowDefinitions="Auto,*,Auto"
-          Margin="16,8">
-        <Grid ColumnDefinitions="*,Auto,Auto"
+    <Grid RowDefinitions="Auto,Auto,*,Auto"
+          Margin="12,8">
+        <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"
+                              HotKey="Meta+O"
+                              Click="HandleOpenMenuClick" />
+                    <MenuItem Header="_Save"
+                              HotKey="Meta+S"
+                              Click="HandleSaveMenuClick" />
+                    <Separator />
+                    <MenuItem Header="E_xit"
+                              HotKey="Meta+Q"
+                              Click="HandleExitMenuClick" />
+                </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="_Buttons"
+                          Click="HandleViewButtonsClick" />
+                <MenuItem Header="_Inputs"
+                          Click="HandleViewInputsClick" />
+                <MenuItem Header="_Text"
+                          Click="HandleViewTextClick" />
+                <MenuItem Header="_Lists"
+                          Click="HandleViewListsClick" />
+                <MenuItem Header="_Data"
+                          Click="HandleViewDataClick" />
+                <MenuItem Header="_Tree"
+                          Click="HandleViewTreeClick" />
+                <MenuItem Header="_Progress"
+                          Click="HandleViewProgressClick" />
+                <MenuItem Header="_ScrollViewer"
+                          Click="HandleViewScrollViewerClick" />
+                <MenuItem Header="_More"
+                          Click="HandleViewMoreClick" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About"
+                          Click="HandleAboutMenuClick" />
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto,Auto"
               VerticalAlignment="Center">
-            <TextBlock Text="DTC.AsciiTheme Demo"
-                       VerticalAlignment="Center" />
             <TextBlock Grid.Column="1"
                        Margin="0,0,8,0"
                        VerticalAlignment="Center"
@@ -35,11 +73,13 @@
                               Tag="Green" />
                 <ComboBoxItem Content="Plasma"
                               Tag="Plasma" />
+                <ComboBoxItem Content="Grey"
+                              Tag="Grey" />
             </ComboBox>
         </Grid>
 
         <TabControl x:Name="DemoTabControl"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Margin="0,8,0,0">
             <TabItem Header="_Buttons">
                 <StackPanel Spacing="16">
@@ -378,40 +418,6 @@
 
             <TabItem Header="_More">
                 <StackPanel Spacing="16">
-                    <theme:AsciiGroupBox Header="Menu">
-                        <Menu>
-                            <MenuItem Header="_File">
-                                <MenuItem Header="_Open"
-                                          InputGesture="Ctrl+O" />
-                                <MenuItem Header="_Save"
-                                          InputGesture="Ctrl+S" />
-                                <MenuItem Header="Open _Recent">
-                                    <MenuItem Header="CONFIG.SYS" />
-                                    <MenuItem Header="AUTOEXEC.BAT" />
-                                    <MenuItem Header="SETUP\DEFAULTS.INI" />
-                                </MenuItem>
-                                <Separator />
-                                <MenuItem Header="E_xit"
-                                          InputGesture="Alt+F4" />
-                            </MenuItem>
-                            <MenuItem Header="_Edit">
-                                <MenuItem Header="_Copy"
-                                          InputGesture="Ctrl+C" />
-                                <MenuItem Header="_Paste"
-                                          InputGesture="Ctrl+V" />
-                                <MenuItem Header="_Delete"
-                                          InputGesture="Delete" />
-                            </MenuItem>
-                            <MenuItem Header="_View">
-                                <MenuItem Header="_Status Bar" />
-                                <MenuItem Header="_Colors" />
-                            </MenuItem>
-                            <MenuItem Header="_Help">
-                                <MenuItem Header="_About" />
-                            </MenuItem>
-                        </Menu>
-                    </theme:AsciiGroupBox>
-
                     <Grid ColumnDefinitions="2*,*">
                         <StackPanel Spacing="16">
                             <theme:AsciiGroupBox Header="MessageBox">
@@ -477,7 +483,7 @@
             </TabItem>
         </TabControl>
 
-        <theme:AsciiStatusBar Grid.Row="2"
+        <theme:AsciiStatusBar Grid.Row="3"
                               Margin="0,8,0,0"
                               LeftText="RETRO CONTROL PREVIEW"
                               RightText="DTC.AsciiTheme Demo" />

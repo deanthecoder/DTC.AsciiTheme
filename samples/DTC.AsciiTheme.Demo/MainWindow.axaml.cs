@@ -13,6 +13,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia;
+using Avalonia.Interactivity;
 using DTC.AsciiTheme;
 
 namespace DTC.AsciiTheme.Demo;
@@ -99,6 +100,56 @@ public partial class MainWindow : Window
         MessageBoxResultTextBlock.Text = $"Last result: {result}";
     }
 
+    private async void HandleOpenMenuClick(object sender, RoutedEventArgs e)
+    {
+        await AsciiMessageBox.ShowAsync(
+            this,
+            "Open",
+            "File open support is coming once the dialog helper is in place.",
+            AsciiMessageBoxButtons.Ok);
+    }
+
+    private async void HandleSaveMenuClick(object sender, RoutedEventArgs e)
+    {
+        await AsciiMessageBox.ShowAsync(
+            this,
+            "Save",
+            "File save support is coming once the dialog helper is in place.",
+            AsciiMessageBoxButtons.Ok);
+    }
+
+    private void HandleExitMenuClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void HandleViewButtonsClick(object sender, RoutedEventArgs e) => SelectTab(0);
+
+    private void HandleViewInputsClick(object sender, RoutedEventArgs e) => SelectTab(1);
+
+    private void HandleViewTextClick(object sender, RoutedEventArgs e) => SelectTab(2);
+
+    private void HandleViewListsClick(object sender, RoutedEventArgs e) => SelectTab(3);
+
+    private void HandleViewDataClick(object sender, RoutedEventArgs e) => SelectTab(4);
+
+    private void HandleViewTreeClick(object sender, RoutedEventArgs e) => SelectTab(5);
+
+    private void HandleViewProgressClick(object sender, RoutedEventArgs e) => SelectTab(6);
+
+    private void HandleViewScrollViewerClick(object sender, RoutedEventArgs e) => SelectTab(7);
+
+    private void HandleViewMoreClick(object sender, RoutedEventArgs e) => SelectTab(8);
+
+    private async void HandleAboutMenuClick(object sender, RoutedEventArgs e)
+    {
+        await AsciiMessageBox.ShowAsync(
+            this,
+            "About",
+            "DTC.AsciiTheme\n\nA retro Avalonia theme and helper-control package by DeanTheCoder.\n\nGitHub:\nwww.github.com/deanthecoder/DTC.AsciiTheme",
+            AsciiMessageBoxButtons.Ok);
+    }
+
     private void HandlePaletteSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (Application.Current is null)
@@ -127,6 +178,11 @@ public partial class MainWindow : Window
         }
 
         AsciiPaletteManager.Apply(Application.Current, palette);
+    }
+
+    private void SelectTab(int index)
+    {
+        DemoTabControl.SelectedIndex = index;
     }
 
     private static IReadOnlyList<DemoFileRow> CreateFileRows()

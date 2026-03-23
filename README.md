@@ -52,7 +52,7 @@ Demonstrates shared `ScrollViewer`/`ScrollBar` styling with a dithered retro ima
 ![ScrollViewer tab screenshot](img/scrollviewer.png)
 
 ### More
-Demonstrates `Menu`, `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatusBar`.
+Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatusBar`. The demo app itself now uses the themed `Menu` at the top level for `File`, `View`, and `Help`.
 
 ![More tab screenshot](img/more.png)
 
@@ -117,6 +117,7 @@ The base theme ships with a blue DOS-style palette by default, and also includes
 - `avares://DTC.AsciiTheme/Palettes/Mono.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Green.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Plasma.axaml`
+- `avares://DTC.AsciiTheme/Palettes/Grey.axaml`
 
 Example:
 
@@ -148,6 +149,12 @@ The screenshots below all use the same `Text` tab content so the palette differe
 ### Plasma
 
 ![Plasma palette screenshot](img/text-plasma.png)
+
+### Grey
+
+Simple light-grey retro palette with black text and strong inverse/highlight states.
+
+![Grey palette screenshot](img/text-grey.png)
 
 ## Project layout
 - `src/DTC.AsciiTheme/` contains the reusable theme library.
