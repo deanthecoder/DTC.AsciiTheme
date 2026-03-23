@@ -980,7 +980,8 @@
                             <Track.DecreaseButton>
                                 <RepeatButton Background="Transparent"
                                               BorderThickness="0"
-                                              Focusable="False" />
+                                              Focusable="False"
+                                              IsHitTestVisible="False" />
                             </Track.DecreaseButton>
                             <Track.Thumb>
                                 <Thumb Name="MainThumb"
@@ -995,7 +996,8 @@
                             <Track.IncreaseButton>
                                 <RepeatButton Background="Transparent"
                                               BorderThickness="0"
-                                              Focusable="False" />
+                                              Focusable="False"
+                                              IsHitTestVisible="False" />
                             </Track.IncreaseButton>
                         </Track>
                     </Grid>
@@ -1023,7 +1025,8 @@
                                 <Track.DecreaseButton>
                                     <RepeatButton Background="Transparent"
                                                   BorderThickness="0"
-                                                  Focusable="False" />
+                                                  Focusable="False"
+                                                  IsHitTestVisible="False" />
                                 </Track.DecreaseButton>
                                 <Track.Thumb>
                                     <Thumb Name="MainThumb"
@@ -1038,7 +1041,8 @@
                                 <Track.IncreaseButton>
                                     <RepeatButton Background="Transparent"
                                                   BorderThickness="0"
-                                                  Focusable="False" />
+                                                  Focusable="False"
+                                                  IsHitTestVisible="False" />
                                 </Track.IncreaseButton>
                             </Track>
                         </Grid>
