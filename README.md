@@ -1,7 +1,11 @@
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/deanthecoder.svg?style=social&label=Follow%20%40deanthecoder)](https://twitter.com/deanthecoder)
 
 # DTC.AsciiTheme
-DTC.AsciiTheme is a reusable Avalonia theme library for building apps that feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers, while still using real Avalonia controls underneath. The goal is not terminal emulation, but a practical control theme that keeps modern bindings, layout, focus, and input behavior intact.
+`DTC.AsciiTheme` is primarily a style/theme layer for normal Avalonia controls, so it fits into a regular Avalonia app with very little learning curve. Most of what you use here is still `Button`, `TextBox`, `ComboBox`, `TreeView`, `DataGrid`, and the rest of the standard control set, just re-skinned to feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers.
+
+Alongside that, the package also includes a small number of extra helper controls for a more authentic retro look where Avalonia does not provide the exact shape out of the box, such as `AsciiGroupBox`, `AsciiStatusBar`, and `AsciiMessageBox`.
+
+The goal is not terminal emulation, but a practical control theme that keeps modern bindings, layout, focus, and input behavior intact.
 
 ![Data tab screenshot](img/data.png)
 
@@ -53,9 +57,7 @@ Demonstrates `Menu`, `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the
 ![More tab screenshot](img/more.png)
 
 ## What it currently styles
-- `AsciiMessageBox`
-- `AsciiGroupBox`
-- `AsciiStatusBar`
+### Standard Avalonia controls
 - `Button`
 - `CheckBox`
 - `ComboBox`
@@ -76,6 +78,11 @@ Demonstrates `Menu`, `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the
 - `ToggleButton`
 - `ToolTip`
 - `TreeView`
+
+### Extra retro helper controls
+- `AsciiGroupBox`
+- `AsciiMessageBox`
+- `AsciiStatusBar`
 
 ## Build and run
 Prereqs: .NET 8 SDK.
