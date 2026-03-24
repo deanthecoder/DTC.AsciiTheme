@@ -128,7 +128,13 @@ public sealed class DemoScreenshotTests
         var sanitized = text.Replace("_", string.Empty, StringComparison.Ordinal)
                             .Replace(" ", string.Empty, StringComparison.Ordinal);
 
-        return sanitized.ToLowerInvariant();
+        var normalized = sanitized.ToLowerInvariant();
+
+        return normalized switch
+        {
+            "scrolling" => "scrollviewer",
+            _ => normalized,
+        };
     }
 
     private static async Task WaitForRenderAsync()
@@ -140,6 +146,6 @@ public sealed class DemoScreenshotTests
     private static string GetRepositoryRootPath([CallerFilePath] string sourceFilePath = "")
     {
         var sourceDirectory = Path.GetDirectoryName(sourceFilePath) ?? string.Empty;
-        return Path.GetFullPath(Path.Combine(sourceDirectory, "..", ".."));
+        return Path.GetFullPath(Path.Combine(sourceDirectory, ".."));
     }
 }

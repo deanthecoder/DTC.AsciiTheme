@@ -68,7 +68,6 @@
 
         <Grid Grid.Row="1" Background="{DynamicResource AsciiCheckerPatternBrush}">
             <TabControl x:Name="DemoTabControl"
-                        Background="{x:Null}"
                         Margin="24,8">
                 <TabItem Header="_Buttons">
                     <StackPanel Spacing="16">
