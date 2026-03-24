@@ -89,7 +89,7 @@ Prereqs: .NET 8 SDK.
 
 ```bash
 dotnet build DTC.AsciiTheme.sln
-dotnet run --project samples/DTC.AsciiTheme.Demo/DTC.AsciiTheme.Demo.csproj
+dotnet run --project DTC.AsciiTheme.Demo/DTC.AsciiTheme.Demo.csproj
 ```
 
 ## Use in your app
@@ -157,7 +157,7 @@ Simple light-grey retro palette with black text and strong inverse/highlight sta
 ![Grey palette screenshot](img/text-grey.png)
 
 ## Project layout
-- `src/DTC.AsciiTheme/` contains the reusable theme library.
-- `samples/DTC.AsciiTheme.Demo/` contains the showcase app used for interactive visual checks.
-- `tests/DTC.AsciiTheme.Tests/` contains the automated screenshot-generation test.
+- `DTC.AsciiTheme/` contains the reusable theme library.
+- `DTC.AsciiTheme.Demo/` contains the showcase app used for interactive visual checks.
+- `DTC.AsciiTheme.Tests/` contains the automated screenshot-generation test.
 - `img/` contains the generated demo screenshots used by this README.

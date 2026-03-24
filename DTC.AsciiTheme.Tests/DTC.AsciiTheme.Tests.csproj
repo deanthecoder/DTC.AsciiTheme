@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\samples\DTC.AsciiTheme.Demo\DTC.AsciiTheme.Demo.csproj" />
-    <ProjectReference Include="..\..\src\DTC.AsciiTheme\DTC.AsciiTheme.csproj" />
+    <ProjectReference Include="..\DTC.AsciiTheme.Demo\DTC.AsciiTheme.Demo.csproj" />
+    <ProjectReference Include="..\DTC.AsciiTheme\DTC.AsciiTheme.csproj" />
   </ItemGroup>
 
 </Project>
