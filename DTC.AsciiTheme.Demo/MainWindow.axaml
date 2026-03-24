@@ -39,6 +39,8 @@
                               Click="HandleThemePlasmaClick" />
                     <MenuItem Header="_Grey"
                               Click="HandleThemeGreyClick" />
+                    <MenuItem Header="_ZX"
+                              Click="HandleThemeZxClick" />
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="_Buttons"
@@ -71,28 +73,31 @@
                         Margin="24,8">
                 <TabItem Header="_Buttons">
                     <StackPanel Spacing="16">
-                        <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring." TextWrapping="Wrap" />
-                        <WrapPanel Orientation="Horizontal"
-                                   ItemWidth="112"
-                                   ItemHeight="40">
+                        <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring."
+                                   TextWrapping="Wrap"
+                                   LineHeight="18"
+                                   Margin="0,0,0,2" />
+                        <UniformGrid Columns="3"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
                             <Button Content="_Normal" />
                             <Button x:Name="FocusedButton"
                                     Content="_Focused" />
                             <Button Content="_Disabled"
                                     IsEnabled="False" />
-                        </WrapPanel>
+                        </UniformGrid>
 
                         <StackPanel Spacing="8">
                             <TextBlock Text="ToggleButton" />
-                            <WrapPanel Orientation="Horizontal"
-                                       ItemWidth="112"
-                                       ItemHeight="40">
+                            <UniformGrid Columns="3"
+                                         Rows="1"
+                                         HorizontalAlignment="Left">
                                 <ToggleButton Content="_Off" />
                                 <ToggleButton Content="_On"
                                               IsChecked="True" />
                                 <ToggleButton Content="_Disabled"
                                               IsEnabled="False" />
-                            </WrapPanel>
+                            </UniformGrid>
                         </StackPanel>
                     </StackPanel>
                 </TabItem>

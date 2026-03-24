@@ -118,6 +118,7 @@ The base theme ships with a blue DOS-style palette by default, and also includes
 - `avares://DTC.AsciiTheme/Palettes/Green.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Plasma.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Grey.axaml`
+- `avares://DTC.AsciiTheme/Palettes/ZX.axaml`
 
 Example:
 
@@ -155,6 +156,12 @@ The screenshots below all use the same `Text` tab content so the palette differe
 Simple light-grey retro palette with black text and strong inverse/highlight states.
 
 ![Grey palette screenshot](img/text-grey.png)
+
+### ZX
+
+Experimental ZX Spectrum-inspired variant using a close Spectrum-style bitmap font.
+
+![ZX palette screenshot](img/text-zx.png)
 
 ## Project layout
 - `DTC.AsciiTheme/` contains the reusable theme library.

@@ -1,0 +1,16 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <FontFamily x:Key="AsciiFontFamily">avares://DTC.AsciiTheme/Assets/Fonts/ZXSpectrum#ZX Spectrum</FontFamily>
+        <Color x:Key="AsciiBaseColor">#D7D7D7</Color>
+        <Color x:Key="AsciiSurfaceColor">#C0C0C0</Color>
+        <Color x:Key="AsciiTextColor">#000000</Color>
+        <Color x:Key="AsciiAccentColor">#000000</Color>
+        <Color x:Key="AsciiHighlightColor">#000000</Color>
+        <Color x:Key="AsciiDialogColor">#B8B8B8</Color>
+        <Color x:Key="AsciiMutedColor">#404040</Color>
+        <Color x:Key="AsciiInverseTextColor">#FFFFFF</Color>
+        <Color x:Key="AsciiProgressPatternStrongColor">#40000000</Color>
+        <Color x:Key="AsciiProgressPatternSoftColor">#20000000</Color>
+    </Styles.Resources>
+</Styles>

@@ -72,23 +72,24 @@ public sealed class DemoScreenshotTests
                     SaveScreenshot(window, tabItem);
                 }
 
-                var paletteFileNames = new[]
+                var paletteScreenshots = new[]
                 {
-                    "text-blue.png",
-                    "text-mono.png",
-                    "text-green.png",
-                    "text-plasma.png",
-                    "text-grey.png",
+                    (AsciiPalette.Blue, "text-blue.png"),
+                    (AsciiPalette.Mono, "text-mono.png"),
+                    (AsciiPalette.Green, "text-green.png"),
+                    (AsciiPalette.Plasma, "text-plasma.png"),
+                    (AsciiPalette.Grey, "text-grey.png"),
+                    (AsciiPalette.ZX, "text-zx.png"),
                 };
 
-                for (var paletteIndex = 0; paletteIndex < paletteFileNames.Length; paletteIndex++)
+                foreach (var (palette, fileName) in paletteScreenshots)
                 {
-                    AsciiPaletteManager.Apply(Avalonia.Application.Current!, (AsciiPalette)paletteIndex);
+                    AsciiPaletteManager.Apply(Avalonia.Application.Current!, palette);
                     tabControl.SelectedItem = textTab;
                     textTab.Focus();
                     await WaitForRenderAsync();
                     await WaitForRenderAsync();
-                    SaveScreenshot(window, paletteFileNames[paletteIndex]);
+                    SaveScreenshot(window, fileName);
                 }
             }
             finally

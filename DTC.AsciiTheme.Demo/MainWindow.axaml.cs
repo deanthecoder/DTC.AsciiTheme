@@ -151,6 +151,8 @@ public partial class MainWindow : Window
 
     private void HandleThemeGreyClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Grey);
 
+    private void HandleThemeZxClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.ZX);
+
     private async void HandleAboutMenuClick(object sender, RoutedEventArgs e)
     {
         await AsciiMessageBox.ShowAsync(

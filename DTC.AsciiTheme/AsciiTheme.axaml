@@ -334,7 +334,7 @@
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                               TextBlock.Foreground="{TemplateBinding Foreground}"
-                                              TextBlock.LineHeight="{DynamicResource AsciiCellHeight}"
+                                              TextBlock.LineHeight="18"
                                               TextBlock.TextAlignment="Center"
                                               TextBlock.TextWrapping="NoWrap"
                                               Content="{TemplateBinding Header}"
@@ -1186,9 +1186,11 @@
                                     Padding="0"
                                     Background="Transparent"
                                     IsVisible="{TemplateBinding ShowProgressText}">
-                                <TextBlock Name="ProgressText"
-                                           Foreground="{DynamicResource AsciiForegroundBrush}"
-                                           Text="{Binding Percentage, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" />
+                                <LayoutTransformControl Name="ProgressTextLayout">
+                                    <TextBlock Name="ProgressText"
+                                               Foreground="{DynamicResource AsciiForegroundBrush}"
+                                               Text="{Binding Percentage, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" />
+                                </LayoutTransformControl>
                             </Border>
                         </Grid>
                     </Border>
@@ -1206,10 +1208,18 @@
             </Style>
 
             <Style Selector="^:vertical /template/ Border#ProgressTextHost">
-                <Setter Property="RenderTransformOrigin" Value="50%,50%" />
-                <Setter Property="RenderTransform">
+                <Setter Property="Padding" Value="2,0" />
+            </Style>
+
+            <Style Selector="^:vertical /template/ LayoutTransformControl#ProgressTextLayout">
+                <Setter Property="LayoutTransform">
                     <RotateTransform Angle="270" />
                 </Setter>
+            </Style>
+
+            <Style Selector="^:vertical /template/ TextBlock#ProgressText">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="LineHeight" Value="14" />
             </Style>
 
             <Style Selector="^:indeterminate /template/ Border#PART_Indicator">
