@@ -50,8 +50,6 @@ public sealed class DemoScreenshotTests
 
                 var tabControl = window.FindControl<TabControl>("DemoTabControl");
                 Assert.That(tabControl, Is.Not.Null, "Expected the demo window to expose DemoTabControl.");
-                var paletteComboBox = window.FindControl<ComboBox>("PaletteComboBox");
-                Assert.That(paletteComboBox, Is.Not.Null, "Expected the demo window to expose PaletteComboBox.");
 
                 var tabItems = tabControl!.GetLogicalDescendants()
                                          .OfType<TabItem>()
@@ -85,7 +83,7 @@ public sealed class DemoScreenshotTests
 
                 for (var paletteIndex = 0; paletteIndex < paletteFileNames.Length; paletteIndex++)
                 {
-                    paletteComboBox!.SelectedIndex = paletteIndex;
+                    AsciiPaletteManager.Apply(Avalonia.Application.Current!, (AsciiPalette)paletteIndex);
                     tabControl.SelectedItem = textTab;
                     textTab.Focus();
                     await WaitForRenderAsync();

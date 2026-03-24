@@ -141,6 +141,16 @@ public partial class MainWindow : Window
 
     private void HandleViewMoreClick(object sender, RoutedEventArgs e) => SelectTab(8);
 
+    private void HandleThemeBlueClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Blue);
+
+    private void HandleThemeMonoClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Mono);
+
+    private void HandleThemeGreenClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Green);
+
+    private void HandleThemePlasmaClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Plasma);
+
+    private void HandleThemeGreyClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Grey);
+
     private async void HandleAboutMenuClick(object sender, RoutedEventArgs e)
     {
         await AsciiMessageBox.ShowAsync(
@@ -150,39 +160,19 @@ public partial class MainWindow : Window
             AsciiMessageBoxButtons.Ok);
     }
 
-    private void HandlePaletteSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void SelectTab(int index)
+    {
+        DemoTabControl.SelectedIndex = index;
+    }
+
+    private static void ApplyPalette(AsciiPalette palette)
     {
         if (Application.Current is null)
         {
             return;
         }
 
-        if (sender is not ComboBox comboBox)
-        {
-            return;
-        }
-
-        if (comboBox.SelectedItem is not ComboBoxItem comboBoxItem)
-        {
-            return;
-        }
-
-        if (comboBoxItem.Tag is not string paletteName)
-        {
-            return;
-        }
-
-        if (!Enum.TryParse<AsciiPalette>(paletteName, ignoreCase: true, out var palette))
-        {
-            return;
-        }
-
         AsciiPaletteManager.Apply(Application.Current, palette);
-    }
-
-    private void SelectTab(int index)
-    {
-        DemoTabControl.SelectedIndex = index;
     }
 
     private static IReadOnlyList<DemoFileRow> CreateFileRows()

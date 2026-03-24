@@ -12,22 +12,35 @@
         MinWidth="720"
         MinHeight="520"
         Title="DTC.AsciiTheme Demo">
-    <Grid RowDefinitions="Auto,Auto,*,Auto"
+    <Grid RowDefinitions="Auto,*,Auto"
           Margin="12,8">
         <Menu>
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Open"
-                              HotKey="Meta+O"
-                              Click="HandleOpenMenuClick" />
-                    <MenuItem Header="_Save"
-                              HotKey="Meta+S"
-                              Click="HandleSaveMenuClick" />
-                    <Separator />
-                    <MenuItem Header="E_xit"
-                              HotKey="Meta+Q"
-                              Click="HandleExitMenuClick" />
-                </MenuItem>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"
+                          HotKey="Meta+O"
+                          Click="HandleOpenMenuClick" />
+                <MenuItem Header="_Save"
+                          HotKey="Meta+S"
+                          Click="HandleSaveMenuClick" />
+                <Separator />
+                <MenuItem Header="E_xit"
+                          HotKey="Meta+Q"
+                          Click="HandleExitMenuClick" />
+            </MenuItem>
             <MenuItem Header="_View">
+                <MenuItem Header="_Theme">
+                    <MenuItem Header="_Blue"
+                              Click="HandleThemeBlueClick" />
+                    <MenuItem Header="_Mono"
+                              Click="HandleThemeMonoClick" />
+                    <MenuItem Header="_Green"
+                              Click="HandleThemeGreenClick" />
+                    <MenuItem Header="_Plasma"
+                              Click="HandleThemePlasmaClick" />
+                    <MenuItem Header="_Grey"
+                              Click="HandleThemeGreyClick" />
+                </MenuItem>
+                <Separator />
                 <MenuItem Header="_Buttons"
                           Click="HandleViewButtonsClick" />
                 <MenuItem Header="_Inputs"
@@ -42,7 +55,7 @@
                           Click="HandleViewTreeClick" />
                 <MenuItem Header="_Progress"
                           Click="HandleViewProgressClick" />
-                <MenuItem Header="_ScrollViewer"
+                <MenuItem Header="_Scrolling"
                           Click="HandleViewScrollViewerClick" />
                 <MenuItem Header="_More"
                           Click="HandleViewMoreClick" />
@@ -53,437 +66,426 @@
             </MenuItem>
         </Menu>
 
-        <Grid Grid.Row="1"
-              ColumnDefinitions="*,Auto,Auto"
-              VerticalAlignment="Center">
-            <TextBlock Grid.Column="1"
-                       Margin="0,0,8,0"
-                       VerticalAlignment="Center"
-                       Text="Palette:" />
-            <ComboBox x:Name="PaletteComboBox"
-                      Grid.Column="2"
-                      Width="144"
-                      SelectedIndex="0"
-                      SelectionChanged="HandlePaletteSelectionChanged">
-                <ComboBoxItem Content="Blue"
-                              Tag="Blue" />
-                <ComboBoxItem Content="Mono"
-                              Tag="Mono" />
-                <ComboBoxItem Content="Green"
-                              Tag="Green" />
-                <ComboBoxItem Content="Plasma"
-                              Tag="Plasma" />
-                <ComboBoxItem Content="Grey"
-                              Tag="Grey" />
-            </ComboBox>
-        </Grid>
-
-        <TabControl x:Name="DemoTabControl"
-                    Grid.Row="2"
-                    Margin="0,8,0,0">
-            <TabItem Header="_Buttons">
-                <StackPanel Spacing="16">
-                    <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring." TextWrapping="Wrap" />
-                    <WrapPanel Orientation="Horizontal"
-                               ItemWidth="112"
-                               ItemHeight="40">
-                        <Button Content="_Normal" />
-                        <Button x:Name="FocusedButton"
-                                Content="_Focused" />
-                        <Button Content="_Disabled"
-                                IsEnabled="False" />
-                    </WrapPanel>
-
-                    <StackPanel Spacing="8">
-                        <TextBlock Text="ToggleButton" />
+        <Grid Grid.Row="1" Background="{DynamicResource AsciiCheckerPatternBrush}">
+            <TabControl x:Name="DemoTabControl"
+                        Background="{x:Null}"
+                        Margin="24,8">
+                <TabItem Header="_Buttons">
+                    <StackPanel Spacing="16">
+                        <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring." TextWrapping="Wrap" />
                         <WrapPanel Orientation="Horizontal"
                                    ItemWidth="112"
                                    ItemHeight="40">
-                            <ToggleButton Content="_Off" />
-                            <ToggleButton Content="_On"
-                                          IsChecked="True" />
-                            <ToggleButton Content="_Disabled"
-                                          IsEnabled="False" />
+                            <Button Content="_Normal" />
+                            <Button x:Name="FocusedButton"
+                                    Content="_Focused" />
+                            <Button Content="_Disabled"
+                                    IsEnabled="False" />
                         </WrapPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="ToggleButton" />
+                            <WrapPanel Orientation="Horizontal"
+                                       ItemWidth="112"
+                                       ItemHeight="40">
+                                <ToggleButton Content="_Off" />
+                                <ToggleButton Content="_On"
+                                              IsChecked="True" />
+                                <ToggleButton Content="_Disabled"
+                                              IsEnabled="False" />
+                            </WrapPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </TabItem>
+                </TabItem>
 
-            <TabItem Header="_Inputs">
-                <StackPanel Spacing="16">
-                    <Grid Margin="8"
-                          ColumnDefinitions="*,Auto,*">
-                        <StackPanel Spacing="16">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="TextBox" />
-                                <TextBox Width="320"
-                                         Watermark="Enter file name"
-                                         Text="CONFIG.SYS" />
-                                <TextBox Width="320"
-                                         Watermark="Enter password"
-                                         PasswordChar="*"
-                                         Text="hunter2" />
-                                <TextBox Width="320"
-                                         IsEnabled="False"
-                                         Text="READONLY.TXT" />
-                            </StackPanel>
+                <TabItem Header="_Inputs">
+                    <StackPanel Spacing="16">
+                        <Grid Margin="8"
+                              ColumnDefinitions="*,Auto,*">
+                            <StackPanel Spacing="16">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="TextBox" />
+                                    <TextBox Width="320"
+                                             Watermark="Enter file name"
+                                             Text="CONFIG.SYS" />
+                                    <TextBox Width="320"
+                                             Watermark="Enter password"
+                                             PasswordChar="*"
+                                             Text="hunter2" />
+                                    <TextBox Width="320"
+                                             IsEnabled="False"
+                                             Text="READONLY.TXT" />
+                                </StackPanel>
 
-                            <StackPanel Spacing="8"
-                                        MinWidth="200">
-                                <TextBlock Text="CheckBox" />
-                                <CheckBox Content="Item 1"
-                                          IsChecked="True" />
-                                <CheckBox Content="Item 2"
-                                          IsChecked="False" />
-                                <CheckBox Content="Item 3"
-                                          IsThreeState="True"
-                                          IsChecked="{x:Null}"
-                                          IsEnabled="False" />
-                            </StackPanel>
-                        </StackPanel>
-
-                        <Separator Grid.Column="1"
-                                   Classes="vertical"
-                                   VerticalAlignment="Stretch" />
-                        <StackPanel Grid.Column="2"
-                                    Spacing="16">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="Multi-line TextBox" />
-                                <TextBox MinWidth="200"
-                                         Height="120"
-                                         AcceptsReturn="True"
-                                         ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                         TextWrapping="NoWrap"
-                                         Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
-                            </StackPanel>
-
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="ComboBox" />
-                                <ComboBox Width="240"
-                                          SelectedIndex="1">
-                                    <x:String>C:\FILES</x:String>
-                                    <x:String>C:\GAMES</x:String>
-                                    <x:String>C:\TOOLS</x:String>
-                                    <x:String>C:\WINDOWS</x:String>
-                                    <x:String>C:\WORK</x:String>
-                                </ComboBox>
-                                <ComboBox Width="240"
-                                          SelectedIndex="0"
-                                          IsEnabled="False">
-                                    <x:String>DISABLED</x:String>
-                                    <x:String>MANUAL</x:String>
-                                    <x:String>CUSTOM</x:String>
-                                </ComboBox>
-                            </StackPanel>
-
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="RadioButton" />
-                                <RadioButton GroupName="DemoOptions"
-                                             Content="Item 1"
-                                             IsChecked="True" />
-                                <RadioButton GroupName="DemoOptions"
-                                             Content="Item 2" />
-                                <RadioButton GroupName="DemoOptions"
-                                             Content="Item 3"
-                                             IsEnabled="False" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </TabItem>
-
-            <TabItem Header="_Text">
-                <Grid ColumnDefinitions="2*,*">
-                    <theme:AsciiGroupBox Header="TextBlock">
-                        <StackPanel Spacing="12">
-                            <TextBlock Text="Simple static text using the shared VGA font and line-height rules." TextWrapping="Wrap" />
-                            <TextBlock Text="STATUS: READY" />
-                            <Separator />
-                            <TextBlock Text="A wrapped paragraph should still feel disciplined and grid-aware, even when it spans multiple lines in a modern Avalonia layout surface." TextWrapping="Wrap" />
-                            <TextBlock FontSize="24"
-                                       LineHeight="24"
-                                       Text="HEADING SAMPLE" />
-                        </StackPanel>
-                    </theme:AsciiGroupBox>
-
-                    <StackPanel Grid.Column="1"
-                                Margin="16,0,0,0"
-                                Spacing="16">
-                        <theme:AsciiGroupBox Header="Label">
-                            <StackPanel Spacing="8">
-                                <Label Content="_File name"
-                                       Target="{Binding #LabelDemoTextBox}" />
-                                <TextBox x:Name="LabelDemoTextBox"
-                                         Width="220"
-                                         Text="README.TXT" />
-                                <Label Content="_Description"
-                                       Target="{Binding #LabelDemoDescriptionTextBox}" />
-                                <TextBox x:Name="LabelDemoDescriptionTextBox"
-                                         Width="220"
-                                         Text="Retro text-mode theme preview" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-
-                        <theme:AsciiGroupBox Header="Notes">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="Use Label for form captions and keyboard-friendly field names." TextWrapping="Wrap" />
-                                <TextBlock Text="Use TextBlock for headings, status text, and longer static copy." TextWrapping="Wrap" />
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="LEFT" VerticalAlignment="Center" />
-                                    <Separator Classes="vertical" />
-                                    <TextBlock Text="RIGHT" VerticalAlignment="Center" />
+                                <StackPanel Spacing="8"
+                                            MinWidth="200">
+                                    <TextBlock Text="CheckBox" />
+                                    <CheckBox Content="Item 1"
+                                              IsChecked="True" />
+                                    <CheckBox Content="Item 2"
+                                              IsChecked="False" />
+                                    <CheckBox Content="Item 3"
+                                              IsThreeState="True"
+                                              IsChecked="{x:Null}"
+                                              IsEnabled="False" />
                                 </StackPanel>
                             </StackPanel>
-                        </theme:AsciiGroupBox>
+
+                            <Separator Grid.Column="1"
+                                       Classes="vertical"
+                                       VerticalAlignment="Stretch" />
+                            <StackPanel Grid.Column="2"
+                                        Spacing="16">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Multi-line TextBox" />
+                                    <TextBox MinWidth="200"
+                                             Height="120"
+                                             AcceptsReturn="True"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                             ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                             TextWrapping="NoWrap"
+                                             Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
+                                </StackPanel>
+
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="ComboBox" />
+                                    <ComboBox Width="240"
+                                              SelectedIndex="1">
+                                        <x:String>C:\FILES</x:String>
+                                        <x:String>C:\GAMES</x:String>
+                                        <x:String>C:\TOOLS</x:String>
+                                        <x:String>C:\WINDOWS</x:String>
+                                        <x:String>C:\WORK</x:String>
+                                    </ComboBox>
+                                    <ComboBox Width="240"
+                                              SelectedIndex="0"
+                                              IsEnabled="False">
+                                        <x:String>DISABLED</x:String>
+                                        <x:String>MANUAL</x:String>
+                                        <x:String>CUSTOM</x:String>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="RadioButton" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 1"
+                                                 IsChecked="True" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 2" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 3"
+                                                 IsEnabled="False" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
-                </Grid>
-            </TabItem>
+                </TabItem>
 
-            <TabItem Header="_Lists">
-                <Grid ColumnDefinitions="2*,*">
-                    <theme:AsciiGroupBox Header="Files">
-                        <ListBox SelectedIndex="2">
-                            <ListBoxItem Content="AUTOEXEC.BAT" />
-                            <ListBoxItem Content="COMMAND.COM" />
-                            <ListBoxItem Content="CONFIG.SYS" />
-                            <ListBoxItem Content="DOS\EDIT.EXE" />
-                            <ListBoxItem Content="DOS\FDISK.EXE" />
-                            <ListBoxItem Content="GAMES\NETHACK\SAVE.DAT" />
-                            <ListBoxItem Content="NETWORK\TCPIP\PROTOCOL.INI" />
-                            <ListBoxItem Content="TOOLS\QMODEM\QMODEM.INI" />
-                            <ListBoxItem Content="UTILS\PKZIP\PKZIP.CFG" />
-                            <ListBoxItem Content="WINDOWS\WIN.INI" />
-                            <ListBoxItem Content="WINDOWS\SYSTEM.INI" />
-                        </ListBox>
-                    </theme:AsciiGroupBox>
-
-                    <StackPanel Grid.Column="1"
-                                Margin="16,0,0,0"
-                                Spacing="16">
-                        <theme:AsciiGroupBox Header="Notes">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="This view suits file lists, saved sessions, and command history." TextWrapping="Wrap" />
-                                <TextBlock Text="The current row is highlighted for quick keyboard or mouse navigation." TextWrapping="Wrap" />
-                                <TextBlock Text="Longer lists use the same retro scrollbar treatment shown elsewhere in the demo." TextWrapping="Wrap" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-
-                        <theme:AsciiGroupBox Header="Status">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="Directory: C:\" />
-                                <TextBlock Text="Items: 11" />
-                                <TextBlock Text="Filter: *.*" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="_Data">
-                <Grid ColumnDefinitions="2*,*">
-                    <theme:AsciiGroupBox Header="DataGrid">
-                        <DataGrid x:Name="FileDataGrid"
-                                  x:CompileBindings="False"
-                                  AutoGenerateColumns="False"
-                                  IsReadOnly="True"
-                                  SelectedIndex="1">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="NAME"
-                                                    Binding="{Binding Name}"
-                                                    Width="3*" />
-                                <DataGridTextColumn Header="TYPE"
-                                                    Binding="{Binding Type}"
-                                                    Width="120" />
-                                <DataGridTextColumn Header="SIZE"
-                                                    Binding="{Binding Size}"
-                                                    Width="100" />
-                                <DataGridTextColumn Header="MODIFIED"
-                                                    Binding="{Binding Modified}"
-                                                    Width="180" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </theme:AsciiGroupBox>
-
-                    <StackPanel Grid.Column="1"
-                                Margin="16,0,0,0"
-                                Spacing="16">
-                        <theme:AsciiGroupBox Header="Notes">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="Use this for file tables, process lists, configuration grids, and other structured data." TextWrapping="Wrap" />
-                                <TextBlock Text="Column headers can be clicked to sort, with ASCII arrows showing the current direction." TextWrapping="Wrap" />
-                                <TextBlock Text="Selection and scrolling follow the same high-contrast style as the rest of the theme." TextWrapping="Wrap" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-
-                        <theme:AsciiGroupBox Header="Status">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="Directory: C:\DOS" />
-                                <TextBlock Text="Rows: 8" />
-                                <TextBlock Text="View: Read-only" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="_Tree">
-                <Grid ColumnDefinitions="2*,*">
-                    <theme:AsciiGroupBox Header="TreeView">
-                        <TreeView>
-                            <TreeViewItem Header="C:\">
-                                <TreeViewItem Header="AUTOEXEC.BAT" />
-                                <TreeViewItem Header="CONFIG.SYS" />
-                                <TreeViewItem Header="DOS">
-                                    <TreeViewItem Header="EDIT.EXE" />
-                                    <TreeViewItem Header="FDISK.EXE" />
-                                    <TreeViewItem Header="QBASIC.EXE" />
-                                </TreeViewItem>
-                                <TreeViewItem Header="GAMES">
-                                    <TreeViewItem Header="DOOM">
-                                        <TreeViewItem Header="DOOM.EXE" />
-                                        <TreeViewItem Header="DOOM.WAD" />
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="NETHACK">
-                                        <TreeViewItem Header="SAVE.DAT" />
-                                    </TreeViewItem>
-                                </TreeViewItem>
-                                <TreeViewItem Header="WINDOWS">
-                                    <TreeViewItem Header="SYSTEM.INI" />
-                                    <TreeViewItem Header="WIN.INI" />
-                                </TreeViewItem>
-                            </TreeViewItem>
-                        </TreeView>
-                    </theme:AsciiGroupBox>
-
-                    <StackPanel Grid.Column="1"
-                                Margin="16,0,0,0"
-                                Spacing="16">
-                        <theme:AsciiGroupBox Header="Notes">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="TreeView is useful for folders, menus, settings hierarchies, and other nested structures." TextWrapping="Wrap" />
-                                <TextBlock Text="Use the arrow keys or mouse to expand branches and move through the tree." TextWrapping="Wrap" />
-                            </StackPanel>
-                        </theme:AsciiGroupBox>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="_Progress">
-                <UniformGrid Columns="2">
-                    <theme:AsciiGroupBox Header="Transfer Progress">
-                        <StackPanel Spacing="12">
-                            <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect. The demo bars below animate so we can judge the texture and text in motion." TextWrapping="Wrap" />
-                            <ProgressBar x:Name="AnimatedProgressBar"
-                                         Value="25"
-                                         Maximum="100" />
-                            <ProgressBar x:Name="AnimatedTextProgressBar"
-                                         Value="50"
-                                         Maximum="100"
-                                         ShowProgressText="True" />
-                            <ProgressBar Value="80"
-                                         Maximum="100" />
-                        </StackPanel>
-                    </theme:AsciiGroupBox>
-
-                    <theme:AsciiGroupBox Margin="16,0,0,0"
-                                         Header="Vertical">
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Spacing="12">
-                            <ProgressBar x:Name="AnimatedVerticalProgressBar"
-                                         Width="24"
-                                         Orientation="Vertical"
-                                         Value="35"
-                                         Maximum="100"
-                                         ShowProgressText="True" />
-                            <ProgressBar Width="24"
-                                         Orientation="Vertical"
-                                         Value="70"
-                                         Maximum="100" />
-                        </StackPanel>
-                    </theme:AsciiGroupBox>
-                </UniformGrid>
-            </TabItem>
-
-            <TabItem Header="_ScrollViewer">
-                <ScrollViewer HorizontalScrollBarVisibility="Visible"
-                              VerticalScrollBarVisibility="Visible">
-                    <Image Source="avares://DTC.AsciiTheme.Demo/Assets/Images/blue-and-gold-macaw-dithered.png"
-                           Stretch="None"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top" />
-                </ScrollViewer>
-            </TabItem>
-
-            <TabItem Header="_More">
-                <StackPanel Spacing="16">
+                <TabItem Header="_Text">
                     <Grid ColumnDefinitions="2*,*">
-                        <StackPanel Spacing="16">
-                            <theme:AsciiGroupBox Header="MessageBox">
-                                <StackPanel Spacing="8">
-                                    <TextBlock x:Name="MessageBoxResultTextBlock"
-                                               Text="Last result: none" />
-                                    <WrapPanel Orientation="Horizontal"
-                                               ItemWidth="136"
-                                               ItemHeight="40">
-                                        <Button Content="Show _OK"
-                                                Click="HandleShowOkMessageBoxClick" />
-                                        <Button Content="Show _OK/Cancel"
-                                                Click="HandleShowOkCancelMessageBoxClick" />
-                                        <Button Content="Show _Yes/No"
-                                                Click="HandleShowYesNoMessageBoxClick" />
-                                    </WrapPanel>
-                                </StackPanel>
-                            </theme:AsciiGroupBox>
+                        <theme:AsciiGroupBox Header="TextBlock">
+                            <StackPanel Spacing="12">
+                                <TextBlock Text="Simple static text using the shared VGA font and line-height rules." TextWrapping="Wrap" />
+                                <TextBlock Text="STATUS: READY" />
+                                <Separator />
+                                <TextBlock Text="A wrapped paragraph should still feel disciplined and grid-aware, even when it spans multiple lines in a modern Avalonia layout surface." TextWrapping="Wrap" />
+                                <Separator />
+                                <TextBlock FontSize="16"
+                                           LineHeight="16"
+                                           Text="HEADING SAMPLE 16pt" />
+                                <TextBlock FontSize="24"
+                                           LineHeight="24"
+                                           Text="HEADING SAMPLE 24pt" />
+                                <TextBlock FontSize="32"
+                                           LineHeight="32"
+                                           Text="HEADING SAMPLE 32pt" />
+                                <TextBlock FontSize="48"
+                                           LineHeight="48"
+                                           Text="HEADING SAMPLE 48pt" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
 
-                            <theme:AsciiGroupBox Header="Expander">
-                                <StackPanel Spacing="8">
-                                    <Expander Header="Drive A:"
-                                              IsExpanded="True">
-                                        <StackPanel Spacing="4">
-                                            <TextBlock Text="System files" />
-                                            <TextBlock Text="Boot configuration" />
-                                            <TextBlock Text="Installation logs" />
-                                        </StackPanel>
-                                    </Expander>
-                                    <Expander Header="Drive B:">
-                                        <StackPanel Spacing="4">
-                                            <TextBlock Text="Games" />
-                                            <TextBlock Text="Saved sessions" />
-                                            <TextBlock Text="Downloads" />
-                                        </StackPanel>
-                                    </Expander>
-                                </StackPanel>
-                            </theme:AsciiGroupBox>
-                        </StackPanel>
-                        
                         <StackPanel Grid.Column="1"
                                     Margin="16,0,0,0"
                                     Spacing="16">
-                            <theme:AsciiGroupBox Header="Slider">
-                                <StackPanel Spacing="12">
-                                    <Slider Minimum="0"
-                                            Maximum="10"
-                                            Value="4" />
-                                    <Slider Width="24"
-                                            Height="120"
-                                            Orientation="Vertical"
-                                            Value="70" />
+                            <theme:AsciiGroupBox Header="Label">
+                                <StackPanel Spacing="8">
+                                    <Label Content="_File name"
+                                           Target="{Binding #LabelDemoTextBox}" />
+                                    <TextBox x:Name="LabelDemoTextBox"
+                                             Width="220"
+                                             Text="README.TXT" />
+                                    <Label Content="_Description"
+                                           Target="{Binding #LabelDemoDescriptionTextBox}" />
+                                    <TextBox x:Name="LabelDemoDescriptionTextBox"
+                                             Width="220"
+                                             Text="Retro text-mode theme preview" />
                                 </StackPanel>
                             </theme:AsciiGroupBox>
 
-                            <theme:AsciiGroupBox Header="ToolTip">
-                                <Button Content="Hover me"
-                                        ToolTip.Tip="This tooltip uses the shared retro panel styling." />
+                            <theme:AsciiGroupBox Header="Notes">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Use Label for form captions and keyboard-friendly field names." TextWrapping="Wrap" />
+                                    <TextBlock Text="Use TextBlock for headings, status text, and longer static copy." TextWrapping="Wrap" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="LEFT" VerticalAlignment="Center" />
+                                        <Separator Classes="vertical" />
+                                        <TextBlock Text="RIGHT" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </StackPanel>
                             </theme:AsciiGroupBox>
                         </StackPanel>
                     </Grid>
-                </StackPanel>
-            </TabItem>
-        </TabControl>
+                </TabItem>
 
-        <theme:AsciiStatusBar Grid.Row="3"
+                <TabItem Header="_Lists">
+                    <Grid ColumnDefinitions="2*,*">
+                        <theme:AsciiGroupBox Header="Files">
+                            <ListBox SelectedIndex="2">
+                                <ListBoxItem Content="AUTOEXEC.BAT" />
+                                <ListBoxItem Content="COMMAND.COM" />
+                                <ListBoxItem Content="CONFIG.SYS" />
+                                <ListBoxItem Content="DOS\EDIT.EXE" />
+                                <ListBoxItem Content="DOS\FDISK.EXE" />
+                                <ListBoxItem Content="GAMES\NETHACK\SAVE.DAT" />
+                                <ListBoxItem Content="NETWORK\TCPIP\PROTOCOL.INI" />
+                                <ListBoxItem Content="TOOLS\QMODEM\QMODEM.INI" />
+                                <ListBoxItem Content="UTILS\PKZIP\PKZIP.CFG" />
+                                <ListBoxItem Content="WINDOWS\WIN.INI" />
+                                <ListBoxItem Content="WINDOWS\SYSTEM.INI" />
+                            </ListBox>
+                        </theme:AsciiGroupBox>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="16,0,0,0"
+                                    Spacing="16">
+                            <theme:AsciiGroupBox Header="Notes">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="This view suits file lists, saved sessions, and command history." TextWrapping="Wrap" />
+                                    <TextBlock Text="The current row is highlighted for quick keyboard or mouse navigation." TextWrapping="Wrap" />
+                                    <TextBlock Text="Longer lists use the same retro scrollbar treatment shown elsewhere in the demo." TextWrapping="Wrap" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+
+                            <theme:AsciiGroupBox Header="Status">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Directory: C:\" />
+                                    <TextBlock Text="Items: 11" />
+                                    <TextBlock Text="Filter: *.*" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="_Data">
+                    <Grid ColumnDefinitions="2*,*">
+                        <theme:AsciiGroupBox Header="DataGrid">
+                            <DataGrid x:Name="FileDataGrid"
+                                      x:CompileBindings="False"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      SelectedIndex="1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="NAME"
+                                                        Binding="{Binding Name}"
+                                                        Width="3*" />
+                                    <DataGridTextColumn Header="TYPE"
+                                                        Binding="{Binding Type}"
+                                                        Width="120" />
+                                    <DataGridTextColumn Header="SIZE"
+                                                        Binding="{Binding Size}"
+                                                        Width="100" />
+                                    <DataGridTextColumn Header="MODIFIED"
+                                                        Binding="{Binding Modified}"
+                                                        Width="180" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </theme:AsciiGroupBox>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="16,0,0,0"
+                                    Spacing="16">
+                            <theme:AsciiGroupBox Header="Notes">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Use this for file tables, process lists, configuration grids, and other structured data." TextWrapping="Wrap" />
+                                    <TextBlock Text="Column headers can be clicked to sort, with ASCII arrows showing the current direction." TextWrapping="Wrap" />
+                                    <TextBlock Text="Selection and scrolling follow the same high-contrast style as the rest of the theme." TextWrapping="Wrap" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+
+                            <theme:AsciiGroupBox Header="Status">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Directory: C:\DOS" />
+                                    <TextBlock Text="Rows: 8" />
+                                    <TextBlock Text="View: Read-only" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="_Tree">
+                    <Grid ColumnDefinitions="2*,*">
+                        <theme:AsciiGroupBox Header="TreeView">
+                            <TreeView>
+                                <TreeViewItem Header="C:\" IsExpanded="True">
+                                    <TreeViewItem Header="AUTOEXEC.BAT" />
+                                    <TreeViewItem Header="CONFIG.SYS" />
+                                    <TreeViewItem Header="DOS">
+                                        <TreeViewItem Header="EDIT.EXE" />
+                                        <TreeViewItem Header="FDISK.EXE" />
+                                        <TreeViewItem Header="QBASIC.EXE" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="GAMES">
+                                        <TreeViewItem Header="DOOM">
+                                            <TreeViewItem Header="DOOM.EXE" />
+                                            <TreeViewItem Header="DOOM.WAD" />
+                                        </TreeViewItem>
+                                        <TreeViewItem Header="NETHACK">
+                                            <TreeViewItem Header="SAVE.DAT" />
+                                        </TreeViewItem>
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="WINDOWS">
+                                        <TreeViewItem Header="SYSTEM.INI" />
+                                        <TreeViewItem Header="WIN.INI" />
+                                    </TreeViewItem>
+                                </TreeViewItem>
+                            </TreeView>
+                        </theme:AsciiGroupBox>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="16,0,0,0"
+                                    Spacing="16">
+                            <theme:AsciiGroupBox Header="Notes">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="TreeView is useful for folders, menus, settings hierarchies, and other nested structures." TextWrapping="Wrap" />
+                                    <TextBlock Text="Use the arrow keys or mouse to expand branches and move through the tree." TextWrapping="Wrap" />
+                                </StackPanel>
+                            </theme:AsciiGroupBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="_Progress">
+                    <UniformGrid Columns="2">
+                        <theme:AsciiGroupBox Header="Transfer Progress">
+                            <StackPanel Spacing="12">
+                                <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect. The demo bars below animate so we can judge the texture and text in motion." TextWrapping="Wrap" />
+                                <ProgressBar x:Name="AnimatedProgressBar"
+                                             Value="25"
+                                             Maximum="100" />
+                                <ProgressBar x:Name="AnimatedTextProgressBar"
+                                             Value="50"
+                                             Maximum="100"
+                                             ShowProgressText="True" />
+                                <ProgressBar Value="80"
+                                             Maximum="100" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+
+                        <theme:AsciiGroupBox Margin="16,0,0,0"
+                                             Header="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Spacing="12">
+                                <ProgressBar x:Name="AnimatedVerticalProgressBar"
+                                             Width="24"
+                                             Orientation="Vertical"
+                                             Value="35"
+                                             Maximum="100"
+                                             ShowProgressText="True" />
+                                <ProgressBar Width="24"
+                                             Orientation="Vertical"
+                                             Value="70"
+                                             Maximum="100" />
+                            </StackPanel>
+                        </theme:AsciiGroupBox>
+                    </UniformGrid>
+                </TabItem>
+
+                <TabItem Header="_Scrolling">
+                    <theme:AsciiGroupBox Header="ScrollViewer">
+                        <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                                      VerticalScrollBarVisibility="Visible">
+                            <Image Source="avares://DTC.AsciiTheme.Demo/Assets/Images/blue-and-gold-macaw-dithered.png"
+                                   Stretch="None"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" />
+                        </ScrollViewer>
+                    </theme:AsciiGroupBox>
+                </TabItem>
+
+                <TabItem Header="_More">
+                    <StackPanel Spacing="16">
+                        <Grid ColumnDefinitions="2*,*">
+                            <StackPanel Spacing="16">
+                                <theme:AsciiGroupBox Header="MessageBox">
+                                    <StackPanel Spacing="8">
+                                        <TextBlock x:Name="MessageBoxResultTextBlock"
+                                                   Text="Last result: none" />
+                                        <WrapPanel Orientation="Horizontal"
+                                                   ItemWidth="136"
+                                                   ItemHeight="40">
+                                            <Button Content="Show _OK"
+                                                    Click="HandleShowOkMessageBoxClick" />
+                                            <Button Content="Show _OK/Cancel"
+                                                    Click="HandleShowOkCancelMessageBoxClick" />
+                                            <Button Content="Show _Yes/No"
+                                                    Click="HandleShowYesNoMessageBoxClick" />
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </theme:AsciiGroupBox>
+
+                                <theme:AsciiGroupBox Header="Expander">
+                                    <StackPanel Spacing="8">
+                                        <Expander Header="Drive A:"
+                                                  IsExpanded="True">
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="System files" />
+                                                <TextBlock Text="Boot configuration" />
+                                                <TextBlock Text="Installation logs" />
+                                            </StackPanel>
+                                        </Expander>
+                                        <Expander Header="Drive B:">
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="Games" />
+                                                <TextBlock Text="Saved sessions" />
+                                                <TextBlock Text="Downloads" />
+                                            </StackPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                </theme:AsciiGroupBox>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1"
+                                        Margin="16,0,0,0"
+                                        Spacing="16">
+                                <theme:AsciiGroupBox Header="Slider">
+                                    <StackPanel Spacing="12">
+                                        <Slider Minimum="0"
+                                                Maximum="10"
+                                                Value="4" />
+                                        <Slider Width="24"
+                                                Height="120"
+                                                Orientation="Vertical"
+                                                Value="70" />
+                                    </StackPanel>
+                                </theme:AsciiGroupBox>
+
+                                <theme:AsciiGroupBox Header="ToolTip">
+                                    <Button Content="Hover me"
+                                            ToolTip.Tip="This tooltip uses the shared retro panel styling." />
+                                </theme:AsciiGroupBox>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        
+        <theme:AsciiStatusBar Grid.Row="2"
                               Margin="0,8,0,0"
                               LeftText="RETRO CONTROL PREVIEW"
                               RightText="DTC.AsciiTheme Demo" />
