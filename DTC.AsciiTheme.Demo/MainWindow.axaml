@@ -133,6 +133,18 @@
                                               IsChecked="{x:Null}"
                                               IsEnabled="False" />
                                 </StackPanel>
+
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="RadioButton" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 1"
+                                                 IsChecked="True" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 2" />
+                                    <RadioButton GroupName="DemoOptions"
+                                                 Content="Item 3"
+                                                 IsEnabled="False" />
+                                </StackPanel>
                             </StackPanel>
 
                             <Separator Grid.Column="1"
@@ -171,16 +183,24 @@
                                 </StackPanel>
 
                                 <StackPanel Spacing="8">
-                                    <TextBlock Text="RadioButton" />
-                                    <RadioButton GroupName="DemoOptions"
-                                                 Content="Item 1"
-                                                 IsChecked="True" />
-                                    <RadioButton GroupName="DemoOptions"
-                                                 Content="Item 2" />
-                                    <RadioButton GroupName="DemoOptions"
-                                                 Content="Item 3"
-                                                 IsEnabled="False" />
+                                    <TextBlock Text="NumericUpDown" />
+                                    <NumericUpDown Width="240"
+                                                   Minimum="0"
+                                                   Maximum="255"
+                                                   Value="42"
+                                                   Increment="1" />
+                                    <NumericUpDown Width="240"
+                                                   Minimum="0"
+                                                   Maximum="100"
+                                                   Value="75"
+                                                   Increment="5" />
+                                    <NumericUpDown Width="240"
+                                                   Minimum="0"
+                                                   Maximum="100"
+                                                   Value="20"
+                                                   IsEnabled="False" />
                                 </StackPanel>
+
                             </StackPanel>
                         </Grid>
                     </StackPanel>

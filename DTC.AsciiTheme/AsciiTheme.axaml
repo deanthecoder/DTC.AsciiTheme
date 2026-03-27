@@ -153,6 +153,147 @@
                 <Setter Property="Text" Value="▼" />
             </Style>
         </ControlTheme>
+
+        <ControlTheme x:Key="AsciiNumericSpinnerButtonTheme"
+                      TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="MinWidth" Value="24" />
+            <Setter Property="MinHeight" Value="16" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   LineHeight="16"
+                                   Text="{TemplateBinding Content}"
+                                   TextAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource AsciiHoverBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource AsciiHighlightBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiPressedForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource AsciiDisabledBackgroundBrush}" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="AsciiButtonSpinnerTheme"
+                      TargetType="ButtonSpinner">
+            <Setter Property="Background" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid RowDefinitions="*,*">
+                            <Button Name="PART_IncreaseButton"
+                                    Theme="{StaticResource AsciiNumericSpinnerButtonTheme}"
+                                    Content="▲" />
+
+                            <Button Name="PART_DecreaseButton"
+                                    Grid.Row="1"
+                                    Theme="{StaticResource AsciiNumericSpinnerButtonTheme}"
+                                    Content="▼" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type NumericUpDown}"
+                      TargetType="NumericUpDown">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="MinHeight" Value="34" />
+            <Setter Property="ClipValueToMinMax" Value="True" />
+            <Setter Property="ShowButtonSpinner" Value="True" />
+            <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid ColumnDefinitions="*,24">
+                            <TextBox Name="PART_TextBox"
+                                     Background="{DynamicResource AsciiInputBackgroundBrush}"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     BorderBrush="{DynamicResource AsciiInputBackgroundBrush}"
+                                     BorderThickness="0"
+                                     FontFamily="{TemplateBinding FontFamily}"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Center"
+                                     Padding="8,0"
+                                     TextAlignment="{TemplateBinding TextAlignment}"
+                                     Watermark="{TemplateBinding Watermark}" />
+
+                            <ButtonSpinner Name="PART_Spinner"
+                                           Grid.Column="1"
+                                           Theme="{StaticResource AsciiButtonSpinnerTheme}"
+                                           Background="{DynamicResource AsciiPaneBackgroundBrush}"
+                                           AllowSpin="{TemplateBinding AllowSpin}"
+                                           ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ TextBox#PART_TextBox">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputHoverBackgroundBrush}" />
+            </Style>
+
+            <Style Selector="^:focus">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Style>
+
+            <Style Selector="^:focus /template/ TextBox#PART_TextBox">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ TextBox#PART_TextBox">
+                <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            </Style>
+        </ControlTheme>
         <ControlTheme x:Key="{x:Type Button}"
                       TargetType="Button">
             <Setter Property="Background" Value="{DynamicResource AsciiButtonFaceBrush}" />
@@ -1702,6 +1843,10 @@
 
     <Style Selector="ComboBoxItem">
         <Setter Property="Theme" Value="{StaticResource {x:Type ComboBoxItem}}" />
+    </Style>
+
+    <Style Selector="NumericUpDown">
+        <Setter Property="Theme" Value="{StaticResource {x:Type NumericUpDown}}" />
     </Style>
 
     <Style Selector="MenuItem">

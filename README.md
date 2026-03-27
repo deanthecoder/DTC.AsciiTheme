@@ -16,7 +16,7 @@ Demonstrates `Button` and `ToggleButton`, including hover, focus, disabled, and 
 ![Buttons tab screenshot](img/buttons.png)
 
 ### Inputs
-Demonstrates single-line `TextBox`, password entry, a multiline editor with themed scrollbars, `ComboBox`, `CheckBox`, and `RadioButton`.
+Demonstrates single-line `TextBox`, password entry, a multiline editor with themed scrollbars, `ComboBox`, `NumericUpDown`, `CheckBox`, and `RadioButton`.
 
 ![Inputs tab screenshot](img/inputs.png)
 
@@ -52,7 +52,7 @@ Demonstrates shared `ScrollViewer`/`ScrollBar` styling with a dithered retro ima
 ![ScrollViewer tab screenshot](img/scrollviewer.png)
 
 ### More
-Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the footer `AsciiStatusBar`. The demo app itself now uses the themed `Menu` at the top level for `File`, `View`, and `Help`.
+Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `GridSplitter`, `ToolTip`, and the footer `AsciiStatusBar`. The demo app itself now uses the themed `Menu` at the top level for `File`, `View`, and `Help`.
 
 ![More tab screenshot](img/more.png)
 
@@ -63,9 +63,11 @@ Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `ToolTip`, and the footer 
 - `ComboBox`
 - `DataGrid`
 - `Expander`
+- `GridSplitter`
 - `Label`
 - `ListBox`
 - `Menu`
+- `NumericUpDown`
 - `ProgressBar`
 - `RadioButton`
 - `ScrollBar`
