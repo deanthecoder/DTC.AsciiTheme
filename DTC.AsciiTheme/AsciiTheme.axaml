@@ -1757,6 +1757,81 @@
         <Setter Property="Theme" Value="{StaticResource {x:Type Separator}}" />
     </Style>
 
+    <Style Selector="GridSplitter">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiFrameBrush}" />
+        <Setter Property="ShowsPreview" Value="False" />
+        <Setter Property="KeyboardIncrement" Value="8" />
+        <Setter Property="DragIncrement" Value="8" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}">
+                    <Grid>
+                        <Border Name="SplitLine"
+                                Width="1"
+                                HorizontalAlignment="Center"
+                                Background="{TemplateBinding Foreground}"
+                                IsHitTestVisible="False" />
+
+                        <Border Name="SplitHandle"
+                                Width="8"
+                                Height="16"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="{TemplateBinding Foreground}"
+                                IsHitTestVisible="False" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="GridSplitter.vertical /template/ Border#SplitLine">
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="NaN" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+
+    <Style Selector="GridSplitter.vertical">
+        <Setter Property="Cursor" Value="SizeWestEast" />
+        <Setter Property="Margin" Value="4,0" />
+    </Style>
+
+    <Style Selector="GridSplitter.horizontal /template/ Border#SplitLine">
+        <Setter Property="Width" Value="NaN" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="GridSplitter.horizontal">
+        <Setter Property="Cursor" Value="SizeNorthSouth" />
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+
+    <Style Selector="GridSplitter.vertical /template/ Border#SplitHandle">
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Height" Value="16" />
+    </Style>
+
+    <Style Selector="GridSplitter.horizontal /template/ Border#SplitHandle">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="8" />
+    </Style>
+
+    <Style Selector="GridSplitter:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AsciiPaneBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiButtonFaceBrush}" />
+    </Style>
+
+    <Style Selector="GridSplitter:pressed">
+        <Setter Property="Background" Value="{DynamicResource AsciiShadeSoftBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AsciiHighlightBrush}" />
+    </Style>
+
     <Style Selector="TreeView">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />

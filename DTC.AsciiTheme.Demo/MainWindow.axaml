@@ -478,6 +478,54 @@
                                     </StackPanel>
                                 </theme:AsciiGroupBox>
 
+                                <theme:AsciiGroupBox Header="GridSplitter">
+                                    <StackPanel Spacing="12">
+                                        <Grid Height="88"
+                                              ColumnDefinitions="*,8,*">
+                                            <Border Classes="ascii-frame"
+                                                    Padding="8">
+                                                <TextBlock Text="LEFT PANE"
+                                                           VerticalAlignment="Center" />
+                                            </Border>
+
+                                            <GridSplitter Grid.Column="1"
+                                                          Classes="vertical"
+                                                          ResizeDirection="Columns"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch" />
+
+                                            <Border Grid.Column="2"
+                                                    Classes="ascii-frame"
+                                                    Padding="8">
+                                                <TextBlock Text="RIGHT PANE"
+                                                           VerticalAlignment="Center" />
+                                            </Border>
+                                        </Grid>
+
+                                        <Grid Height="96"
+                                              RowDefinitions="*,8,*">
+                                            <Border Classes="ascii-frame"
+                                                    Padding="8">
+                                                <TextBlock Text="TOP PANE"
+                                                           VerticalAlignment="Center" />
+                                            </Border>
+
+                                            <GridSplitter Grid.Row="1"
+                                                          Classes="horizontal"
+                                                          ResizeDirection="Rows"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch" />
+
+                                            <Border Grid.Row="2"
+                                                    Classes="ascii-frame"
+                                                    Padding="8">
+                                                <TextBlock Text="BOTTOM PANE"
+                                                           VerticalAlignment="Center" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </theme:AsciiGroupBox>
+
                                 <theme:AsciiGroupBox Header="ToolTip">
                                     <Button Content="Hover me"
                                             ToolTip.Tip="This tooltip uses the shared retro panel styling." />
