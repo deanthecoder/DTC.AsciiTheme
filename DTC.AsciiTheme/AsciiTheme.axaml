@@ -30,6 +30,7 @@
         <Color x:Key="AsciiDisabledShadowColor">#40000000</Color>
         <Color x:Key="AsciiProgressPatternStrongColor">#4055FFFF</Color>
         <Color x:Key="AsciiProgressPatternSoftColor">#2055FFFF</Color>
+        <Color x:Key="AsciiProgressTextColor">#FFFFFF</Color>
 
         <!-- Public brush resources used throughout the theme. -->
         <SolidColorBrush x:Key="AsciiBackgroundBrush" Color="{DynamicResource AsciiBaseColor}" />
@@ -57,6 +58,7 @@
         <SolidColorBrush x:Key="AsciiDialogForegroundBrush" Color="{DynamicResource AsciiTextColor}" />
         <SolidColorBrush x:Key="AsciiPressedBackgroundBrush" Color="{DynamicResource AsciiAccentColor}" />
         <SolidColorBrush x:Key="AsciiPressedForegroundBrush" Color="{DynamicResource AsciiInverseTextColor}" />
+        <SolidColorBrush x:Key="AsciiProgressTextBrush" Color="{DynamicResource AsciiProgressTextColor}" />
         <SolidColorBrush x:Key="AsciiDisabledBackgroundBrush" Color="{DynamicResource AsciiShadeSoftColor}" />
         <SolidColorBrush x:Key="AsciiDisabledForegroundBrush" Color="{DynamicResource AsciiMutedColor}" />
         <SolidColorBrush x:Key="AsciiShadowBrush" Color="{DynamicResource AsciiShadeStrongColor}" />
@@ -1385,7 +1387,7 @@
                                     IsVisible="{TemplateBinding ShowProgressText}">
                                 <LayoutTransformControl Name="ProgressTextLayout">
                                     <TextBlock Name="ProgressText"
-                                               Foreground="{DynamicResource AsciiForegroundBrush}"
+                                               Foreground="{DynamicResource AsciiProgressTextBrush}"
                                                Text="{Binding Percentage, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" />
                                 </LayoutTransformControl>
                             </Border>

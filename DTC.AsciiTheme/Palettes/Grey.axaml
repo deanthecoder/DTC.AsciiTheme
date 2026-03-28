@@ -11,5 +11,6 @@
         <Color x:Key="AsciiInverseTextColor">#FFFFFF</Color>
         <Color x:Key="AsciiProgressPatternStrongColor">#40000000</Color>
         <Color x:Key="AsciiProgressPatternSoftColor">#20000000</Color>
+        <Color x:Key="AsciiProgressTextColor">#C0C0C0</Color>
     </Styles.Resources>
 </Styles>
