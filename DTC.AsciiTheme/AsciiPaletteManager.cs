@@ -47,6 +47,8 @@ public static class AsciiPaletteManager
             AsciiPalette.Green => "Green.axaml",
             AsciiPalette.Plasma => "Plasma.axaml",
             AsciiPalette.Grey => "Grey.axaml",
+            AsciiPalette.BBC => "BBC.axaml",
+            AsciiPalette.C64 => "C64.axaml",
             AsciiPalette.ZX => "ZX.axaml",
             _ => throw new ArgumentOutOfRangeException(nameof(palette), palette, null),
         };

@@ -843,6 +843,10 @@
                 <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
             </Style>
 
+            <Style Selector="^:pointerover /template/ TextBlock#PART_ChevronGlyph">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
             <Style Selector="^:selected /template/ Border#PART_LayoutRoot">
                 <Setter Property="Background" Value="{DynamicResource AsciiHighlightBrush}" />
             </Style>
@@ -852,6 +856,10 @@
             </Style>
 
             <Style Selector="^:selected /template/ TextBlock#PART_InputGestureText">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:selected /template/ TextBlock#PART_ChevronGlyph">
                 <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
             </Style>
 
@@ -867,11 +875,19 @@
                 <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
             </Style>
 
+            <Style Selector="^:pointerover:selected /template/ TextBlock#PART_ChevronGlyph">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiHoverForegroundBrush}" />
+            </Style>
+
             <Style Selector="^:disabled /template/ ContentPresenter#PART_HeaderPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
 
             <Style Selector="^:disabled /template/ TextBlock#PART_InputGestureText">
+                <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
+            </Style>
+
+            <Style Selector="^:disabled /template/ TextBlock#PART_ChevronGlyph">
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
             </Style>
 

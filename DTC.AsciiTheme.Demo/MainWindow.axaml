@@ -28,7 +28,7 @@
                           Click="HandleExitMenuClick" />
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Theme">
+                <MenuItem Header="_Color Theme">
                     <MenuItem Header="_Blue"
                               Click="HandleThemeBlueClick" />
                     <MenuItem Header="_Mono"
@@ -39,6 +39,12 @@
                               Click="HandleThemePlasmaClick" />
                     <MenuItem Header="_Grey"
                               Click="HandleThemeGreyClick" />
+                </MenuItem>
+                <MenuItem Header="_Retro Theme">
+                    <MenuItem Header="_BBC"
+                              Click="HandleThemeBbcClick" />
+                    <MenuItem Header="_C64"
+                              Click="HandleThemeC64Click" />
                     <MenuItem Header="_ZX"
                               Click="HandleThemeZxClick" />
                 </MenuItem>

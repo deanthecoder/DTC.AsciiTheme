@@ -80,6 +80,8 @@ public sealed class DemoScreenshotTests
                     (AsciiPalette.Green, "text-green.png"),
                     (AsciiPalette.Plasma, "text-plasma.png"),
                     (AsciiPalette.Grey, "text-grey.png"),
+                    (AsciiPalette.BBC, "text-bbc.png"),
+                    (AsciiPalette.C64, "text-c64.png"),
                     (AsciiPalette.ZX, "text-zx.png"),
                 };
 
@@ -92,6 +94,8 @@ public sealed class DemoScreenshotTests
                     await WaitForRenderAsync();
                     SaveScreenshot(window, fileName);
                 }
+
+                AsciiPaletteManager.Apply(Avalonia.Application.Current!, AsciiPalette.Blue);
 
                 var openFileDialog = new AsciiOpenFileDialogWindow(
                     "Open File",

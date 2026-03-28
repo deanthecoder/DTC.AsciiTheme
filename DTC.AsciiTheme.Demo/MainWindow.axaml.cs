@@ -193,6 +193,10 @@ public partial class MainWindow : Window
 
     private void HandleThemeGreyClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.Grey);
 
+    private void HandleThemeBbcClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.BBC);
+
+    private void HandleThemeC64Click(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.C64);
+
     private void HandleThemeZxClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.ZX);
 
     private async void HandleAboutMenuClick(object sender, RoutedEventArgs e)

@@ -18,5 +18,7 @@ public enum AsciiPalette
     Green,
     Plasma,
     Grey,
+    BBC,
+    C64,
     ZX,
 }

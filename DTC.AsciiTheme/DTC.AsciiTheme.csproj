@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <AvaloniaResource Include="Assets/Fonts/C64/C64_Pro_Mono-STYLE.ttf" />
         <AvaloniaResource Include="Assets/Fonts/VGA/PxPlus_IBM_VGA8.ttf" />
         <AvaloniaResource Include="Assets/Fonts/ZXSpectrum/zx-spectrum.otf" />
         <AvaloniaResource Include="Palettes/*.axaml" />

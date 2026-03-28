@@ -126,6 +126,8 @@ The base theme ships with a blue DOS-style palette by default, and also includes
 - `avares://DTC.AsciiTheme/Palettes/Green.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Plasma.axaml`
 - `avares://DTC.AsciiTheme/Palettes/Grey.axaml`
+- `avares://DTC.AsciiTheme/Palettes/BBC.axaml`
+- `avares://DTC.AsciiTheme/Palettes/C64.axaml`
 - `avares://DTC.AsciiTheme/Palettes/ZX.axaml`
 
 Example:
@@ -164,6 +166,18 @@ The screenshots below all use the same `Text` tab content so the palette differe
 Simple light-grey retro palette with black text and strong inverse/highlight states.
 
 ![Grey palette screenshot](img/text-grey.png)
+
+### BBC
+
+Monochrome BBC-style palette using the Commodore bitmap font as a quick retro trial.
+
+![BBC palette screenshot](img/text-bbc.png)
+
+### C64
+
+Commodore-inspired palette using `C64 Pro Mono`.
+
+![C64 palette screenshot](img/text-c64.png)
 
 ### ZX
 
