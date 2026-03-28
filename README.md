@@ -118,6 +118,8 @@ Reference `DTC.AsciiTheme` from your Avalonia app, then load the theme in `App.a
 
 That matches the demo app and gives you the normal Avalonia Fluent baseline plus the retro overrides from this theme package.
 
+Tested with `Avalonia 11.3.12`.
+
 ## Optional palette overlays
 The base theme ships with a blue DOS-style palette by default, and also includes optional palette overlays you can load after `AsciiTheme`:
 

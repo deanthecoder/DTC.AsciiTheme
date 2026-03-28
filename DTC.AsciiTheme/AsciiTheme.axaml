@@ -223,6 +223,85 @@
             </Setter>
         </ControlTheme>
 
+        <ControlTheme x:Key="{x:Type TextBox}"
+                      TargetType="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource AsciiHighlightBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource AsciiInputSelectionBrush}" />
+            <Setter Property="SelectionForegroundBrush" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="1" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="MinHeight" Value="34" />
+            <Setter Property="Padding" Value="{DynamicResource AsciiTextBoxPadding}" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <Border Name="PART_BorderElement"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                MinHeight="{TemplateBinding MinHeight}" />
+
+                        <Border Margin="{TemplateBinding BorderThickness}">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <ContentPresenter Grid.Column="0"
+                                                  Content="{TemplateBinding InnerLeftContent}" />
+
+                                <DockPanel Name="PART_InnerDockPanel"
+                                           Grid.Column="1"
+                                           Cursor="IBeam"
+                                           Margin="{TemplateBinding Padding}">
+                                    <ScrollViewer Name="PART_ScrollViewer"
+                                                  HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                                  VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                                  IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                                                  AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                                  BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+                                        <Panel>
+                                            <TextBlock Name="PART_Watermark"
+                                                       Opacity="0.5"
+                                                       Text="{TemplateBinding Watermark}"
+                                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                                       TextWrapping="{TemplateBinding TextWrapping}"
+                                                       IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            <TextPresenter Name="PART_TextPresenter"
+                                                           Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                           CaretIndex="{TemplateBinding CaretIndex}"
+                                                           SelectionStart="{TemplateBinding SelectionStart}"
+                                                           SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                           TextAlignment="{TemplateBinding TextAlignment}"
+                                                           TextWrapping="{TemplateBinding TextWrapping}"
+                                                           LineHeight="{TemplateBinding LineHeight}"
+                                                           LetterSpacing="{TemplateBinding LetterSpacing}"
+                                                           PasswordChar="{TemplateBinding PasswordChar}"
+                                                           RevealPassword="{TemplateBinding RevealPassword}"
+                                                           SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                           SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                           CaretBrush="{TemplateBinding CaretBrush}"
+                                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        </Panel>
+                                    </ScrollViewer>
+                                </DockPanel>
+
+                                <ContentPresenter Grid.Column="2"
+                                                  Content="{TemplateBinding InnerRightContent}" />
+                            </Grid>
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+
         <ControlTheme x:Key="{x:Type NumericUpDown}"
                       TargetType="NumericUpDown">
             <Setter Property="Background" Value="Transparent" />
@@ -250,7 +329,8 @@
                                      FontSize="{TemplateBinding FontSize}"
                                      HorizontalContentAlignment="Stretch"
                                      VerticalContentAlignment="Center"
-                                     Padding="8,0"
+                                     MinHeight="{TemplateBinding MinHeight}"
+                                     Padding="{DynamicResource AsciiTextBoxPadding}"
                                      TextAlignment="{TemplateBinding TextAlignment}"
                                      Watermark="{TemplateBinding Watermark}" />
 
@@ -295,6 +375,38 @@
                 <Setter Property="Foreground" Value="{DynamicResource AsciiDisabledForegroundBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
             </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="{x:Type Label}"
+                      TargetType="Label">
+            <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
+            <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource AsciiCellHeight}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                      Margin="{TemplateBinding Padding}"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Center"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      TextBlock.Foreground="{TemplateBinding Foreground}"
+                                      TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                                      TextBlock.FontSize="{TemplateBinding FontSize}"
+                                      TextBlock.LineHeight="{DynamicResource AsciiCellHeight}"
+                                      RecognizesAccessKey="True"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </ControlTemplate>
+            </Setter>
         </ControlTheme>
         <ControlTheme x:Key="{x:Type Button}"
                       TargetType="Button">
@@ -1499,10 +1611,13 @@
                             <Border Name="PART_Header"
                                     Grid.Column="1"
                                     Background="{TemplateBinding Background}">
-                                <TextBlock Name="PART_HeaderPresenter"
-                                           Margin="8,4"
-                                           VerticalAlignment="Center"
-                                           Text="{TemplateBinding Header}" />
+                                <ContentPresenter Name="PART_HeaderPresenter"
+                                                  Margin="8,4"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Header}"
+                                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                  RecognizesAccessKey="True"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}" />
                             </Border>
                         </Grid>
 
@@ -1523,8 +1638,8 @@
                 <Setter Property="Background" Value="{DynamicResource AsciiInputSelectionBrush}" />
             </Style>
 
-            <Style Selector="^:selected /template/ TextBlock#PART_HeaderPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
+            <Style Selector="^:selected /template/ ContentPresenter#PART_HeaderPresenter">
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource AsciiInputSelectionForegroundBrush}" />
             </Style>
 
             <Style Selector="^:disabled">
@@ -1588,6 +1703,7 @@
     </Style>
 
     <Style Selector="TextBox">
+        <Setter Property="Theme" Value="{StaticResource {x:Type TextBox}}" />
         <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AsciiInputBackgroundBrush}" />
@@ -1614,6 +1730,7 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Background="{TemplateBinding Background}"
+                                            ClipToBounds="True"
                                             Content="{TemplateBinding Content}"
                                             ContentTemplate="{TemplateBinding ContentTemplate}"
                                             Padding="{TemplateBinding Padding}"
@@ -1855,10 +1972,6 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <Style Selector="TextBox /template/ ScrollViewer">
-        <Setter Property="AllowAutoHide" Value="False" />
-    </Style>
-
     <Style Selector="TextBox:focus">
         <Setter Property="Foreground" Value="{DynamicResource AsciiInputForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource AsciiInputBackgroundBrush}" />
@@ -1882,7 +1995,7 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <Style Selector="TextBox /template/ TextBlock#watermark">
+    <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
         <Setter Property="Foreground" Value="{DynamicResource AsciiInputWatermarkBrush}" />
         <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
     </Style>
@@ -1905,6 +2018,14 @@
 
     <Style Selector="NumericUpDown">
         <Setter Property="Theme" Value="{StaticResource {x:Type NumericUpDown}}" />
+    </Style>
+
+    <Style Selector="NumericUpDown /template/ TextBox#PART_TextBox /template/ ScrollViewer#PART_ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style Selector="TextBox[AcceptsReturn=True] /template/ ScrollViewer#PART_ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Margin" Value="0,0,16,16" />
     </Style>
 
     <Style Selector="MenuItem">
@@ -1946,6 +2067,10 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+    </Style>
+
+    <Style Selector="ListBox /template/ ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Margin" Value="0,0,16,0" />
     </Style>
 
     <Style Selector="ListBoxItem">
@@ -2041,6 +2166,10 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+    </Style>
+
+    <Style Selector="TreeView /template/ ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Margin" Value="0,0,16,0" />
     </Style>
 
     <Style Selector="TreeViewItem">
@@ -2196,9 +2325,13 @@
     </Style>
 
     <Style Selector="Label">
+        <Setter Property="Theme" Value="{StaticResource {x:Type Label}}" />
         <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
         <Setter Property="FontFamily" Value="{DynamicResource AsciiFontFamily}" />
+        <Setter Property="MinHeight" Value="0" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
     <Style Selector="Label TextBlock">

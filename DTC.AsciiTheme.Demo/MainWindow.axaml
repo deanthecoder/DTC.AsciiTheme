@@ -468,6 +468,11 @@
                                     </StackPanel>
                                 </theme:AsciiGroupBox>
 
+                                <theme:AsciiGroupBox Header="ToolTip">
+                                    <Button Content="Hover me"
+                                            ToolTip.Tip="This tooltip uses the shared retro panel styling." />
+                                </theme:AsciiGroupBox>
+
                                 <theme:AsciiGroupBox Header="Expander">
                                     <StackPanel Spacing="8">
                                         <Expander Header="Drive A:"
@@ -550,11 +555,6 @@
                                             </Border>
                                         </Grid>
                                     </StackPanel>
-                                </theme:AsciiGroupBox>
-
-                                <theme:AsciiGroupBox Header="ToolTip">
-                                    <Button Content="Hover me"
-                                            ToolTip.Tip="This tooltip uses the shared retro panel styling." />
                                 </theme:AsciiGroupBox>
                             </StackPanel>
                         </Grid>
