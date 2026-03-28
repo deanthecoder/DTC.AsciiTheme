@@ -79,7 +79,7 @@
                         Margin="24,8">
                 <TabItem Header="_Buttons">
                     <StackPanel Spacing="16">
-                        <TextBlock Text="Flat text blocks with DOS-style bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring."
+                        <TextBlock Text="Flat text blocks with retro bottom-right shadowing, inverse-video hover, and a clear keyboard focus ring."
                                    TextWrapping="Wrap"
                                    LineHeight="18"
                                    Margin="0,0,0,2" />
@@ -166,7 +166,7 @@
                                              ScrollViewer.HorizontalScrollBarVisibility="Visible"
                                              ScrollViewer.VerticalScrollBarVisibility="Visible"
                                              TextWrapping="NoWrap"
-                                             Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic text-mode utility, not a modern rounded memo box.&#10;Line 3: We can use the old IBM VGA font arrows for the scroll buttons and keep the rest of the chrome minimal.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: C:\CONFIG\SYSTEM\NETWORK\ADAPTERS\RETRO\VERY-LONG-FILE-NAME-WITH-OPTIONS.TXT /enable /verbose /diagnostics /full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
+                                             Text="Line 1: This is a multi-line editor with deliberate overflow to show the ASCII scroll bars in both directions.&#10;Line 2: The text area should feel like a classic utility editor, not a modern rounded memo box.&#10;Line 3: The scroll buttons use the same simple arrow language as the rest of the theme.&#10;Line 4: Horizontal scrolling matters too when wrap is disabled and command lines or file paths get long.&#10;Line 5: /system/config/network/adapters/retro/very-long-file-name-with-options.txt --enable --verbose --diagnostics --full&#10;Line 6: Selection, caret, spacing, and the scrollbar thumb should all stay disciplined on the 8x16 grid.&#10;Line 7: More lines help exercise the vertical track and the arrow buttons at both ends.&#10;Line 8: This should be enough content to force both axes to appear in the demo." />
                                 </StackPanel>
 
                                 <StackPanel Spacing="8">
@@ -216,7 +216,7 @@
                     <Grid ColumnDefinitions="2*,*">
                         <theme:AsciiGroupBox Header="TextBlock">
                             <StackPanel Spacing="12">
-                                <TextBlock Text="Simple static text using the shared VGA font and line-height rules." TextWrapping="Wrap" />
+                                <TextBlock Text="Simple static text using the shared retro bitmap font and line-height rules." TextWrapping="Wrap" />
                                 <TextBlock Text="STATUS: READY" />
                                 <Separator />
                                 <TextBlock Text="A wrapped paragraph should still feel disciplined and grid-aware, even when it spans multiple lines in a modern Avalonia layout surface." TextWrapping="Wrap" />
@@ -250,7 +250,7 @@
                                            Target="{Binding #LabelDemoDescriptionTextBox}" />
                                     <TextBox x:Name="LabelDemoDescriptionTextBox"
                                              Width="220"
-                                             Text="Retro text-mode theme preview" />
+                                             Text="Retro bitmap theme preview" />
                                 </StackPanel>
                             </theme:AsciiGroupBox>
 
@@ -276,8 +276,8 @@
                                 <ListBoxItem Content="AUTOEXEC.BAT" />
                                 <ListBoxItem Content="COMMAND.COM" />
                                 <ListBoxItem Content="CONFIG.SYS" />
-                                <ListBoxItem Content="DOS\EDIT.EXE" />
-                                <ListBoxItem Content="DOS\FDISK.EXE" />
+                                <ListBoxItem Content="SYSTEM\EDIT.EXE" />
+                                <ListBoxItem Content="SYSTEM\DISKTOOL.EXE" />
                                 <ListBoxItem Content="GAMES\NETHACK\SAVE.DAT" />
                                 <ListBoxItem Content="NETWORK\TCPIP\PROTOCOL.INI" />
                                 <ListBoxItem Content="TOOLS\QMODEM\QMODEM.INI" />
@@ -347,7 +347,7 @@
 
                             <theme:AsciiGroupBox Header="Status">
                                 <StackPanel Spacing="8">
-                                    <TextBlock Text="Directory: C:\DOS" />
+                                    <TextBlock Text="Directory: C:\SYSTEM" />
                                     <TextBlock Text="Rows: 8" />
                                     <TextBlock Text="View: Read-only" />
                                 </StackPanel>
@@ -363,9 +363,9 @@
                                 <TreeViewItem Header="C:\" IsExpanded="True">
                                     <TreeViewItem Header="AUTOEXEC.BAT" />
                                     <TreeViewItem Header="CONFIG.SYS" />
-                                    <TreeViewItem Header="DOS">
+                                    <TreeViewItem Header="SYSTEM">
                                         <TreeViewItem Header="EDIT.EXE" />
-                                        <TreeViewItem Header="FDISK.EXE" />
+                                        <TreeViewItem Header="DISKTOOL.EXE" />
                                         <TreeViewItem Header="QBASIC.EXE" />
                                     </TreeViewItem>
                                     <TreeViewItem Header="GAMES">
@@ -402,7 +402,7 @@
                     <UniformGrid Columns="2">
                         <theme:AsciiGroupBox Header="Transfer Progress">
                             <StackPanel Spacing="12">
-                                <TextBlock Text="A retro progress bar using a cyan fill with VGA shade effect. The demo bars below animate so we can judge the texture and text in motion." TextWrapping="Wrap" />
+                                <TextBlock Text="A retro progress bar using a solid accent fill with a subtle checker texture behind it. The demo bars below animate so we can judge the texture and text in motion." TextWrapping="Wrap" />
                                 <ProgressBar x:Name="AnimatedProgressBar"
                                              Value="25"
                                              Maximum="100" />
