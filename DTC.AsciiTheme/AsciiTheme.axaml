@@ -1234,32 +1234,72 @@
                       TargetType="controls:AsciiGroupBox">
             <Setter Property="BorderBrush" Value="{DynamicResource AsciiFrameBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Background" Value="{DynamicResource AsciiPaneSurfaceBrush}" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource AsciiForegroundBrush}" />
             <Setter Property="Padding" Value="{DynamicResource AsciiGroupBoxPadding}" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Grid RowDefinitions="Auto,*">
-                        <Border Name="Frame"
-                                Grid.RowSpan="2"
+                    <Grid RowDefinitions="Auto,*"
+                          ColumnDefinitions="16,Auto,*">
+                        <Border Grid.RowSpan="2"
+                                Grid.ColumnSpan="3"
                                 Margin="0,8,0,0"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                                Background="{TemplateBinding Background}"
+                                IsHitTestVisible="False" />
 
-                        <Border Grid.Row="0" Margin="16,0,0,0"
+                        <Border Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="0,8,0,0"
+                                Height="1"
+                                Background="{TemplateBinding BorderBrush}"
+                                VerticalAlignment="Top"
+                                IsHitTestVisible="False" />
+
+                        <Border Grid.Row="0"
+                                Grid.Column="1"
                                 HorizontalAlignment="Left"
-                                Background="{TemplateBinding Background}">
-                            <Border Padding="8,0"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="1,0,1,0">
-                                <ContentPresenter Content="{TemplateBinding Header}"
-                                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                                  RecognizesAccessKey="True"
-                                                  TextBlock.LineHeight="{DynamicResource AsciiCellHeight}" />
-                            </Border>
+                                Padding="8,0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,0,1,0">
+                            <ContentPresenter Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              RecognizesAccessKey="True"
+                                              TextBlock.LineHeight="{DynamicResource AsciiCellHeight}" />
                         </Border>
 
+                        <Border Grid.Row="0"
+                                Grid.Column="2"
+                                Margin="0,8,0,0"
+                                Height="1"
+                                Background="{TemplateBinding BorderBrush}"
+                                VerticalAlignment="Top"
+                                IsHitTestVisible="False" />
+
+                        <Border Grid.RowSpan="2"
+                                Grid.ColumnSpan="3"
+                                Margin="0,8,0,0"
+                                Width="1"
+                                Background="{TemplateBinding BorderBrush}"
+                                HorizontalAlignment="Left"
+                                IsHitTestVisible="False" />
+
+                        <Border Grid.RowSpan="2"
+                                Grid.ColumnSpan="3"
+                                Margin="0,8,0,0"
+                                Width="1"
+                                Background="{TemplateBinding BorderBrush}"
+                                HorizontalAlignment="Right"
+                                IsHitTestVisible="False" />
+
+                        <Border Grid.Row="1"
+                                Grid.ColumnSpan="3"
+                                Height="1"
+                                Background="{TemplateBinding BorderBrush}"
+                                VerticalAlignment="Bottom"
+                                IsHitTestVisible="False" />
+
                         <ContentPresenter Grid.Row="1"
+                                          Grid.ColumnSpan="3"
                                           Margin="{TemplateBinding Padding}"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}" />
