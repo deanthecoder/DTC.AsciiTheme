@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:DTC.AsciiTheme.Controls"
+        x:Class="DTC.AsciiTheme.Controls.AsciiSaveFileDialogWindow"
+        Width="840"
+        Height="560"
+        MinWidth="840"
+        MinHeight="560"
+        CanResize="True"
+        ShowInTaskbar="False"
+        SystemDecorations="None"
+        Background="{DynamicResource AsciiBackgroundBrush}"
+        Foreground="{DynamicResource AsciiDialogForegroundBrush}"
+        WindowStartupLocation="CenterOwner">
+    <Grid ColumnDefinitions="*,Auto"
+          RowDefinitions="*,Auto">
+        <Panel Background="{DynamicResource AsciiDialogBackgroundBrush}">
+            <controls:AsciiGroupBox x:Name="SaveFileGroupBox"
+                                    Background="{DynamicResource AsciiDialogBackgroundBrush}"
+                                    BorderBrush="{DynamicResource AsciiFrameBrush}"
+                                    Margin="8,4,8,8"
+                                    Header="Save File">
+                <Grid RowDefinitions="Auto,*,Auto">
+                    <StackPanel Spacing="8"
+                                Margin="0,0,0,16">
+                        <TextBlock Text="Current path" />
+                        <TextBox x:Name="PathTextBox"
+                                 IsReadOnly="True" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1"
+                          ColumnDefinitions="*,*"
+                          Margin="0,0,0,16">
+                        <controls:AsciiGroupBox Header="Folders">
+                            <ListBox x:Name="FolderListBox"
+                                     DoubleTapped="HandleFolderListDoubleTapped" />
+                        </controls:AsciiGroupBox>
+
+                        <controls:AsciiGroupBox Grid.Column="1"
+                                                Margin="16,0,0,0"
+                                                Header="Files">
+                            <ListBox x:Name="FileListBox"
+                                     DoubleTapped="HandleFileListDoubleTapped" />
+                        </controls:AsciiGroupBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,200,Auto"
+                          RowDefinitions="Auto,Auto">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="File name" />
+                            <TextBox x:Name="FileNameTextBox"
+                                     Watermark="Enter a file name" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="16,0,0,0"
+                                    Spacing="8">
+                            <TextBlock Text="Filter" />
+                            <ComboBox x:Name="FilterComboBox"
+                                      SelectedIndex="0"
+                                      SelectionChanged="HandleFilterSelectionChanged" />
+                        </StackPanel>
+
+                        <UniformGrid Grid.Column="2"
+                                     Grid.RowSpan="2"
+                                     Rows="2"
+                                     Columns="1"
+                                     Margin="16,24,0,0">
+                            <Button x:Name="SaveButton"
+                                    Content="_Save"
+                                    Click="HandleSaveButtonClick" />
+                            <Button Content="_Cancel"
+                                    Click="HandleCancelButtonClick" />
+                        </UniformGrid>
+                    </Grid>
+                </Grid>
+            </controls:AsciiGroupBox>
+        </Panel>
+
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="0,16,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="8,0,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Background="{DynamicResource AsciiShadowBrush}"
+                IsHitTestVisible="False" />
+    </Grid>
+</Window>

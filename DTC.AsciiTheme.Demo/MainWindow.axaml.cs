@@ -14,6 +14,7 @@ using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia;
 using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
 using DTC.AsciiTheme;
 
 namespace DTC.AsciiTheme.Demo;
@@ -102,19 +103,60 @@ public partial class MainWindow : Window
 
     private async void HandleOpenMenuClick(object sender, RoutedEventArgs e)
     {
+        var file = await AsciiFileDialog.OpenFileAsync(
+            this,
+            "Open File",
+            [
+                new FilePickerFileType("All files")
+                {
+                    Patterns = ["*.*"],
+                },
+                new FilePickerFileType("Text files")
+                {
+                    Patterns = ["*.txt", "*.ini", "*.cfg", "*.log", "*.bat", "*.sys"],
+                },
+            ]);
+
+        if (file is null)
+        {
+            return;
+        }
+
+        var selectedFile = file.TryGetLocalPath() ?? file.Name;
+
         await AsciiMessageBox.ShowAsync(
             this,
             "Open",
-            "File open support is coming once the dialog helper is in place.",
+            $"Selected file:\n{selectedFile}",
             AsciiMessageBoxButtons.Ok);
     }
 
     private async void HandleSaveMenuClick(object sender, RoutedEventArgs e)
     {
+        var file = await AsciiFileDialog.SaveFileAsync(
+            this,
+            "Save File",
+            "CONFIG.NEW",
+            [
+                new FilePickerFileType("All files")
+                {
+                    Patterns = ["*.*"],
+                },
+                new FilePickerFileType("Text files")
+                {
+                    Patterns = ["*.txt", "*.ini", "*.cfg", "*.log", "*.bat", "*.sys"],
+                },
+            ]);
+
+        if (file is null)
+        {
+            return;
+        }
+
         await AsciiMessageBox.ShowAsync(
             this,
             "Save",
-            "File save support is coming once the dialog helper is in place.",
+            $"Target file:\n{file.FullName}",
             AsciiMessageBoxButtons.Ok);
     }
 

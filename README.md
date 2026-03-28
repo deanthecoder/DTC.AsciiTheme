@@ -3,7 +3,7 @@
 # DTC.AsciiTheme
 `DTC.AsciiTheme` is primarily a style/theme layer for normal Avalonia controls, so it fits into a regular Avalonia app with very little learning curve. Most of what you use here is still `Button`, `TextBox`, `ComboBox`, `TreeView`, `DataGrid`, and the rest of the standard control set, just re-skinned to feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers.
 
-Alongside that, the package also includes a small number of extra helper controls for a more authentic retro look where Avalonia does not provide the exact shape out of the box, such as `AsciiGroupBox`, `AsciiStatusBar`, and `AsciiMessageBox`.
+Alongside that, the package also includes a small number of extra helper components for a more authentic retro look where Avalonia does not provide the exact shape out of the box, such as `AsciiGroupBox`, `AsciiStatusBar`, `AsciiMessageBox`, and the custom `AsciiFileDialog` helpers.
 
 The goal is not terminal emulation, but a practical control theme that keeps modern bindings, layout, focus, and input behavior intact.
 
@@ -56,6 +56,11 @@ Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `GridSplitter`, `ToolTip`,
 
 ![More tab screenshot](img/more.png)
 
+## Retro file dialog
+The package now also includes a custom retro-styled `AsciiFileDialog.OpenFileAsync(...)` helper for apps that want an in-app DOS-style picker instead of the native platform dialog.
+
+![Open file dialog screenshot](img/open-dialog.png)
+
 ## What it currently styles
 ### Standard Avalonia controls
 - `Button`
@@ -81,8 +86,9 @@ Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `GridSplitter`, `ToolTip`,
 - `ToolTip`
 - `TreeView`
 
-### Extra retro helper controls
+### Extra retro helper components
 - `AsciiGroupBox`
+- `AsciiFileDialog`
 - `AsciiMessageBox`
 - `AsciiStatusBar`
 

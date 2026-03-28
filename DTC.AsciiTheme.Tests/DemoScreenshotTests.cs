@@ -15,6 +15,7 @@ using Avalonia.Controls;
 using Avalonia.Headless;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
+using DTC.AsciiTheme.Controls;
 
 namespace DTC.AsciiTheme.Tests;
 
@@ -90,6 +91,32 @@ public sealed class DemoScreenshotTests
                     await WaitForRenderAsync();
                     await WaitForRenderAsync();
                     SaveScreenshot(window, fileName);
+                }
+
+                var openFileDialog = new AsciiOpenFileDialogWindow(
+                    "Open File",
+                    [
+                        new Avalonia.Platform.Storage.FilePickerFileType("All files")
+                        {
+                            Patterns = ["*.*"],
+                        },
+                        new Avalonia.Platform.Storage.FilePickerFileType("Text files")
+                        {
+                            Patterns = ["*.txt", "*.ini", "*.cfg", "*.log", "*.bat", "*.sys"],
+                        },
+                    ]);
+
+                openFileDialog.Show();
+
+                try
+                {
+                    await WaitForRenderAsync();
+                    await WaitForRenderAsync();
+                    SaveScreenshot(openFileDialog, "open-dialog.png");
+                }
+                finally
+                {
+                    openFileDialog.Close();
                 }
             }
             finally
