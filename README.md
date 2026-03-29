@@ -1,13 +1,24 @@
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/deanthecoder.svg?style=social&label=Follow%20%40deanthecoder)](https://twitter.com/deanthecoder)
 
 # DTC.AsciiTheme
-`DTC.AsciiTheme` is primarily a style/theme layer for normal Avalonia controls, so it fits into a regular Avalonia app with very little learning curve. Most of what you use here is still `Button`, `TextBox`, `ComboBox`, `TreeView`, `DataGrid`, and the rest of the standard control set, just re-skinned to feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers.
-
-Alongside that, the package also includes a small number of extra helper components for a more authentic retro look where Avalonia does not provide the exact shape out of the box, such as `AsciiGroupBox`, `AsciiStatusBar`, `AsciiMessageBox`, and the custom `AsciiFileDialog` helpers.
-
-The goal is not terminal emulation, but a practical control theme that keeps modern bindings, layout, focus, and input behavior intact.
+Retro ASCII-style UI for Avalonia — recreate classic DOS-era interfaces with modern controls.
 
 ![Data tab screenshot](img/data.png)
+
+## Why
+
+Modern UI frameworks are great, but sometimes you want something with personality.
+DTC.AsciiTheme brings back the clarity, contrast, and nostalgia of DOS-era interfaces,
+while keeping all the benefits of Avalonia.
+
+`DTC.AsciiTheme` is primarily a style/theme layer for normal Avalonia controls, so it fits into a regular Avalonia app with very little learning curve. Most of what you use here is still `Button`, `TextBox`, `ComboBox`, `TreeView`, `DataGrid`, and the rest of the standard control set, just re-skinned to feel like classic DOS utilities, BBS tools, setup screens, and text-mode file managers.
+
+The package also includes a small set of helper components where Avalonia doesn’t provide the required shapes out of the box, such as `AsciiGroupBox`, `AsciiStatusBar`, `AsciiMessageBox`, and `AsciiFileDialog`.
+
+## Retro file dialog
+The package now also includes a custom retro-styled `AsciiFileDialog.OpenFileAsync(...)` helper for apps that want an in-app DOS-style picker instead of the native platform dialog.
+
+![Open file dialog screenshot](img/open-dialog.png)
 
 ## Demo tabs
 ### Buttons
@@ -56,11 +67,6 @@ Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `GridSplitter`, `ToolTip`,
 
 ![More tab screenshot](img/more.png)
 
-## Retro file dialog
-The package now also includes a custom retro-styled `AsciiFileDialog.OpenFileAsync(...)` helper for apps that want an in-app DOS-style picker instead of the native platform dialog.
-
-![Open file dialog screenshot](img/open-dialog.png)
-
 ## Retro message box
 `AsciiMessageBox` provides a simple in-app retro dialog for `OK`, `OK/Cancel`, `Yes/No`, and `Yes/No/Cancel` flows while keeping the parent window visible behind it.
 
@@ -105,7 +111,14 @@ dotnet build DTC.AsciiTheme.sln
 dotnet run --project DTC.AsciiTheme.Demo/DTC.AsciiTheme.Demo.csproj
 ```
 
-## Use in your app
+## Quick start
+
+Add the theme and you're done:
+
+```xml
+<ascii:AsciiTheme />
+```
+
 Reference `DTC.AsciiTheme` from your Avalonia app, then load the theme in `App.axaml`:
 
 ```xml
