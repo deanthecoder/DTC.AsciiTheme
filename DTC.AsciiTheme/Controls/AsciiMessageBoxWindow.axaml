@@ -8,16 +8,19 @@
         CanResize="False"
         ShowInTaskbar="False"
         SystemDecorations="None"
-        Background="{DynamicResource AsciiBackgroundBrush}"
+        TransparencyLevelHint="Transparent"
+        Background="Transparent"
         Foreground="{DynamicResource AsciiDialogForegroundBrush}"
         SizeToContent="Height"
         WindowStartupLocation="CenterOwner">
     <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
-        <Panel Background="{DynamicResource AsciiDialogBackgroundBrush}">
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Background="{DynamicResource AsciiDialogBackgroundBrush}"
+                Padding="8,4,8,8">
             <controls:AsciiGroupBox x:Name="MessageBoxGroupBox"
                                     Background="{DynamicResource AsciiDialogBackgroundBrush}"
                                     BorderBrush="{DynamicResource AsciiFrameBrush}"
-                                    Margin="8,4,8,8"
                                     Header="Title">
                 <StackPanel Spacing="24">
                     <TextBlock x:Name="MessageTextBlock"
@@ -34,24 +37,30 @@
                                 Spacing="8" />
                 </StackPanel>
             </controls:AsciiGroupBox>
-        </Panel>
-        
-        <Border Grid.Row="0" Grid.Column="1" x:Name="RightShadow"
+        </Border>
+
+        <Border Grid.Row="0"
+                Grid.Column="1"
                 Width="{DynamicResource AsciiButtonShadowDepth}"
                 Margin="0,16,0,0"
                 Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
                 IsHitTestVisible="False" />
 
-        <Border Grid.Row="1" Grid.Column="0" x:Name="BottomShadow"
+        <Border Grid.Row="1"
+                Grid.Column="0"
                 Height="{DynamicResource AsciiButtonShadowDepth}"
                 Margin="8,0,0,0"
                 Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
                 IsHitTestVisible="False" />
 
-        <Border Grid.Row="1" Grid.Column="1" x:Name="CornerShadow"
+        <Border Grid.Row="1"
+                Grid.Column="1"
                 Width="{DynamicResource AsciiButtonShadowDepth}"
                 Height="{DynamicResource AsciiButtonShadowDepth}"
                 Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
                 IsHitTestVisible="False" />
     </Grid>
 </Window>

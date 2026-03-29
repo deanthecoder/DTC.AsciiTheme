@@ -11,11 +11,13 @@
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Headless;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
 using DTC.AsciiTheme.Controls;
+using SkiaSharp;
 
 namespace DTC.AsciiTheme.Tests;
 
@@ -122,6 +124,25 @@ public sealed class DemoScreenshotTests
                 {
                     openFileDialog.Close();
                 }
+
+                var messageBox = new AsciiMessageBoxWindow(
+                    "About DTC.AsciiTheme",
+                    "A retro Avalonia theme with classic utility-style controls, dialogs, and palettes.",
+                    AsciiMessageBoxButtons.OkCancel);
+
+                var messageBoxTask = messageBox.ShowDialog<AsciiMessageBoxResult>(window);
+
+                try
+                {
+                    await WaitForRenderAsync();
+                    await WaitForRenderAsync();
+                    SaveCompositeScreenshot(window, messageBox, "message-box.png");
+                }
+                finally
+                {
+                    messageBox.Close(AsciiMessageBoxResult.Cancel);
+                    await messageBoxTask;
+                }
             }
             finally
             {
@@ -152,6 +173,50 @@ public sealed class DemoScreenshotTests
         file.Refresh();
         Assert.That(file.Exists, Is.True, $"Expected screenshot '{file.FullName}' to be written.");
         Assert.That(file.Length, Is.GreaterThan(0L), $"Expected screenshot '{file.FullName}' to contain data.");
+    }
+
+    private static void SaveCompositeScreenshot(Window ownerWindow, Window childWindow, string fileName)
+    {
+        using var ownerBitmap = CaptureWindowBitmap(ownerWindow);
+        using var childBitmap = CaptureWindowBitmap(childWindow);
+
+        using var surface = SKSurface.Create(new SKImageInfo(ownerBitmap.Width, ownerBitmap.Height, SKColorType.Bgra8888, SKAlphaType.Premul));
+        Assert.That(surface, Is.Not.Null, $"Expected to create a drawing surface for screenshot '{fileName}'.");
+
+        var canvas = surface!.Canvas;
+        canvas.Clear(SKColors.Transparent);
+        canvas.DrawBitmap(ownerBitmap, 0, 0);
+
+        var childX = Math.Max(24, (ownerBitmap.Width - childBitmap.Width) / 2);
+        var childY = Math.Max(32, (ownerBitmap.Height - childBitmap.Height) / 3);
+        canvas.DrawBitmap(childBitmap, childX, childY);
+
+        using var image = surface.Snapshot();
+        using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+
+        var file = new FileInfo(Path.Combine(ImageDirectory.FullName, fileName));
+        using (var stream = file.Open(FileMode.Create, FileAccess.Write, FileShare.None))
+        {
+            data.SaveTo(stream);
+        }
+
+        file.Refresh();
+        Assert.That(file.Exists, Is.True, $"Expected screenshot '{file.FullName}' to be written.");
+        Assert.That(file.Length, Is.GreaterThan(0L), $"Expected screenshot '{file.FullName}' to contain data.");
+    }
+
+    private static SKBitmap CaptureWindowBitmap(Window window)
+    {
+        using var frame = window.CaptureRenderedFrame();
+        Assert.That(frame, Is.Not.Null, $"Expected a rendered frame for window '{window.GetType().Name}'.");
+
+        using var stream = new MemoryStream();
+        frame!.Save(stream);
+        stream.Position = 0;
+
+        var bitmap = SKBitmap.Decode(stream);
+        Assert.That(bitmap, Is.Not.Null, $"Expected to decode the rendered frame for window '{window.GetType().Name}'.");
+        return bitmap!;
     }
 
     private static string NormalizeHeader(object header)

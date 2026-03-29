@@ -61,6 +61,11 @@ The package now also includes a custom retro-styled `AsciiFileDialog.OpenFileAsy
 
 ![Open file dialog screenshot](img/open-dialog.png)
 
+## Retro message box
+`AsciiMessageBox` provides a simple in-app retro dialog for `OK`, `OK/Cancel`, `Yes/No`, and `Yes/No/Cancel` flows while keeping the parent window visible behind it.
+
+![Message box screenshot](img/message-box.png)
+
 ## What it currently styles
 ### Standard Avalonia controls
 - `Button`

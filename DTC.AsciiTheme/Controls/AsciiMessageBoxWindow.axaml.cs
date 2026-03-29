@@ -9,6 +9,7 @@
 //
 // THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND.
 
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
@@ -30,6 +31,10 @@ internal sealed partial class AsciiMessageBoxWindow : Window
     public AsciiMessageBoxWindow(string title, string message, AsciiMessageBoxButtons buttons)
     {
         InitializeComponent();
+
+#if DEBUG
+        DevToolsExtensions.AttachDevTools(this);
+#endif
 
         var messageBoxGroupBox = this.FindControl<AsciiGroupBox>("MessageBoxGroupBox")
                                  ?? throw new InvalidOperationException("Expected MessageBoxGroupBox to exist.");
