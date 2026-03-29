@@ -3,7 +3,7 @@
 # DTC.AsciiTheme
 Retro ASCII-style UI for Avalonia — recreate classic DOS-era interfaces with modern controls.
 
-![Data tab screenshot](img/data.png)
+![Animated demo tour](img/demo-tour.gif)
 
 ## Why
 
