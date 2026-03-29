@@ -15,7 +15,6 @@ using Avalonia.Threading;
 using Avalonia;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
-using DTC.AsciiTheme;
 
 namespace DTC.AsciiTheme.Demo;
 
@@ -63,18 +62,17 @@ public partial class MainWindow : Window
         return minimum + ((maximum - minimum) * normalized);
     }
 
-    private async void HandleShowOkMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void HandleShowOkMessageBoxClick(object sender, RoutedEventArgs e)
     {
         var result = await AsciiMessageBox.ShowAsync(
             this,
             "Information",
-            "The current operation completed successfully.",
-            AsciiMessageBoxButtons.Ok);
+            "The current operation completed successfully.");
 
         UpdateMessageBoxResult(result);
     }
 
-    private async void HandleShowOkCancelMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void HandleShowOkCancelMessageBoxClick(object sender, RoutedEventArgs e)
     {
         var result = await AsciiMessageBox.ShowAsync(
             this,
@@ -85,7 +83,7 @@ public partial class MainWindow : Window
         UpdateMessageBoxResult(result);
     }
 
-    private async void HandleShowYesNoMessageBoxClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void HandleShowYesNoMessageBoxClick(object sender, RoutedEventArgs e)
     {
         var result = await AsciiMessageBox.ShowAsync(
             this,
@@ -127,8 +125,7 @@ public partial class MainWindow : Window
         await AsciiMessageBox.ShowAsync(
             this,
             "Open",
-            $"Selected file:\n{selectedFile}",
-            AsciiMessageBoxButtons.Ok);
+            $"Selected file:\n{selectedFile}");
     }
 
     private async void HandleSaveMenuClick(object sender, RoutedEventArgs e)
@@ -156,8 +153,7 @@ public partial class MainWindow : Window
         await AsciiMessageBox.ShowAsync(
             this,
             "Save",
-            $"Target file:\n{file.FullName}",
-            AsciiMessageBoxButtons.Ok);
+            $"Target file:\n{file.FullName}");
     }
 
     private void HandleExitMenuClick(object sender, RoutedEventArgs e)
@@ -204,8 +200,7 @@ public partial class MainWindow : Window
         await AsciiMessageBox.ShowAsync(
             this,
             "About",
-            "DTC.AsciiTheme\n\nA retro Avalonia theme and helper-control package by DeanTheCoder.\n\nGitHub:\nwww.github.com/deanthecoder/DTC.AsciiTheme",
-            AsciiMessageBoxButtons.Ok);
+            "DTC.AsciiTheme\n\nA retro Avalonia theme and helper-control package by DeanTheCoder.\n\nGitHub:\nwww.github.com/deanthecoder/DTC.AsciiTheme");
     }
 
     private void SelectTab(int index)

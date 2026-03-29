@@ -85,7 +85,6 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
 
         if (!entry.IsDirectory)
         {
-            return;
         }
     }
 
@@ -206,14 +205,14 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
 
         if (m_currentDirectory.Parent is not null)
         {
-            entries.Add(new FileSystemEntry("[..]", m_currentDirectory.Parent.FullName, true, false, true));
+            entries.Add(new FileSystemEntry("[..]", m_currentDirectory.Parent.FullName, true, true));
         }
 
         try
         {
             entries.AddRange(m_currentDirectory.EnumerateDirectories()
                                               .OrderBy(d => d.Name, StringComparer.OrdinalIgnoreCase)
-                                              .Select(d => new FileSystemEntry($"[{d.Name}]", d.FullName, true, false, false)));
+                                              .Select(d => new FileSystemEntry($"[{d.Name}]", d.FullName, true, false)));
         }
         catch (UnauthorizedAccessException)
         {
@@ -236,7 +235,7 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
             entries.AddRange(m_currentDirectory.EnumerateFiles()
                                               .Where(file => MatchesFilter(file, selectedFilter))
                                               .OrderBy(file => file.Name, StringComparer.OrdinalIgnoreCase)
-                                              .Select(file => new FileSystemEntry(file.Name, file.FullName, false, false, false)));
+                                              .Select(file => new FileSystemEntry(file.Name, file.FullName, false, false)));
         }
         catch (UnauthorizedAccessException)
         {
@@ -324,13 +323,13 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
                                            .Where(drive => drive.IsReady)
                                            .OrderBy(drive => drive.Name, StringComparer.OrdinalIgnoreCase))
             {
-                yield return new FileSystemEntry($"[{drive.Name.TrimEnd(Path.DirectorySeparatorChar)}]", drive.RootDirectory.FullName, true, true, false);
+                yield return new FileSystemEntry($"[{drive.Name.TrimEnd(Path.DirectorySeparatorChar)}]", drive.RootDirectory.FullName, true, false);
             }
 
             yield break;
         }
 
-        yield return new FileSystemEntry("[/]", Path.DirectorySeparatorChar.ToString(), true, true, false);
+        yield return new FileSystemEntry("[/]", Path.DirectorySeparatorChar.ToString(), true, false);
 
         var volumesDirectory = new DirectoryInfo("/Volumes");
         if (!volumesDirectory.Exists)
@@ -341,7 +340,7 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
         foreach (var directory in volumesDirectory.EnumerateDirectories()
                                                  .OrderBy(directory => directory.Name, StringComparer.OrdinalIgnoreCase))
         {
-            yield return new FileSystemEntry($"[{directory.Name}]", directory.FullName, true, true, false);
+            yield return new FileSystemEntry($"[{directory.Name}]", directory.FullName, true, false);
         }
     }
 
@@ -369,7 +368,6 @@ internal sealed partial class AsciiOpenFileDialogWindow : Window
         string Name,
         string FullPath,
         bool IsDirectory,
-        bool IsDrive,
         bool IsParent)
     {
         public override string ToString() => Name;

@@ -71,7 +71,6 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
             m_fileNameTextBox.Text = suggestedFileName;
         }
 
-        m_folderListBox.SelectionChanged += HandleFolderSelectionChanged;
         m_fileListBox.SelectionChanged += HandleFileSelectionChanged;
         m_fileNameTextBox.PropertyChanged += HandleFileNameTextBoxPropertyChanged;
         KeyDown += HandleKeyDown;
@@ -82,19 +81,6 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
-    }
-
-    private void HandleFolderSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (m_folderListBox.SelectedItem is not FileSystemEntry entry)
-        {
-            return;
-        }
-
-        if (!entry.IsDirectory)
-        {
-            return;
-        }
     }
 
     private void HandleFileSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -232,14 +218,14 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
 
         if (m_currentDirectory.Parent is not null)
         {
-            entries.Add(new FileSystemEntry("[..]", m_currentDirectory.Parent.FullName, true, false, true));
+            entries.Add(new FileSystemEntry("[..]", m_currentDirectory.Parent.FullName, true, true));
         }
 
         try
         {
             entries.AddRange(m_currentDirectory.EnumerateDirectories()
                                               .OrderBy(d => d.Name, StringComparer.OrdinalIgnoreCase)
-                                              .Select(d => new FileSystemEntry($"[{d.Name}]", d.FullName, true, false, false)));
+                                              .Select(d => new FileSystemEntry($"[{d.Name}]", d.FullName, true, false)));
         }
         catch (UnauthorizedAccessException)
         {
@@ -262,7 +248,7 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
             entries.AddRange(m_currentDirectory.EnumerateFiles()
                                               .Where(file => MatchesFilter(file, selectedFilter))
                                               .OrderBy(file => file.Name, StringComparer.OrdinalIgnoreCase)
-                                              .Select(file => new FileSystemEntry(file.Name, file.FullName, false, false, false)));
+                                              .Select(file => new FileSystemEntry(file.Name, file.FullName, false, false)));
         }
         catch (UnauthorizedAccessException)
         {
@@ -365,13 +351,13 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
                                            .Where(drive => drive.IsReady)
                                            .OrderBy(drive => drive.Name, StringComparer.OrdinalIgnoreCase))
             {
-                yield return new FileSystemEntry($"[{drive.Name.TrimEnd(Path.DirectorySeparatorChar)}]", drive.RootDirectory.FullName, true, true, false);
+                yield return new FileSystemEntry($"[{drive.Name.TrimEnd(Path.DirectorySeparatorChar)}]", drive.RootDirectory.FullName, true, false);
             }
 
             yield break;
         }
 
-        yield return new FileSystemEntry("[/]", Path.DirectorySeparatorChar.ToString(), true, true, false);
+        yield return new FileSystemEntry("[/]", Path.DirectorySeparatorChar.ToString(), true, false);
 
         var volumesDirectory = new DirectoryInfo("/Volumes");
         if (!volumesDirectory.Exists)
@@ -382,7 +368,7 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
         foreach (var directory in volumesDirectory.EnumerateDirectories()
                                                  .OrderBy(directory => directory.Name, StringComparer.OrdinalIgnoreCase))
         {
-            yield return new FileSystemEntry($"[{directory.Name}]", directory.FullName, true, true, false);
+            yield return new FileSystemEntry($"[{directory.Name}]", directory.FullName, true, false);
         }
     }
 
@@ -410,7 +396,6 @@ internal sealed partial class AsciiSaveFileDialogWindow : Window
         string Name,
         string FullPath,
         bool IsDirectory,
-        bool IsDrive,
         bool IsParent)
     {
         public override string ToString() => Name;

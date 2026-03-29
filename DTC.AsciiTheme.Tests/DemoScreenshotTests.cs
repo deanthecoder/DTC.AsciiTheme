@@ -18,7 +18,6 @@ using Avalonia.Headless;
 using Avalonia.LogicalTree;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
-using Avalonia.VisualTree;
 using DTC.AsciiTheme.Controls;
 using SkiaSharp;
 
@@ -95,7 +94,7 @@ public sealed class DemoScreenshotTests
 
                 foreach (var (palette, fileName) in paletteScreenshots)
                 {
-                    AsciiPaletteManager.Apply(Avalonia.Application.Current!, palette);
+                    AsciiPaletteManager.Apply(Application.Current!, palette);
                     tabControl.SelectedItem = textTab;
                     textTab.Focus();
                     await WaitForRenderAsync();
@@ -103,16 +102,16 @@ public sealed class DemoScreenshotTests
                     SaveScreenshot(window, fileName);
                 }
 
-                AsciiPaletteManager.Apply(Avalonia.Application.Current!, AsciiPalette.Blue);
+                AsciiPaletteManager.Apply(Application.Current!, AsciiPalette.Blue);
 
                 var openFileDialog = new AsciiOpenFileDialogWindow(
                     "Open File",
                     [
-                        new Avalonia.Platform.Storage.FilePickerFileType("All files")
+                        new FilePickerFileType("All files")
                         {
                             Patterns = ["*.*"],
                         },
-                        new Avalonia.Platform.Storage.FilePickerFileType("Text files")
+                        new FilePickerFileType("Text files")
                         {
                             Patterns = ["*.txt", "*.ini", "*.cfg", "*.log", "*.bat", "*.sys"],
                         },
@@ -410,7 +409,7 @@ public sealed class DemoScreenshotTests
                 }
 
                 frameIndex = await CaptureTabTransitionAsync(window, tabControl, moreTab, buttonsTab, frameDirectory, frameIndex);
-                frameIndex = await CaptureWindowHoldFramesAsync(
+                await CaptureWindowHoldFramesAsync(
                     window,
                     frameDirectory,
                     frameIndex,
