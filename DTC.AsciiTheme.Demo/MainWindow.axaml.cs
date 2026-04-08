@@ -94,6 +94,12 @@ public partial class MainWindow : Window
         UpdateMessageBoxResult(result);
     }
 
+    private async void HandleShowSpeccyBusyBorderDemoClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new SpeccyBusyBorderDemoWindow();
+        await dialog.ShowDialog(this);
+    }
+
     private void UpdateMessageBoxResult(AsciiMessageBoxResult result)
     {
         MessageBoxResultTextBlock.Text = $"Last result: {result}";

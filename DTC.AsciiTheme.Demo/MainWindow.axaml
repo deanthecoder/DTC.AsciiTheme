@@ -412,6 +412,9 @@
                                              ShowProgressText="True" />
                                 <ProgressBar Value="80"
                                              Maximum="100" />
+                                <Button HorizontalAlignment="Left"
+                                        Click="HandleShowSpeccyBusyBorderDemoClick"
+                                        Content="Show _ZX Loader" />
                             </StackPanel>
                         </theme:AsciiGroupBox>
 

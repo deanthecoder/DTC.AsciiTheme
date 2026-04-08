@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:theme="clr-namespace:DTC.AsciiTheme.Controls;assembly=DTC.AsciiTheme"
+        mc:Ignorable="d"
+        x:Class="DTC.AsciiTheme.Demo.SpeccyBusyBorderDemoWindow"
+        Width="640"
+        Height="480"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="ZX Loader Demo">
+    <Window.Resources>
+        <FontFamily x:Key="AsciiFontFamily">avares://DTC.AsciiTheme/Assets/Fonts/ZXSpectrum#ZX Spectrum</FontFamily>
+    </Window.Resources>
+    
+    <theme:SpeccyBusyBorder IsBusy="True">
+        <Border Background="#D7D7D7"
+                Padding="24">
+            <Grid RowDefinitions="Auto,*,Auto"
+                  RowSpacing="16">
+                <TextBlock Foreground="Black"
+                           LineHeight="24"
+                           Text="Program: DTC" />
+
+                <TextBlock Grid.Row="1"
+                           Foreground="Black"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Please wait..." />
+
+                <Button Grid.Row="2"
+                        Width="120"
+                        HorizontalAlignment="Right"
+                        Click="HandleCloseClick"
+                        Content="_Close" />
+            </Grid>
+        </Border>
+    </theme:SpeccyBusyBorder>
+</Window>
