@@ -215,3 +215,7 @@ Experimental ZX Spectrum-inspired variant using a close Spectrum-style bitmap fo
 - `DTC.AsciiTheme.Demo/` contains the showcase app used for interactive visual checks.
 - `DTC.AsciiTheme.Tests/` contains the automated screenshot-generation test.
 - `img/` contains the generated demo screenshots used by this README.
+
+## License
+
+Licensed under the MIT License. See [LICENSE](LICENSE) for details.
