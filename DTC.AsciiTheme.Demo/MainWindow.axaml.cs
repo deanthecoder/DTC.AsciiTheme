@@ -201,6 +201,12 @@ public partial class MainWindow : Window
 
     private void HandleThemeZxClick(object sender, RoutedEventArgs e) => ApplyPalette(AsciiPalette.ZX);
 
+    private async void HandleGitHub1989MenuClick(object sender, RoutedEventArgs e)
+    {
+        var window = new GitHub1989Window();
+        await window.ShowDialog(this);
+    }
+
     private async void HandleAboutMenuClick(object sender, RoutedEventArgs e)
     {
         await AsciiMessageBox.ShowAsync(

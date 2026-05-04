@@ -72,6 +72,11 @@ Demonstrates `AsciiMessageBox`, `Expander`, `Slider`, `GridSplitter`, `ToolTip`,
 
 ![Message box screenshot](img/message-box.png)
 
+## GitHub 1989 demo window
+The demo app includes a themed fake GitHub screen under `Help > GitHub 1989`, intended as a screenshot-friendly retro UI gag that follows the currently selected palette.
+
+![GitHub 1989 screenshot](img/github-1989.png)
+
 ## What it currently styles
 ### Standard Avalonia controls
 - `Button`

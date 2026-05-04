@@ -1,0 +1,302 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:theme="clr-namespace:DTC.AsciiTheme.Controls;assembly=DTC.AsciiTheme"
+        x:Class="DTC.AsciiTheme.Demo.GitHub1989Window"
+        Width="960"
+        Height="600"
+        MinWidth="840"
+        MinHeight="520"
+        CanResize="True"
+        ShowInTaskbar="False"
+        SystemDecorations="None"
+        TransparencyLevelHint="Transparent"
+        Background="Transparent"
+        Foreground="{DynamicResource AsciiForegroundBrush}"
+        Title="GitHub 1989"
+        WindowStartupLocation="CenterOwner">
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Background="{DynamicResource AsciiBackgroundBrush}"
+                Padding="8">
+            <Grid RowDefinitions="Auto,Auto,*,Auto"
+                  RowSpacing="8">
+                <Menu>
+                    <MenuItem Header="_File">
+                        <MenuItem Header="_Clone" />
+                        <MenuItem Header="_Fork" />
+                        <Separator />
+                        <MenuItem Header="E_xit"
+                                  Click="HandleCloseClick" />
+                    </MenuItem>
+                    <MenuItem Header="_Edit">
+                        <MenuItem Header="_Patch README.TXT" />
+                        <MenuItem Header="_Blame Line" />
+                    </MenuItem>
+                    <MenuItem Header="_Repo">
+                        <MenuItem Header="_Pull Requests" />
+                        <MenuItem Header="_Issues" />
+                        <MenuItem Header="_Actions" />
+                    </MenuItem>
+                    <MenuItem Header="_View">
+                        <MenuItem Header="_Code" />
+                        <MenuItem Header="_History" />
+                        <MenuItem Header="_Network Graph" />
+                    </MenuItem>
+                    <MenuItem Header="_Help">
+                        <MenuItem Header="_About GitHub 1989" />
+                    </MenuItem>
+                </Menu>
+
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,Auto,*"
+                      VerticalAlignment="Center">
+                    <Border Height="1"
+                            Background="{DynamicResource AsciiFrameBrush}"
+                            VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="1"
+                               Margin="12,0"
+                               Foreground="{DynamicResource AsciiHighlightBrush}"
+                               Text="GITHUB.EXE v1.0 - MS-DOS SOCIAL CODING NETWORK" />
+                    <Border Grid.Column="2"
+                            Height="1"
+                            Background="{DynamicResource AsciiFrameBrush}"
+                            VerticalAlignment="Center" />
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="248,*"
+                      RowDefinitions="*,152"
+                      ColumnSpacing="8"
+                      RowSpacing="8">
+                    <theme:AsciiGroupBox Header="ACCOUNT"
+                                         Background="{DynamicResource AsciiPaneBackgroundBrush}">
+                        <Grid RowDefinitions="Auto,Auto,*"
+                              RowSpacing="12">
+                            <TextBlock Foreground="{DynamicResource AsciiFrameBrush}"
+                                       TextAlignment="Center"
+                                       xml:space="preserve"> /-----\
+ |  @  |
+ | \_/ |
+ \-----/
+  GITHUB</TextBlock>
+
+                            <StackPanel Grid.Row="1"
+                                        Spacing="2">
+                                <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                           Text="Logged in:" />
+                                <TextBlock Text="deanthecoder@2400 baud" />
+                                <TextBlock Text="MODE: public repo" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2"
+                                        Spacing="2"
+                                        VerticalAlignment="Bottom">
+                                <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                           Text="TRENDING" />
+                                <TextBlock Text="1. avalonia/avalonia" />
+                                <TextBlock Text="2. dotnet/runtime" />
+                                <TextBlock Text="3. DTC.AsciiTheme" />
+                            </StackPanel>
+                        </Grid>
+                    </theme:AsciiGroupBox>
+
+                    <theme:AsciiGroupBox Grid.Column="1"
+                                         Header="REPOSITORY: deanthecoder/DTC.AsciiTheme"
+                                         Background="{DynamicResource AsciiPaneBackgroundBrush}">
+                        <Grid RowDefinitions="Auto,Auto,*"
+                              RowSpacing="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="8">
+                                <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                           Text="BRANCH:" />
+                                <TextBlock Grid.Column="1"
+                                           Foreground="{DynamicResource AsciiFrameBrush}"
+                                           Text="main" />
+                                <TextBlock Grid.Column="2"
+                                           Text="STARS: 1,337  FORKS: 42  ISSUES: 7" />
+                            </Grid>
+
+                            <TextBox Grid.Row="1"
+                                     Text="C:\GITHUB\DTC.ASCII&gt; search repositories"
+                                     IsReadOnly="True" />
+
+                            <Grid Grid.Row="2"
+                                  ColumnDefinitions="260,*"
+                                  ColumnSpacing="16">
+                                <StackPanel Spacing="2">
+                                    <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                               Text="DIRECTORY" />
+                                    <TextBlock Text="C:\GITHUB\DTC.ASCII" />
+                                    <TextBlock Foreground="{DynamicResource AsciiHoverForegroundBrush}"
+                                               Background="{DynamicResource AsciiHoverBackgroundBrush}"
+                                               Text="  README.TXT" />
+                                    <TextBlock Text="  LICENSE.TXT" />
+                                    <TextBlock Text="  AGENTS.MD" />
+                                    <TextBlock Text="+ DTC.AsciiTheme\" />
+                                    <TextBlock Text="  + Controls\" />
+                                    <TextBlock Text="  + Palettes\" />
+                                    <TextBlock Text="+ DTC.AsciiTheme.Demo\" />
+                                    <TextBlock Text="+ DTC.AsciiTheme.Tests\" />
+                                    <TextBlock Text="  DTC.AsciiTheme.SLN" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1"
+                                            Spacing="4">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                                   Text="FILE: README.TXT" />
+                                        <TextBlock Grid.Column="1"
+                                                   Foreground="{DynamicResource AsciiFrameBrush}"
+                                                   Text="1/42" />
+                                    </Grid>
+                                    <Border Height="1"
+                                            Background="{DynamicResource AsciiFrameBrush}" />
+                                    <TextBlock TextWrapping="Wrap"
+                                               xml:space="preserve">DTC.AsciiTheme
+
+A real Avalonia theme for normal controls, tuned until
+desktop UI feels suspiciously like a DOS utility.
+
+Features:
+- inverse-video focus and sharp contrast
+- themed Button, Menu, TreeView, DataGrid and friends
+- Blue, Mono, Green, Plasma, BBC, C64, ZX</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </theme:AsciiGroupBox>
+
+                    <theme:AsciiGroupBox Grid.Row="1"
+                                         Header="COMMANDS"
+                                         Background="{DynamicResource AsciiPaneBackgroundBrush}">
+                        <StackPanel Spacing="4">
+                            <TextBlock Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       TextWrapping="Wrap"
+                                       Text="A:\&gt; gh clone DTC.AsciiTheme" />
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="remote: Found 8 palettes and 23 controls." />
+                            <TextBlock Foreground="{DynamicResource AsciiFrameBrush}"
+                                       TextWrapping="Wrap"
+                                       Text="READY. F5 refresh, F10 menu." />
+                        </StackPanel>
+                    </theme:AsciiGroupBox>
+
+                    <theme:AsciiGroupBox Grid.Row="1"
+                                         Grid.Column="1"
+                                         Header="RECENT ACTIVITY"
+                                         Background="{DynamicResource AsciiPaneBackgroundBrush}">
+                        <Grid ColumnDefinitions="96,136,*,112"
+                              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                              ColumnSpacing="8">
+                            <TextBlock Foreground="{DynamicResource AsciiFrameBrush}"
+                                       Text="TYPE" />
+                            <TextBlock Grid.Column="1"
+                                       Foreground="{DynamicResource AsciiFrameBrush}"
+                                       Text="AUTHOR" />
+                            <TextBlock Grid.Column="2"
+                                       Foreground="{DynamicResource AsciiFrameBrush}"
+                                       Text="MESSAGE" />
+                            <TextBlock Grid.Column="3"
+                                       Foreground="{DynamicResource AsciiFrameBrush}"
+                                       Text="DATE" />
+
+                            <TextBlock Grid.Row="1"
+                                       Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       Text="PR #42" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="hubot" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="2"
+                                       Text="Retheme repository browser" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="3"
+                                       Text="1989-11-17" />
+
+                            <TextBlock Grid.Row="2"
+                                       Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       Text="ISSUE" />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="1"
+                                       Text="octocat" />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="2"
+                                       Text="Add ANSI mode screenshot bait" />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="3"
+                                       Text="1989-11-16" />
+
+                            <TextBlock Grid.Row="3"
+                                       Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       Text="COMMIT" />
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="1"
+                                       Text="dean" />
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="2"
+                                       Text="Make menus feel like a utility disk" />
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="3"
+                                       Text="1989-11-15" />
+
+                            <TextBlock Grid.Row="4"
+                                       Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       Text="STAR" />
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="1"
+                                       Text="ada" />
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="2"
+                                       Text="Starred from a lab workstation" />
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="3"
+                                       Text="1989-11-14" />
+
+                            <TextBlock Grid.Row="5"
+                                       Foreground="{DynamicResource AsciiHighlightBrush}"
+                                       Text="RELEASE" />
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="1"
+                                       Text="actions" />
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="2"
+                                       Text="Tagged v0.1 on three floppy disks" />
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="3"
+                                       Text="1989-11-13" />
+                        </Grid>
+                    </theme:AsciiGroupBox>
+                </Grid>
+
+                <theme:AsciiStatusBar Grid.Row="3"
+                                      LeftText="F1 HELP   F2 SEARCH   F3 NEXT   F5 REFRESH   F10 MENU"
+                                      RightText="LN 1  COL 1  80x25" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="0,16,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Margin="8,0,0,0"
+                Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
+                IsHitTestVisible="False" />
+
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Width="{DynamicResource AsciiButtonShadowDepth}"
+                Height="{DynamicResource AsciiButtonShadowDepth}"
+                Background="{DynamicResource AsciiShadowBrush}"
+                Opacity="0.5"
+                IsHitTestVisible="False" />
+    </Grid>
+</Window>

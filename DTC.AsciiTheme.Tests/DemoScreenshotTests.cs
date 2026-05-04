@@ -148,6 +148,21 @@ public sealed class DemoScreenshotTests
                     messageBox.Close(AsciiMessageBoxResult.Cancel);
                     await messageBoxTask;
                 }
+
+                var gitHubWindow = new Demo.GitHub1989Window();
+                var gitHubWindowTask = gitHubWindow.ShowDialog(window);
+
+                try
+                {
+                    await WaitForRenderAsync();
+                    await WaitForRenderAsync();
+                    SaveScreenshot(gitHubWindow, "github-1989.png");
+                }
+                finally
+                {
+                    gitHubWindow.Close();
+                    await gitHubWindowTask;
+                }
             }
             finally
             {

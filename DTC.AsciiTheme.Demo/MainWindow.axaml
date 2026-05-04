@@ -69,6 +69,9 @@
                           Click="HandleViewMoreClick" />
             </MenuItem>
             <MenuItem Header="_Help">
+                <MenuItem Header="_GitHub 1989"
+                          Click="HandleGitHub1989MenuClick" />
+                <Separator />
                 <MenuItem Header="_About"
                           Click="HandleAboutMenuClick" />
             </MenuItem>
