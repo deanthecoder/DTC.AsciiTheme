@@ -1,4 +1,5 @@
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/deanthecoder.svg?style=social&label=Follow%20%40deanthecoder)](https://twitter.com/deanthecoder)
+[![GitHub Repo stars](https://img.shields.io/github/stars/deanthecoder/DTC.AsciiTheme?style=social&label=Star)](https://github.com/deanthecoder/DTC.AsciiTheme/stargazers)
 
 # DTC.AsciiTheme
 Retro ASCII-style UI for Avalonia — recreate classic DOS-era interfaces with modern controls.
